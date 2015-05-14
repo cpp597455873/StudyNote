@@ -1,0 +1,50 @@
+//1# 程序会输出什么值
+class Parent {
+	private int i = 2;
+	public Parent() {
+		display();
+	}
+
+	public void display() {
+		System.out.println(i);
+	}
+}
+class Child extends Parent {
+	private int i = 22;
+
+	public Child() {
+		i = 222;
+	}
+	public void display() {
+		System.out.println(i);
+	}
+}
+public class ClassTest01 {
+	public static void main(String[] args) {
+		new Child();
+	}
+}
+
+
+//2# 程序会输出什么值
+package test;
+class ParentClass {
+	public static void info() {
+		System.out.println("parent");
+	}
+}
+
+class ChildClass extends ParentClass {
+	public static void info() {
+		System.out.println("child");
+	}
+}
+
+public class StaticTest {
+	public static void main(String[] args) {
+		ParentClass p = new ChildClass();
+		p.info();
+	}
+}
+
+

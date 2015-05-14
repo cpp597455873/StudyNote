@@ -1,0 +1,23 @@
+btSeePassword.setOnTouchListener(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				
+				
+				String s = registerPasswordET.getText().toString();
+				
+				//设置密码可见
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					registerPasswordET.setInputType(EditorInfo.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+				}
+				
+				//设置密码不可见	
+				if (event.getAction() == MotionEvent.ACTION_UP) {
+					registerPasswordET.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+				}
+
+				//设置焦点
+				registerPasswordET.setSelection(s.length());
+				return false;
+			}
+		});

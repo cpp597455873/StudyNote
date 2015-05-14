@@ -1,0 +1,5 @@
+ <style name="WelcomeTheme" >
+        <item name="android:windowBackground">@drawable/finish</item>
+       <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>    
+    </style>

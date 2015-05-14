@@ -1,0 +1,10 @@
+消除“Permission is only granted to system apps”错误
+分类： Eclipse 2013-11-06 17:29 2644人阅读 评论(1) 收藏 举报
+permissionsandroideclipse
+在AndroidManifest.xml中使用了如下的配置：
+<uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+就会报错：Permission is only granted to system apps
+原因如下：
+此类权限仅授予系统级应用，可以修改下Link Error Checking项的安全级别；
+In Eclipse: Window -> Preferences -> Android -> Lint Error Checking
+在ID列表中，找到ID = ProtectedPermission，设置Serverity低于Error，比如Warning级别就好了。

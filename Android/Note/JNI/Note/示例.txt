@@ -1,0 +1,27 @@
+Jint Java_study_jnidemo_JniDemoActivity_jniShowMessage(JNIEnv* env, jobject thiz,
+       jobject ctx, jstring strTitle, jstring strMessage)
+
+{
+    jclass cls = (*env)->GetObjectClass(env, thiz);
+    if(cls != NULL)
+    {
+       jstring str;
+       jmethodID strTest_id = (*env)->GetMethodID(env, cls, "getTestString","()Ljava/lang/String;");
+
+       if(strTest_id != NULL)
+
+       {
+          str = (*env)->CallObjectMethod(env, thiz, strTest_id);
+       } 
+
+       jmethodID showMessage_id = (*env)->GetMethodID(env, cls, "showMessage",
+	"(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)I"); 
+
+       if(showMessage_id != NULL)
+       {
+          return (*env)->CallIntMethod(env, thiz, showMessage_id, ctx,
+                 strTitle, combine_jstring(env, strMessage, str));
+       }
+    }
+    return 1;
+}

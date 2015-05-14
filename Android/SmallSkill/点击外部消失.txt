@@ -1,0 +1,31 @@
+
+android：点击popupwindow以外区域 popupwindow自动消失(转载)
+
+方法一（这种方法可以处理popupwindows dimiss的时候一些其他的操作，比如让其他控件的隐藏，消失等）:
+
+代码如下popupWindow.setFocusable(false);//focusable要为false(不设置默认的就是False)；
+//这是Activity 的OnTouchEvent。OnTouchEvent代表的是Activity 获得事件（即为PopupWindow之外）
+
+@Override
+
+public boolean onTouchEvent(MotionEvent event) {
+
+// TODO Auto-generated method stub
+
+if (popupWindow != null && popupWindow.isShowing()) {
+
+popupWindow.dismiss();
+
+popupWindow = null;
+
+}
+
+return super.onTouchEvent(event);
+
+}
+
+方法二：设置popupWindow参数（这种方法只能让自身消失，不能够提供其他伴随操作，比如让其他控件的隐藏，消失等）
+
+pop = new PopupWindow(view, ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+pop.setBackgroundDrawable(new BitmapDrawable());
+pop.setOutsideTouchable(true);

@@ -1,0 +1,24 @@
+ <style name="dialog" parent="@android:style/Theme.Holo.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">#FFFFFFFF</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+
+
+
+
+
+
+
+//∑Ω∞∏2
+AlertDialog alert = new AlertDialog.Builder(this).create();  
+        alert.show();  
+          
+        alert.getWindow().setLayout(width/2, height/4);  
+        alert.setTitle("≤‚ ‘");  
+        alert.getWindow().setContentView(R.layout.alert);  

@@ -1,0 +1,37 @@
+button1.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				View vv = getWindow().getDecorView();
+				vv.setDrawingCacheEnabled(true);
+				Bitmap bitmap = vv.getDrawingCache();
+				Rect appRect = new Rect();
+				getWindow().getDecorView()
+						.getWindowVisibleDisplayFrame(appRect);
+				int statusHeight = appRect.top;
+
+				DisplayMetrics displayMetrics = new DisplayMetrics();
+				getWindow().getWindowManager().getDefaultDisplay()
+						.getMetrics(displayMetrics);
+
+				int screenH = displayMetrics.heightPixels;
+				int screenW = displayMetrics.widthPixels;
+
+				Bitmap bitmap2 = Bitmap.createBitmap(bitmap, 0, statusHeight,
+						screenW, screenH - statusHeight);
+				vv.destroyDrawingCache();
+
+				try {
+					FileOutputStream fo = new FileOutputStream(File
+							.createTempFile("capture", ".jpg", new File(
+									"/sdcard")));
+					bitmap2.compress(Bitmap.CompressFormat.PNG, 90, fo);
+					Toast.makeText(getApplicationContext(), "½ØÆÁ³É¹¦", Toast.LENGTH_SHORT).show();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});

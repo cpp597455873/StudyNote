@@ -1,0 +1,23 @@
+
+//获得类对象
+jclass cls = env->GetObjectClass(stu);
+
+//获得方法ID (I)V   I是指调用的参数是int类型的   
+jmethodID jmd = env->GetMethodID(cls, "setAge", "(I)V"); 
+
+//开始调用   CallVoidMethod指的是没有返回值的方法   stu是调用对象
+env->CallVoidMethod(stu, jmd, 100);
+
+
+
+
+jclass order_class = env->FindClass("com/chnic/bean/Order");  
+jobject order = getInstance(env, order_class);  
+jfieldID amount_field = env->GetFieldID(order_class, "amount", "I");  
+jint amount = env->GetIntField(order, amount_field);  
+	
+jmethodID showMessage_id = (*env)->GetMethodID(env, cls, "showMessage",
+	"(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)I"); 
+	 str = (*env)->CallObjectMethod(env, thiz, strTest_id);
+	 
+jmethodID strTest_id = (*env)->GetMethodID(env, cls, "getTestString","()Ljava/lang/String;");  
