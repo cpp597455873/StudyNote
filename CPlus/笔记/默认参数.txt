@@ -1,0 +1,12 @@
+默认参数
+eg: 
+void add(int a, int b = 1,int c=2);
+默认是从右边到左边进行默认的，不能跳跃默认
+它匹配：
+add(1)   	--->add(1,1,2)
+add(1,2) 	--->add(1,2,2)
+add(1,2,3)
+
+如
+void add(int a, int b = 1,int c);这种定义方式就是错误的。
+

@@ -1,0 +1,14 @@
+函数模板
+template<typename T>
+void add(T t);
+
+显示具体化
+template<>
+void add<Job>(Job job);
+
+匹配顺序
+非模板方法优先匹配
+其次显示具体化方法匹配
+最后才是模板方法
+
+
