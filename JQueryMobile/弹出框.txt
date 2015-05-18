@@ -1,0 +1,37 @@
+﻿		<div data-role="page">
+			<div data-role="header">
+				<h1>Dialog Test</h1>
+			</div>
+
+			<div data-role="content">
+
+				<!--
+                	时间：2015-05-18
+                	描述：将本页的一个标签作为	弹出框
+                -->
+				<p>
+					<a href="#mydialog2" data-rel="dialog">打开弹出框</a>
+				</p>
+
+				<!--
+                	时间：2015-05-18
+                	描述：将其他网页作为	 	      弹出框
+                -->
+				<p>
+					<a href="http://baidu.com" data-rel="dialog">打开其他网页弹出框</a>
+				</p>
+			</div>
+
+			<div data-role="footer">
+				<a href="myPage.html" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-inline">返回</a>
+			</div>
+		</div>
+
+		<div data-role="page" id="mydialog">
+			<div data-role="header">
+				<h1>提示</h1>
+			</div>
+			<div data-role="content">
+				有美女出现
+			</div>
+		</div>

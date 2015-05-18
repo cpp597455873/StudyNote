@@ -1,1 +1,29 @@
-npm install -g cordova    安装cordova
+npm install -g cordova  --->安装cordova
+cordova create hello com.example.hello HelloWorld   ---->创建项目
+cd hello   跳转至hell文件夹
+
+
+cordova platform add wp8
+cordova platform add windows
+cordova platform add amazon-fireos
+cordova platform add android
+cordova platform add blackberry10
+cordova platform add firefoxos
+cordova platform add ios              ----->添加平台
+
+cordova platforms ls                  ----->列出添加的平台
+
+
+cordova platform remove blackberry10   --->移除平台
+cordova platform rm android			   --->移除平台
+
+cordova build	     		   ---->编译所有平台
+cordova build   android	     		   ---->编译android平台
+
+cordova prepare ios           ---->编译前准备
+cordova compile ios			   ---->编译
+	
+cordova emulate android    --->添加android模拟器
+cordova run android        --->在模拟器上运行
+
+

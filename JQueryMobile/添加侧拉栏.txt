@@ -1,0 +1,78 @@
+﻿<body>
+		<div data-role="page">
+			<div data-role="header">
+
+			</div>
+
+			<div data-role="content">
+				<a class="ui-btn ui-corner-all" href="#leftpanel1">leftpanel1 push</a>
+				<a class="ui-btn ui-corner-all" href="#leftpanel2">leftpanel2 reveal</a>
+				<a class="ui-btn ui-corner-all" href="#leftpanel3">leftpanel3 overlay</a>
+
+				<a class="ui-btn ui-corner-all" href="#rightpanel1">rightpanel1 push</a>
+				<a class="ui-btn ui-corner-all" href="#rightpanel2">rightpanel2 reveal</a>
+				<a class="ui-btn ui-corner-all" href="#rightpanel3">rightpanel3 overlay</a>
+			</div>
+
+			<div data-role="footer">
+				<a href="myPage.html" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-inline">返回</a>
+			</div>
+
+			<!--
+                	作者：597455873@qq.com
+                	时间：2015-05-18
+                	描述：创建一个左侧拉菜单  
+                	data-position=  "left"   "right"
+                	data-display="push"  "reveal"  "overlay"
+                	注意 panel是在page标签下的 这点需要注意
+                -->
+			<div data-role="panel" id="leftpanel1" data-position="left" data-display="push" data-theme="a">
+				<!-- panel content goes here -->
+				<div data-role="content">
+					<p>I am content</p>
+					<a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
+				</div>
+			</div>
+
+			<div data-role="panel" id="leftpanel2" data-position="left" data-display="reveal" data-theme="a">
+				<!-- panel content goes here -->
+				<div data-role="content">
+					<p>I am content</p>
+					<a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
+				</div>
+			</div>
+
+			<div data-role="panel" id="leftpanel3" data-position="left" data-display="overlay" data-theme="a">
+				<!-- panel content goes here -->
+				<div data-role="content">
+					<p>I am content</p>
+					<a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
+				</div>
+			</div>
+
+			<div data-role="panel" id="rightpanel1" data-position="right" data-display="push" data-theme="a">
+				<!-- panel content goes here -->
+				<div data-role="content">
+					<p>I am content</p>
+					<a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
+				</div>
+			</div>
+
+			<div data-role="panel" id="rightpanel2" data-position="right" data-display="reveal" data-theme="a">
+				<!-- panel content goes here -->
+				<div data-role="content">
+					<p>I am content</p>
+					<a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
+				</div>
+			</div>
+
+			<div data-role="panel" id="rightpanel3" data-position="right" data-display="overlay" data-theme="a">
+				<!-- panel content goes here -->
+				<div data-role="content">
+					<p>I am content</p>
+					<a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
+				</div>
+			</div>
+
+		</div>
+	</body>

@@ -1,0 +1,33 @@
+﻿Jquery定义对象（ 闭包）
+例一：添加对象的静态属性
+
+声明一个对象$.problemWo，添加一个b的静态属性和myclick的静态方法。
+
+(function ($) {
+    $.problemWo = function () { };
+    $.extend($.problemWo,
+             { b: 5 },
+             { myclick: function () { alert("c") } }
+            );
+})(jQuery);
+
+alert($.problemWo.b);
+$.problemWo.myclick();
+
+
+
+
+例二：添加对象的动态属性
+声明一个对象$.problemWo，添加一个a的实例属性和myclick的实例方法。
+
+(function ($) {
+    $.problemWo = function () {
+        this.a = "abc"
+    };
+    $.extend($.problemWo.prototype, 
+                {myclick: function () { alert(this.a); }}
+                );
+})(jQuery);
+
+var obj = new $.problemWo()
+obj.myclick();
