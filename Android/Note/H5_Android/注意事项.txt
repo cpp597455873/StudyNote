@@ -1,0 +1,2 @@
+在Android Studio建立assets文件夹放入html文件，是放在main --> assets文件夹下面
+注意 是assets有个s
