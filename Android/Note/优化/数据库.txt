@@ -1,0 +1,34 @@
+﻿SQLite优化
+1、大量创建的时候注意是使用StingBuilder避免创建大量的String。
+
+2、使用SQLiteStatement
+   eg：
+		SQLiteStatement stmt = db.compileStatement("insert into cheese values(?,?)");
+		stmt.clearBindings();   //可以复用，避免创建大量的对象
+		stmt.bindString(1, "1");
+		stmt.bindString(2, "2");
+		stmt.executeInsert();
+		
+3.使用 ContentValues 这个比2要好一些虽然速度慢一点，但是灵活性大大提高。
+	eg：ContentValues values = new ContentValues();
+		values.clear();			//可以复用，避免创建大量的对象
+		values.put("name", "john");
+		values.put("age", 2);
+		values.put("studentid", 4767);
+		db.insert("student", null, values);
+
+4、使用事务提交，性能会有较大的提升。
+	eg：db.beginTransaction();
+		/*do somethong*/
+		db.setTransactionSuccessful();
+
+5、尽量不要使用外部数据库，因为外部数据库性能比较差，大概有几倍的差异。
+
+6、查询的时候只需要将你需要查询的列，避免无关的列的出现，这样也会有性能的提升。
+
+7、查询得到的游标Cursor务必要关闭!
+
+8、关注只用DatabaseUtil类的使用，那里面的有些方法还是比较棒的。
+
+9、学习SQLite FTS（建立索引），会对性能有一定的提升。
+
