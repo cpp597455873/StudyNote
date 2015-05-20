@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+		<title></title>
+	</head>
+
+	<body>
+		<!--
+        	描述：第1种写法
+        -->
+		<input type="radio" id="radio_0" />
+		<label for="radio_0">帅哥</label>
+
+		<!--
+        	描述：第2种写法
+        -->
+		<label>美女
+			<input type="radio" />
+		</label>
+
+		<!--
+        	描述： data-role="controlgroup" radio组
+        	需要注意的问题是 需要相同的 name="radio_sex"才会出现效果
+        -->
+		<form>
+			<fieldset data-role="controlgroup">
+				<legend>普通组</legend>
+				<input type="radio" id="radio_1" name="radio_sex" value="on" checked="checked" />
+				<label for="radio_1">男</label>
+
+				<input type="radio" id="radio_2" name="radio_sex" value="off" />
+				<label for="radio_2">女</label>
+
+				<input type="radio" id="radio_3" name="radio_sex" value="other" />
+				<label for="radio_3">不想说</label>
+			</fieldset>
+		</form>
+
+		<!--
+        	描述：水平方向  data-type="horizontal"
+        -->
+		<form>
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>横向</legend>
+				<input type="radio" id="radio_4" name="radio_sex" value="on" checked="checked">
+				<label for="radio_4">男</label>
+
+				<input type="radio" id="radio_5" name="radio_sex" value="off">
+				<label for="radio_5">女</label>
+
+				<input type="radio" id="radio_6" name="radio_sex" value="other">
+				<label for="radio_6">不想说</label>
+			</fieldset>
+		</form>
+
+		<!--
+        	描述：按钮位置  data-iconpos="right"
+        -->
+		<form>
+			<fieldset data-role="controlgroup" data-iconpos="right">
+				<legend>右边标签</legend>
+				<input type="radio" id="radio_7" name="radio_sex" value="on" checked="checked">
+				<label for="radio_7">男</label>
+
+				<input type="radio" id="radio_8" name="radio_sex" value="off">
+				<label for="radio_8">女</label>
+
+				<input type="radio" id="radio_9" name="radio_sex" value="other">
+				<label for="radio_9">不想说</label>
+			</fieldset>
+		</form>
+
+		<!--
+        	描述：mini标签 data-mini = "true"
+        -->
+		<form>
+			<fieldset data-role="controlgroup" data-iconpos="right" data-mini="true">
+				<legend>mini标签</legend>
+				<input type="radio" id="radio_10" name="radio_sex" value="on" checked="checked">
+				<label for="radio_10">男</label>
+
+				<input type="radio" id="radio_11" name="radio_sex" value="off">
+				<label for="radio_11">女</label>
+
+				<input type="radio" id="radio_12" name="radio_sex" value="other">
+				<label for="radio_12">不想说</label>
+			</fieldset>
+		</form>
+
+		<!--
+			描述：按钮不可用disabled=""
+		-->
+		<form>
+			<fieldset data-role="controlgroup" data-iconpos="right">
+				<legend>不可用</legend>
+				<input type="radio" id="radio_13" name="radio_sex" value="on" checked="checked" disabled="">
+				<label for="radio_13">男</label>
+
+				<input type="radio" id="radio_14" name="radio_sex" value="off" disabled="">
+				<label for="radio_14">女</label>
+
+				<input type="radio" id="radio_15" name="radio_sex" value="other" disabled="">
+				<label for="radio_15">不想说</label>
+			</fieldset>
+		</form>
+
+		<!--
+			描述：黑色主题 data-theme="b"
+		-->
+		<form>
+			<fieldset data-role="controlgroup" data-iconpos="right">
+				<legend>黑色主题</legend>
+				<input type="radio" id="radio_16" name="radio_sex" value="on" checked="checked" data-theme="b">
+				<label for="radio_16">男</label>
+
+				<input type="radio" id="radio_17" name="radio_sex" value="off" data-theme="b">
+				<label for="radio_17">女</label>
+
+				<input type="radio" id="radio_18" name="radio_sex" value="other" data-theme="b">
+				<label for="radio_18">不想说</label>
+			</fieldset>
+		</form>
+
+	</body>
+
+</html>
