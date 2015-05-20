@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+		<title></title>
+	</head>
+
+	<body>
+		<!--
+        	描述：collapsible可折叠 data-role="collapsible"
+        -->
+		<div data-role="collapsible">
+			<h5><strong>collapsible可折叠</strong></h5>
+			<p>no 你没有中奖</p>
+		</div>
+
+		<!--
+        	描述： 主题 。  data-theme = "b" data-content-theme = "b"
+        -->
+		<div data-role="collapsible" data-theme="b" data-content-theme="a">
+			<h5><strong>主题 </strong></h5>
+			<p>no 你没有中奖</p>
+		</div>
+
+		<!--
+        	描述： 去除内容主题
+        -->
+		<div data-role="collapsible" data-content-theme="false">
+			<h5><strong> 去除内容主题</strong></h5>
+			<p>no 你没有中奖</p>
+		</div>
+
+		<!--
+        	描述： 默认展开 data-collapsed="false"
+        -->
+		<div data-role="collapsible" data-collapsed="false">
+			<h5><strong> 默认展开</strong></h5>
+			<p>no 你没有中奖</p>
+		</div>
+
+		<!--
+        	描述： mini
+        -->
+		<div data-role="collapsible" data-mini="true">
+			<h5><strong> mini小号</strong></h5>
+			<p>no 你没有中奖</p>
+		</div>
+
+		<!--
+        	描述： 对于打开和关闭显示不同按钮  data-collapsed-icon="carat-d" data-expanded-icon="carat-u"
+        -->
+		<div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+			<h5><strong>  对于打开和关闭显示不同按钮</strong></h5>
+			<p>no 你没有中奖</p>
+		</div>
+
+		<!--
+        	描述： 右边按钮
+        -->
+		<div data-role="collapsible" data-iconpos="right">
+			<h5><strong> 右边按钮</strong></h5>
+			<p>no 你没有中奖</p>
+		</div>
+
+		<!--
+        	描述： 折叠表单
+        -->
+		<fieldset data-role="collapsible" data-iconpos="right">
+			<!--
+        	描述： legend显示表单标题，没有使用h标签
+        -->
+			<legend>折叠表单</legend>
+			<!--
+        	描述：placeholder 提示hint
+        -->
+			<input type="text" placeholder="提示" />
+
+			<p>no 你没有中奖</p>
+		</fieldset>
+
+		<!--
+        	描述： 内容无左右边框  data-inset = "false"
+        -->
+		<div data-role="collapsible" data-inset="false">
+			<h5><strong> 内容无左右边框</strong></h5>
+			<p>no 你没有中奖</p>
+		</div>
+
+		<!--
+        	描述： 预加载 aria-hidden="true" 预加载内容，默认不加载，点击才会加载，提高加载速度
+        -->
+		<div data-role="collapsible" >
+			<h5><strong> 预加载 </strong></h5>
+			<p aria-hidden="true">我是预加载内容，默认不加载，点击才会加载，提高加载速度</p>
+		</div>
+
+	</body>
+
+</html>
