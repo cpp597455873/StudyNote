@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+		<title></title>
+	</head>
+
+	<body>
+		<!--
+        	描述：正常checkbox 
+        -->
+		<input type="checkbox" id="check_0" />
+		<!--
+        	描述：标签 
+        -->
+		<label for="check_0">你是帅哥吗</label>
+
+		<!--
+        	描述：小checkbox 
+        -->
+		<input type="checkbox" id="check_1" data-mini="true" />
+		<label for="check_1">你是美女吗</label>
+
+		<!--
+        	描述：checkbox  group 
+        -->
+		<form>
+			<fieldset data-role="controlgroup">
+				<!--
+        			描述：<legend> 标题标签
+     			-->
+				<legend>你有几个女朋友</legend>
+
+				<input type="checkbox" id="check_one" />
+				<label for="check_one">一个</label>
+
+				<input type="checkbox" id="check_two" />
+				<label for="check_two">两个</label>
+
+				<input type="checkbox" id="check_three" />
+				<label for="check_three">三个</label>
+			</fieldset>
+		</form>
+
+		<!--
+        	描述：右边icon data-iconpos="right"
+        -->
+		<form>
+			<fieldset data-role="controlgroup" data-iconpos="right">
+				<legend>你有几个女朋友（右边icon）</legend>
+				<input type="checkbox" id="check_001" />
+
+				<label for="check_001">一个</label>
+				<input type="checkbox" id="check_002" />
+
+				<label for="check_002">两个</label>
+				<input type="checkbox" id="check_003" />
+				<label for="check_003">三个</label>
+			</fieldset>
+		</form>
+
+		<!--
+        	描述：黑色主题 data-theme="b" 
+        -->
+		<form>
+			<fieldset data-role="controlgroup" data-iconpos="right">
+				<legend>你有几个女朋友(黑色主题)</legend>
+				<input type="checkbox" id="check_0001" data-theme="b" />
+				<label for="check_0001">1</label>
+
+				<input type="checkbox" id="check_0002" data-theme="b" />
+				<label for="check_0002">2</label>
+
+				<input type="checkbox" id="check_0003" data-theme="b" />
+				<label for="check_0003">3</label>
+			</fieldset>
+		</form>
+
+		<!--
+        	描述：不允许点击  disabled="" 
+        -->
+		<form>
+			<fieldset data-role="controlgroup" data-iconpos="right">
+				<legend>你有几个女朋友(不允许点击)</legend>
+				<input type="checkbox" id="check_00001" disabled="" />
+				<label for="check_00001">1</label>
+
+				<input type="checkbox" id="check_00002" disabled="" />
+				<label for="check_00002">2</label>
+
+				<input type="checkbox" id="check_00003" disabled="" />
+				<label for="check_00003">3</label>
+			</fieldset>
+		</form>
+
+		<!--
+        	描述：水平  data-type="horizontal"
+        -->
+		<form>
+			<fieldset data-role="controlgroup" data-type="horizontal">
+
+				<legend>你帅吗</legend>
+
+				<input type="checkbox" id="check_01" />
+				<label for="check_01">丑</label>
+
+				<input type="checkbox" id="check_02" />
+				<label for="check_02">还可以</label>
+
+				<input type="checkbox" id="check_03" />
+				<label for="check_03">简直太帅了</label>
+			</fieldset>
+		</form>
+
+	</body>
+
+</html>
