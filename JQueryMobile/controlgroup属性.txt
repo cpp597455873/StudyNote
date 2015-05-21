@@ -1,0 +1,3 @@
+﻿data-role="controlgroup"里面的元素会当做同一个整体，中间不会有间隔。
+controlgroup支持的属性 data-type="horizontal" 水平显示
+controlgroup支持的属性 data-mini="true" 小号
