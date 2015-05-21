@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+		<title></title>
+	</head>
+
+	<body>
+		<!--
+        	描述：普通的collapsibleset他们的一组之间只会打开一个。
+        -->
+		<div data-role="collapsibleset">
+			<legend>data-role="collapsibleset"</legend>
+			<div data-role="collapsible">
+				<legend>普通的collapsible1</legend>
+				<p>I am content</p>
+			</div>
+			<div data-role="collapsible">
+				<legend>普通的collapsible2</legend>
+				<p>I am content</p>
+			</div>
+		</div>
+		
+		
+		<!--
+        	描述：data-inset = "false"全宽
+        -->
+		<div data-role="collapsibleset" data-inset = "false">
+			<legend>data-inset = "false"全宽</legend>
+			<div data-role="collapsible">
+				<legend>普通的collapsible1</legend>
+				<p>I am content</p>
+			</div>
+			<div data-role="collapsible">
+				<legend>普通的collapsible2</legend>
+				<p>I am content</p>
+			</div>
+		</div>
+		
+		<!--
+        	描述： data-mini = "true"小号
+        -->
+		<div data-role="collapsibleset" data-mini = "true">
+			<legend> data-mini = "true"小号</legend>
+			<div data-role="collapsible">
+				<legend>普通的collapsible1</legend>
+				<p>I am content</p>
+			</div>
+			<div data-role="collapsible">
+				<legend>普通的collapsible2</legend>
+				<p>I am content</p>
+			</div>
+		</div>
+		
+		
+		<!--
+        	描述：ddata-collapsed(expanded)-icon="arrow-r(d)" 对整体设置图标
+        -->
+		<div data-role="collapsibleset" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+			<legend> data-collapsed(expanded)-icon="arrow-r(d)"</legend>
+			<div data-role="collapsible">
+				<legend>我是接受set设置的图标</legend>
+				<p>I am content</p>
+			</div>
+			<!--
+            	描述：单独设置图标
+            -->
+			<div data-role="collapsible" data-collapsed-icon="plus" data-expanded-icon="minus">
+				<legend>我是单独设置的图标</legend>
+				<p>I am content</p>
+			</div>
+		</div>
+		
+		
+		<!--
+        	描述： data-iconpos = "right" 位置
+        -->
+		<div data-role="collapsibleset" data-iconpos = "right">
+			<legend> data-iconpos = "right"</legend>
+			<div data-role="collapsible" >
+				<h3>普通的collapsible1</h3>
+				<p>I am content</p>
+			</div>
+			<div data-role="collapsible" data-iconpos = "bottom">
+				<legend>data-iconpos = "bottom"</legend>
+				<p>I am content</p>
+			</div>
+			
+			<div data-role="collapsible" data-iconpos = "top">
+				<legend> data-iconpos = "top"</legend>
+				<p>I am content</p>
+			</div>
+		</div>
+		
+		<!--
+        	描述： 去除圆角
+        -->
+		<div data-role="collapsibleset" >
+			<legend> data-corners="false" 去除圆角 </legend>
+			<div data-role="collapsible">
+				<h3>data-corners="false" 去除圆角</h3>
+				<p>I am content</p>
+			</div>
+		</div>
+		
+		<!--
+        	描述：全局主题
+        -->
+		<div data-role="collapsibleset" data-theme = "b" data-content-theme = "b">
+			<legend> 全局主题 data-theme = "b" data-content-theme = "b"</legend>
+			<div data-role="collapsible" data-content-theme = "a">
+				<h3>局部主题</h3>
+				<p>I am content</p>
+			</div>
+		</div>
+		
+		
+		
+		
+	</body>
+
+</html>
