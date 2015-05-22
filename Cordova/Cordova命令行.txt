@@ -20,6 +20,8 @@ cordova platform rm android			   --->移除平台
 cordova build	     		   ---->编译所有平台
 cordova build   android	     		   ---->编译android平台
 
+cordova plugin add https://xxxx   添加plugin
+
 cordova prepare ios           ---->编译前准备
 cordova compile ios			   ---->编译
 	
