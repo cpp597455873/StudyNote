@@ -1,0 +1,29 @@
+﻿1.获取class和设置class都可以使用attr()方法来完成。
+
+例如使用attr()方法来获取p元素的class：
+
+var p_class = $("p").attr("class");        //获取p元素的class 
+使用attr()方法来设置p元素的class，
+ $("p").attr("'class", "high"); //设置p元素的class为 "high"
+
+大多数情况下，它是将原来的class替换为新的class，而不是在原来的基础上追加新的class。 
+
+2.addClass()方法来追加样式：
+
+.high{ color:red; } 
+
+.another{ font-style:italic; color:blue; } 
+在网页中添加一个“追加class类”的按钮，按钮的事件代码如下： 
+$("#btn_3").click(function(){ 
+$("#nm_p").addClass("another"); // 追加样式 
+}); 
+
+3.删除class的某个值，可以使用与addClass()方法相反的removeClass()方法来完成，它的 作用是从匹配的元素中删除全部或者指定的class
+
+$("p").removeClass("high"); //移除p元素中值为"high"的class 
+如果要把p元素的两个class都删除，就要使用两次removeClass()方法，代码如下： 
+$("p").removeClass("high").removeClass("another"); 
+Query提供了更简单的方法。可以以空格的方式删除多个class名，代码如下： 
+$("p").removeClass("high another"); 
+外，还可以利用removeClass()方法的一个特性来完成同样的效果。当它不带参数时，就会将class的值全部删除
+$("p").removeClass(); //移除p元素的所有class 
