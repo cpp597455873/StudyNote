@@ -1,0 +1,9 @@
+//需要实现 function(p1, p2)确定相对顺序
+contacts.sort(function(p1, p2) {		
+		var name1 = p1.displayName;
+		var name2 = p2.displayName;
+		
+		if (name1 == null) return -1;
+		if (name2 == null) return 1;
+		return name1.localeCompare(name2);
+	});

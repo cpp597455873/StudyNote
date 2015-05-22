@@ -1,0 +1,6 @@
+﻿var testArray = ["脚","本","之","家"];
+         document.write(testArray.sort(
+             function compareFunction(param1,param2){
+                 return param1.localeCompare(param2);  //output:之,家,本,脚
+             }
+         ));
