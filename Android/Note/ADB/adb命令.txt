@@ -17,6 +17,9 @@ adb shell am start PACKAGE_NAME/FULLY_QUALIFIED_ACTIVITY
 进入shell
 adb shell
 
+退出shell
+exit
+
 模拟按下电源键
 adb shell input keyevent 26
 
@@ -52,7 +55,26 @@ adb logcat -c
 eg：adb logcat "*:PRIORITY"
 adb logcat -s TAG_NAME_1 TAG_NAME_2
 
+深入解读：
+1、adb [-d|-e|-s <serialNumber>] <command>
+-d代表硬件设备   -e代表模拟器  -s代表硬件serial
+eg；adb -s emulator-5556 install helloWorld.apk
 
+2、改变设备端口
+adb forward tcp:6100 tcp:7100
+将6100的端口改为7100   
+
+3、
+adb pull <remote> <local>   从设备获取文件
+adb push <local> <remote>   拷贝文件到设备里面去
+eg：adb push foo.txt /sdcard/foo.txt
+
+4、在shell里面录屏并提取
+$ adb shell
+shell@ $ screenrecord --verbose /sdcard/demo.mp4
+(press Ctrl-C to stop)
+shell@ $ exit
+$ adb pull /sdcard/demo.mp4
 
 
 
