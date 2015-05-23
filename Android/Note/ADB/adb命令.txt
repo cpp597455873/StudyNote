@@ -1,0 +1,59 @@
+﻿查看连接的设备
+adb devices
+
+安装XXX文件，不保留以前在手机中的数据
+adb install xxx
+
+安装XXX文件，保留以前在手机中的数据
+adb install -r APK_FILE
+
+卸载App
+adb uninstall PACKAGE_NAME
+
+启动一个Activity
+adb shell am start PACKAGE_NAME/ACTIVITY_IN_PACKAGE
+adb shell am start PACKAGE_NAME/FULLY_QUALIFIED_ACTIVITY
+
+进入shell
+adb shell
+
+模拟按下电源键
+adb shell input keyevent 26
+
+模拟解锁屏幕
+adb shell input keyevent 82
+
+打印所有安装的app的包
+adb shell pm list packages -f
+
+清除app的数据
+adb shell pm clear PACKAGE_NAME
+
+查看在命令行log日志
+adb logcat
+
+为log日志添加过滤器
+adb logcat -s TAG_NAME
+adb logcat -s TAG_NAME_1 TAG_NAME_2
+
+为log添加优先级过滤
+adb logcat "*:PRIORITY" 
+eg：adb logcat "*:W"
+V - Verbose (lowest priority)
+D - Debug
+I - Info
+W - Warning
+E - Error
+F - Fatal
+S - Silent (highest priority, on which nothing is ever printed)
+
+清除logcat buffer
+adb logcat -c
+eg：adb logcat "*:PRIORITY"
+adb logcat -s TAG_NAME_1 TAG_NAME_2
+
+
+
+
+
+
