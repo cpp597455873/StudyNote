@@ -1,0 +1,17 @@
+﻿ListActivity
+需要注意的几点问题：
+a、在activity的布局文件里面必须要有id叫做  android:id="@android:id/list"的ListView控件，不然会报错的
+b、设置一个TextView android:id="@android:id/empty"  没有数据的时候自动显示empty
+	
+	<ListView android:id="@android:id/list"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:background="#00FF00"
+               android:layout_weight="1"
+               android:drawSelectorOnTop="false"/>
+
+     <TextView android:id="@android:id/empty"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:background="#FF0000"
+               android:text="No data"/>
