@@ -1,0 +1,54 @@
+﻿jquery中each可用于遍历对象和数组，如需退出each循环可使回调函数返回false，下面有个示例，大家可以看看
+通用遍历方法，可用于遍历对象和数组。$().each()，回调函数拥有两个参数：
+第一个为对象的成员或数组的索引，第二个为对应变量或内容。如需退出each循环可使回调函数返回false
+现有如下两个select
+
+计划类别: 
+<select id="PLANTYPE"> 
+	<option value="0">-所有-</option> 
+	<option value="1">新建</option> 
+	<option value="2">续建</option> 
+</select> 
+申报类型: 
+<select id="AUDITTYPE"> 
+	<option value="0">-所有-</option> 
+	<option value="1">申报</option> 
+	<option value="2">修改</option> 
+</select>
+
+用each方法获取option中的文本值，即 -所有-、新建、续建...
+如果只使用一次each循环 可从option处开始
+
+$("option").each(function(index,data){ 
+console.info($( data ).text()); 
+//或者console.info($(this).text()); 
+})
+
+也可从select处开始
+$("select").each(function( index,data){ 
+$("option", data).each(function(m,n){ 
+console.info($(this).text()); 
+}) 
+})
+注意 $("option", data)一定要加上 data或者$("option",this)，表示此对象下的option
+否则就是所有的option。
+
+
+--------------------------华丽的分割线-----------------------------
+each还有一种用法jQuery.each(object, [callback])
+不同于jQuery对象的$().each()方法，此方法可用于例遍任何对象。
+用此方法同样遍历上述代码
+$.each($("option"),function(index,data){ 
+console.info(index+" "+data); 
+})
+
+也可以遍历数组
+$.each( [0,1,2], function(i, n){ 
+console.info( "Index：" + i + ": " + n ); 
+});
+
+遍历对象
+$.each({ name: "itmyhome", addr: "Beijing" },function(i, n){ 
+console.info("Name: " + i + ", Value: " + n); 
+});
+
