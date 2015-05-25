@@ -1,0 +1,13 @@
+　大家都知道javascript是动态语言，它对动态的支持是与身俱来的。
+
+　　例如：有一个employee对象，
+
+function employee(){
+    this.e_id = 0;
+    this.e_name = "";
+}
+　　现在需要为它动态的新增"age"属性和"toString()"方法，
+
+var empObj = new employee();
+empObj["age"] = 20;
+empObj["toString"] = function() { return this.e_id.toString() + this.e_name; };

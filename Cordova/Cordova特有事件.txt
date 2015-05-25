@@ -1,0 +1,21 @@
+Event Types
+
+deviceready
+pause
+resume
+backbutton
+menubutton
+searchbutton
+startcallbutton
+endcallbutton
+volumedownbutton
+volumeupbutton
+Events added by org.apache.cordova.battery-status
+
+batterycritical
+batterylow
+batterystatus
+Events added by org.apache.cordova.network-information
+
+online
+offline

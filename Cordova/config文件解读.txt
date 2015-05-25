@@ -1,0 +1,5 @@
+﻿<!--App为全屏-->
+<preference name="Fullscreen" value="true" />
+
+<!--App方向 default, landscape, portrait-->
+<preference name="Orientation" value="landscape" />
