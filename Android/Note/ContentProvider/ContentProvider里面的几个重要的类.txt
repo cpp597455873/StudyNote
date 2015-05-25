@@ -1,0 +1,11 @@
+﻿1、UriMatcher  用于匹配Uri
+
+private static final int PEOPLE = 1;
+sURIMatcher.addURI("contacts", "people", PEOPLE);     					 //匹配成功后返回 1
+sURIMatcher.addURI("contacts", "people/#/phones/#", PEOPLE_PHONES_ID);   //#代表数字
+sURIMatcher.addURI("call_log", "calls/filter/*", CALLS_FILTER);			 //*代表任意字符
+int match = sURIMatcher.match(url);  				  					 //开始匹配
+
+2 Uri  
+List <String> pathSegments = url.getPathSegments();
+eg:  content://com.cpp.you/dd/g/r      return List -> [dd,g,r]

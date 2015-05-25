@@ -1,0 +1,8 @@
+﻿CursorAdapter需要注意的一个问题是
+Cursor里面必须要有一个叫  _id 的数据项，不然话app是会报错的额
+
+bindView(View view, Context context, Cursor cursor)
+复用newView产生的item
+
+newView(Context context, Cursor cursor, ViewGroup parent)
+新建一个item
