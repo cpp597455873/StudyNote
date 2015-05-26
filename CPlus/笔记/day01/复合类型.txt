@@ -9,6 +9,8 @@ int sz[]{1,3,4}
 //remember that the compiler is not allow that change a large number to a smaller one.
 eg: char sz[]{1000};  // not allowed because 1000 is too large for char
 
+note:数组名是常量，不能对数组名进行重新赋值  eg：sz = sz+1; //这个就是非法操作
+
 2. cout the size if an array
 eg: int sz[]={1,3,4};
 	int l = (sizeof a)/sizeof(int)
@@ -38,7 +40,68 @@ str3 += "a";             //ok
 
 #include<cstring>
 strcpy(chararray1,chararray2);    //copy chararray2 to chararray1
-strcat(chararray1,chararray2);    // add chararray2 to chararray1
+strcat(chararray1,chararray2);    // add chararray2 to chararray1  
+这两个函数存在一定的的问题，就是第一个数组如果短了的话程序就会崩溃，使用之前记得检查
+
+4. 结构体struct
+
+定义结构体：
+struct student{
+};
+
+结构体有两种定义方式，一种是定义在函数体之外，另外一种是定义在函数之内。
+定义在函数体之外的结构体，可以在任何地方使用，但是定义在函数体之内的结构体只能在函数体内部生效。
+
+结构体的成员的初始化：
+两种初始化方式：
+student cpp = {"cpp",20};	
+student cpp{"cpp",20};	   //c++11
+student cpp{};             //c++11  every thing is zero
+
+声明结构体
+student cpp;  		//c++ declared
+struct student cppp;//c declared
+
+结构体数组的初始化：
+students s[]={
+	{},
+	{}
+}
+
+5.共用体 union, 特点：节省内存，它会在使用的时候由程序员选择合适的那个，union里面的成员只会占用一个内存。适用于内存有限的设备。
+struct student{
+		union{
+			int    int_id;
+			double double_id;
+		}id;
+		
+		//匿名共用体
+		union{
+			int    int_id;
+			double double_id;
+		};
+};
+student s;
+
+s.id.int_id = 100;
+s.id.double_id = 1000;
+
+//or
+s.int_id = 100;
+s.double_id = 1000;
+
+
+6. 枚举变量 enum
+定义：
+enum color{red,green,blue};
+//or
+enum {red,green,blue};
+
+使用： color c = red;
+
+note：默认情况下枚举型的第一个值是 0
+note：枚举变量可以为 int - long long之间的任意值
+
 
 
 
