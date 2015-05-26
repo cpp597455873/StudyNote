@@ -1,0 +1,47 @@
+﻿note: int* a,b;    // a is pointer, b is int
+
+note: long * p; *p = 100; // it is dangerous because p is never land
+
+note: int * p ; p = 0x100;  //is will not compile, because 0x100 do not match int*
+
+note: int * p ; p = (int *)0x100;  //is will  compile, remember
+
+note：int * p = new int;  //we new a int memory and assign it address to p
+
+node: delete p;      //the p pointer point memory will be reused
+ 
+note:有时候可能没有足够的内存分配给new 关键字，这时候系统就会返回一个空指针
+
+note：静态联编(static-binding)指的是在编译时就给数组分配了内存空间。
+
+note: int * p = new int[100];  delete [] p; //p point the first address of the array and delete the array, this is important;
+
+note: int * p = new int[100];  delete p;    //this is wrong it only delete first element;
+ 
+note: int * p = new int;  delete [] p;    //this is wrong , p is not point a array; 
+
+note: 使用new和delete关键字需要注意的几点：
+a、不要使用delete释放不是new关键字分配的内存。
+b、不要使用delete释放同一个内存两次。
+c、使用 new[] 分配的数组一定要使用 delete [] 释放。
+d、使用 new 关键字分配的数组一定要使用delete释放。
+e、对空指针使用delete关键字是安全的。
+
+note:
+指向数组的指针和数组的区别;
+int sz[20]; 
+a.数组名是常量，不能对数组名进行重新赋值  eg：sz = sz+1; //这个就是非法操作
+b.指针是变量，int  p = &sz;   p++;                 		 //这个就是合法操作
+c.sz ---> 代表的是 &sz[0];   cout<<tell<<endl;    //display &sz[0] , 换言之sz是 const * short
+d.p--->代表的是整个数组		 cout<<&tell<<endl;   //display the whole array  换言之p是 short(*)[20]
+e.tell+1,地址加1
+f.&tell+1,地址加20
+g.int (*ps)[20] = &sz;    //声明一个ps指针指向一个20个int长度的指针
+h.int  *ps[20];           //声明了一个20个长度的 int 指针数组
+ eg：int a [10];
+  	 int (*ps)[10] = &a;
+	 int  *ps1[10];  
+	 cout<<sizeof (ps)<<endl;  //输出4 
+	 cout<<sizeof (ps1)<<endl; //输出40
+
+
