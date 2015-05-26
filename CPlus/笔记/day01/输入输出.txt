@@ -1,0 +1,18 @@
+﻿1. cout.put();    //用于显示一个字符 	
+	cout.put(100);
+	const char a = 'a';
+	cout.put(a); 
+ 
+2. 控制输出
+  cout<<hex;
+  cout<<128<<endl;  //输出16进制 80
+ 
+  cout<<oct;
+  cout<<128<<endl; //输出8进制 200
+ 
+  cout<<dec;
+  cout<<128<<endl; //输出10进制 128
+
+3.cin.get();      //获取一行数据，保留换行符号
+  cin.getline();  //获取一行数据，不保留换行符号
+ 

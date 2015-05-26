@@ -1,0 +1,55 @@
+﻿1. c++的整型： 
+//先行基础知识：bit(位)：计算机的基本单位是bit只能表示0或者1，例如8位所能达到的最大值是2^8=256
+//				byte(字节)： 1 byte = 8 bit， 1 kb = 1024 byte  
+short			至少16位
+int				至少与short一样长
+long			至少32位，而且至少与int一样长
+long long		至少64位，而且至少与long一样长
+//一般的系统的实现：short(16), int(32), long(32),long long（64）
+
+2. c++的无符号类型：
+//增大变量能够存储的最大值
+//例如 short表示 -32768 - +32767, 那么unsigned short 就表示0-65535
+//注意：unsigned = unsigned int 是缩写，这点千万要记住
+unsigned short
+unsigned int
+unsigned long
+unsigned long long
+
+3. char 一个字节，默认情况既不表示有符号类型，又不表示无符号类型,这个由系统确定是否有符号。
+   unsigned char 0-255
+   signed char 	 -128 - + 127
+    
+   wcha_t 宽字符，不适用cout,cin  要使用wcin, wcout	
+   
+   char16_t C++11新增,16 bit  eg：char16_t a = u's';
+   char32_t C++11新增,32 bit  eg: char32_t b = U'\U1111222B'
+
+4. bool 0=false   else=true
+
+5. auto C++11里面的自推断类型 eg： auto a = 1.0;   a is double
+
+6. 初始化
+int a = 100;
+int a(100);
+int  a = {100};
+
+int  a = {}; c++11  a is 0
+int  a{};    c++11  a is 0
+int  a{100}; c++11  a is 100
+
+7. 浮点数 
+float        至少32位
+double       至少48位，而且至少与float一样长
+long double  至少与double一样长
+
+8.强制类型转换
+(typeName) value;  eg: (int) a; comes from c
+(value) typeName;  eg:  int (a);comes from c++
+
+9. sizeof
+对于数据类型加()   eg: sizeof(int)
+对于变量不加()     eg: sizeof a
+   
+
+ 
