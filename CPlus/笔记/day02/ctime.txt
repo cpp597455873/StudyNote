@@ -1,0 +1,5 @@
+﻿	#include <ctime> 
+    clock_t delay = 20 * CLOCKS_PER_SEC;  // 延时多久  CLOCKS_PER_SEC 每秒钟的时间周期
+	clock_t start = clock();              //当前系统时钟时间 
+ 	while(clock()-start<delay);           //没有达到目标就循环 
+		cout<<"over"<<endl;

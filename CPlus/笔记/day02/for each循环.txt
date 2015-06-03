@@ -1,0 +1,14 @@
+这是c+11的新特性
+
+int a[]{1,2,4};
+//值将不会被改变
+for(int x:a){
+	cout<<++x<<endl;
+}
+
+//值会被改变
+for(int &x:a){
+	cout<<++x<<endl;
+}
+
+

@@ -44,4 +44,5 @@ h.int  *ps[20];           //声明了一个20个长度的 int 指针数组
 	 cout<<sizeof (ps)<<endl;  //输出4 
 	 cout<<sizeof (ps1)<<endl; //输出40
 
+note：char数组名、char指针、以及引号""里面的字符串常量都是字符串的第一个字符的地址。
 

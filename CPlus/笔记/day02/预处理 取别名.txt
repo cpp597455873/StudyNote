@@ -1,0 +1,15 @@
+﻿有两种方式
+1、使用#define aliasName typename
+eg：#define CHAR char 
+将代码中的CHAR替换为 char
+
+2、使用 typedef typename aliasName
+eg：typedef float* FLOAT_POINTER
+
+注意声明一系列的变量的时候注意使用 #define 可能会产生问题。
+eg：
+#define FLOAT_POINTER float* 
+typedef float* FLOAT_POINTER
+
+FLOAT_POINTER a,b; ---->#define  等价于  float *a, b;
+FLOAT_POINTER a,b; ---->typedef  等价于  float *a, *b;
