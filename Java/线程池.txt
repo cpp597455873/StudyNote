@@ -1,4 +1,5 @@
-﻿ExecutorService executorService = Executors.newFixedThreadPool(5);    创建五个线程的线程池
+﻿学习网址 http://blog.csdn.net/yangyan19870319/article/details/6093481
+ExecutorService executorService = Executors.newFixedThreadPool(5);    创建五个线程的线程池
 										   .newSingleThreadExecutor();单线程池
 										   .newCachedThreadPool();  创建一个可根据需要创建新线程的线程池，但是在以前构造的线程可用时将重用它们。对于执行很多短期异步任务的程序而言，这些线程池通常可提高程序性能。
 			
