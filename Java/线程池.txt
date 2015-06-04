@@ -1,0 +1,40 @@
+﻿ExecutorService executorService = Executors.newFixedThreadPool(5);    创建五个线程的线程池
+										   .newSingleThreadExecutor();单线程池
+										   .newCachedThreadPool();  创建一个可根据需要创建新线程的线程池，但是在以前构造的线程可用时将重用它们。对于执行很多短期异步任务的程序而言，这些线程池通常可提高程序性能。
+			
+			
+ThreadFactory
+根据需要创建新线程的对象。使用线程工厂就无需再手工编写对 new Thread 的调用了，从而允许应用程序使用特殊的线程子类、属性等等。
+class SimpleThreadFactory implements ThreadFactory {
+   public Thread newThread(Runnable r) {
+     return new Thread(r);
+   }
+ }
+
+接口ExecutorService
+该接口提供了管理终止的方法。 
+
+ executorService.execute(Runnable run);--->return void;               没有返回值
+				.submit(Runnable run);      --->return Future<Object>();  有返回值
+				.submit(Callable<Object>callable);      --->return Future<Object>();  有返回值
+				
+
+				
+Future<Object>
+boolean cancel (boolean mayInterruptIfRunning) 取消任务的执行。参数指定是否立即中断任务执行，或者等等任务结束
+boolean isCancelled () 任务是否已经取消，任务正常完成前将其取消，则返回 true
+boolean isDone () 任务是否已经完成。需要注意的是如果任务正常终止、异常或取消，都将返回true
+V get () throws InterruptedException, ExecutionException  等待任务执行结束，然后获得V类型的结果。InterruptedException 线程被中断异常， ExecutionException任务执行异常，如果任务被取消，还会抛出CancellationException
+V get (long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException 同上面的get功能一样，多了设置超时时间。参数timeout指定超时时间，uint指定时间的单位，在枚举类TimeUnit中有相关的定义。如果计算超时，将抛出TimeoutException
+
+Future的实现类有java.util.concurrent.FutureTask<V>即 javax.swing.SwingWorker<T,V>。通常使用FutureTask来处理我们的任务。FutureTask类同时又实现了Runnable接口，所以可以直接提交给Executor执行。
+
+
+不直接构造Future对象，也可以使用ExecutorService.submit方法来获得Future对象，submit方法即支持以 Callable接口类型，也支持Runnable接口作为参数，具有很大的灵活性。
+例如：
+ExecutorService executor = Executors.newSingleThreadExecutor();   
+FutureTask<String> future =　executor.submit(   
+   new Callable<String>() {//使用Callable接口作为构造参数   
+       public String call() {   
+      //真正的任务在这里执行，这里的返回值类型为String，可以为任意类型   
+   }});   
