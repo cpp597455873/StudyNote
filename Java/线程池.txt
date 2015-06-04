@@ -18,6 +18,7 @@ class SimpleThreadFactory implements ThreadFactory {
  executorService.execute(Runnable run);--->return void;               没有返回值
 				.submit(Runnable run);      --->return Future<Object>();  有返回值
 				.submit(Callable<Object>callable);      --->return Future<Object>();  有返回值
+				 shutdown  shutdownNow
 				
 
 				
