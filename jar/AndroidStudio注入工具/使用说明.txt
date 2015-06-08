@@ -1,0 +1,4 @@
+﻿https://github.com/JakeWharton/butterknife
+https://github.com/cpp597455873/android-butterknife-zelezny
+
+说明  先需要下载Androidstudio插件，然后在项目里面加载lib，再在项目里面右键generate就可以了
