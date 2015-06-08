@@ -1,0 +1,5 @@
+﻿InetAddress没有公共构造函数，即构造函数是私有的。
+
+InetAddress i = InetAddress.getByName("d.weibo.com");
+InetAddress i = InetAddress.getByName("180.97.33.108");
+InetAddress i = InetAddress.getLocalHost();
