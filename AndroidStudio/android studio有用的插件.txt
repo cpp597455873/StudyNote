@@ -1,0 +1,7 @@
+﻿1、自动根据布局文件自动注入并生成相应的id  （ButterKnifeZelezny）
+https://github.com/avast/android-butterknife-zelezny
+
+https://github.com/JakeWharton/butterknife
+https://github.com/cpp597455873/android-butterknife-zelezny
+
+说明  先需要下载Androidstudio插件，然后在项目里面加载lib，再在项目里面右键generate就可以了
