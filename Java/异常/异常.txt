@@ -1,0 +1,17 @@
+﻿陷阱
+1 try{
+return;
+}catch{
+}finally{
+}
+finally语句块仍然会执行
+
+2 try{
+ System.exit(0);
+}catch{
+}finally{
+}
+finally语句块不会执行，因为虚拟机已经退出
+
+3 异常捕获应该先捕获子类的异常
+
