@@ -1,0 +1,2 @@
+﻿String subString(int position);表示生成一个从position开始的串，包括position
+	   subString(int start, int end); 包括start，不包括end
