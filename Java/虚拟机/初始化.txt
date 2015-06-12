@@ -1,0 +1,24 @@
+﻿Parent parent;      //这行不会导致类的初始化
+对子类的使用会导致父类的初始化，反之则不会
+
+/*这个例子不会导致C的初始化，因为方法和属性都不位于C
+*/
+public class A {
+class B{
+static int a;
+static void doSomething(){
+}
+}
+
+class C extends B{
+static{
+	System.out("I am B");
+}
+}
+
+public static void main(String [] args){
+	System.out(C.a);
+	C.doSomething();
+}
+}
+
