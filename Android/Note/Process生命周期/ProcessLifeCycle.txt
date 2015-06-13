@@ -1,0 +1,20 @@
+﻿进程Process非Thread
+进程有五种生命周期
+1.Foreground process
+	a.Activity 正处于onResume()状态.
+	b.Service 与绑定的 Activity正在交互.
+	c.通过startForeground()启动的Service.
+	d.Service正在执行其生命周期的方法 onCreate(), onStart(), or onDestroy().
+	e.BroadcastReceiver正在执行 onReceive()方法.
+2.Visible process
+	a.Activity不在前台，但是仍然可见，即失去焦点，处于onResume()状态，例如另一个activity启动了一个dialog
+	b.Service绑定的Activity处于visible状态。
+	说明：visible process仍然是十分重要的，他们不会轻易被kill掉，除非是为了保证前台进程的需要
+3.Service process
+	a.Service处于startService()状态,并且没有与用户界面绑定。
+	注意：Service process只有在内存不足的情况下，为了保证 前台和可见进程的运行的情况下才会被kill掉
+4.Background process
+	a.Activity不可见，处于onStop()状态。
+	注意:通常有很多后台进程运行,所以它们被关在一个LRU(最近最少使用)列表,杀死的时候就是按这个列表的顺序讲进程移除的。
+5.Empty process
+	这一过程不含任何活动应用程序组件。保持这种过程还活着的唯一原因就是缓存的目的,提高启动时间下次运行组件。系统经常会终止这些进程,以平衡系统整体资源缓存和底层内核缓存之间的过程。
