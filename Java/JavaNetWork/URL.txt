@@ -1,0 +1,40 @@
+ new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL("http://api.map.baidu.com/geodata/v3/poi/create");
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setDoOutput(true);
+                    connection.setDoInput(true);
+                    connection.setRequestProperty("Charset", "UTF-8");
+                    connection.setRequestProperty("Connection", "Keep-Alive");
+                    connection.setRequestMethod("POST");
+                    connection.connect();
+                    OutputStream outputStream = connection.getOutputStream();
+                    outputStream.write("latitude=29.000".getBytes());
+                    outputStream.write("&longitude=109.000".getBytes());
+                    outputStream.write("&coord_type=3".getBytes());
+                    outputStream.write("&longitude=109.000".getBytes());
+                    outputStream.write("&geotable_id=101411".getBytes());
+                    outputStream.write("&geotype=1".getBytes());
+                    outputStream.write("&is_published=1".getBytes());
+                    outputStream.write("&ak=eUNQyGGTfwphiqMMFag8Bx8N".getBytes());
+                    outputStream.flush();
+                    outputStream.close();
+                    InputStream reader = connection.getInputStream();
+                    byte[] b = new byte[200];
+                    reader.read(b);
+                    Log.i("tag:net", "±àÂë:"+connection.getContentEncoding());
+                    reader.close();
+
+                    Message message = new Message();
+                    message.obj = b;
+                    handler.sendMessage(message);
+
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
