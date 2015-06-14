@@ -1,0 +1,10 @@
+﻿CycleInterpolator是TimeInterpolator的子类  以正弦的方式重复某个值  shake效果
+eg：
+
+1. 	shake.xml <translate xmlns:android="http://schemas.android.com/apk/res/android" android:fromXDelta="0" android:duration="1000" android:toXDelta="20" android:interpolator="@anim/cy">
+2. 	cy.xml <cycleInterpolator xmlns:android="http://schemas.android.com/apk/res/android" android:cycles="7"/>
+3. 	Animation animation =  AnimationUtils.loadAnimation(CycleActivity.this, R.anim.shake);
+	v.startAnimation(animation);
+
+
+http://www.cnblogs.com/mengdd/p/3346003.html
