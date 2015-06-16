@@ -1,0 +1,7 @@
+﻿AlertDialog, DatePickerDialog, ProgressDialog, TimePickerDialog
+
+ProgressDialog的静态方法，用于生成ProgressDialog比较好用
+static ProgressDialog	show(Context context, CharSequence title, CharSequence message)
+static ProgressDialog	show(Context context, CharSequence title, CharSequence message, boolean indeterminate, boolean cancelable)
+static ProgressDialog	show(Context context, CharSequence title, CharSequence message, boolean indeterminate, boolean cancelable, DialogInterface.OnCancelListener cancelListener)
+static ProgressDialog	show(Context context, CharSequence title, CharSequence message, boolean indeterminate)
