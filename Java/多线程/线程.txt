@@ -1,0 +1,58 @@
+﻿Java里面有对线程直接安全退出的方式，只能使用其他方法。
+1.使用标志位
+
+class ProcessAccept extends Thread {   
+    /**  
+     * 线程停止标志  
+     */  
+    private boolean stopRequested = false;   
+    /**  
+     * 同步锁  
+     */  
+    private ReentrantLock lock = new ReentrantLock();   
+  
+       
+    /**  
+     * 向线程发送停止请求  
+     */  
+    public void stopRequest() {   
+        lock.lock();   
+        // 设置停止标志为真   
+        stopRequested = true;   
+        lock.unlock();   
+    }   
+  
+ 
+    private boolean getStopRequest() {   
+  
+        boolean tempStopRequested = false;   
+        // 同步加锁lock.lock()   
+        lock.lock();   
+        tempStopRequested = stopRequested;   
+        // 同步解锁lock.unlock()   
+        lock.unlock();   
+        return tempStopRequested;   
+    }   
+       
+
+    public void run(){   
+        while (true) {   
+            //判断停止标志   
+            if (this.getStopRequest()){   
+                break;   
+            }   
+            //此处处理业务逻辑   
+        }      
+    } 
+
+	
+
+	
+2.interrupt()方法
+
+对于阻塞库方法，如wait、join、sleep方法，都会检查线程何时中断，并且在发现中断时提前返回。调用这个方法会引起这个线程的interrupt状态被清空（设为false），并且会抛出InterruptedException，表示阻塞操作由于中断而提前结束。
+
+当线程在非阻塞状态下中断时，中断状态将被设置。
+
+ Obj.wait()，与Obj.notify()必须要与synchronized(Obj)一起使用
+	

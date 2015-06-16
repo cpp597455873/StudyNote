@@ -1,0 +1,5 @@
+﻿Java将线程分为User线程和Daemon线程两种。通常Daemon线程用来为User线程提供某些服务。程序的main()方法线程是一个User进程。User进程创建的进程为User进程。当所有的User线程结束后，JVM才会结束。
+
+通过在一个线程对象上调用setDaemon(true)，可以将user线程创建的线程明确地设置成Daemon线程。例如，时钟处理线程、idle线程、垃圾回收线程、屏幕更新线程等，都是Daemon线程。通常新创建的线程会从创建它的进程哪里继承daemon状态，除非明确地在线程对象上调用setDaemon方法来改变daemon状态。
+
+需要注意的是，setDaemon()方法必须在调用线程的start()方法之前调用。一旦一个线程开始执行（如，调用了start()方法），它的daemon状态不能再修改。通过方法isDaemon()可以知道一个线程是否Daemon线程。
