@@ -1,0 +1,12 @@
+﻿先将aar文件放入libs文件
+再将app的gradle文件添加如下的形式
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile(name:'cards', ext:'aar')
+}
