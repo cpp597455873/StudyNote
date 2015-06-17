@@ -1,0 +1,4 @@
+﻿https://github.com/gabrielemariotti/RecyclerViewItemAnimators   动画地址
+
+关键点：     以上的git李main提供了几个Animator可供选择
+mRecyclerView.setItemAnimator(new SlideInOutLeftItemAnimator(mRecyclerView));
