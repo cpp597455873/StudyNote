@@ -1,0 +1,14 @@
+﻿handler.post(Runnable runnable);
+
+handler.removeCallBack(Runnable runnable);
+
+Handler handler = new Handler(new CallBack(){
+//返回true则表示消息已经被拦截了
+public boolean handleMessage(Message msg){
+return true;
+}
+}){
+public void  handleMessage(Message msg){
+return true;
+}
+};
