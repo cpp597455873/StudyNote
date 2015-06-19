@@ -1,0 +1,21 @@
+﻿1.可以使用bundle在ACtivity之间传递数据。
+Bitmap bimap；
+send-> intent.putPacable("bitmap",bitmap);
+get->  Bitmap bitmap = getintent().getExtraParacble("bitmap");
+
+2.注意使用bundle传递大数据的时候可能会产生异常。一般大于0.5M就会抛出TooLargeXXXException,当然传递一个大的bitmap也会产生异常。
+
+3.在新进程中打开一个Activity，在标签内使用process
+<activity name=".xx" process=":FIRST"/>
+注意：即使这个Activity与其他Avtivity不在同一个进程，但是通过正常情况打开这些activity仍然在同一个任务栈里面。
+
+4.使用adb命令查看当前手机正在运行的acitivity
+adb shell dumpsys activity
+查看Running Activity就是当前正在运行的activity
+
+5.singleTop当位于栈顶的activity启动自己后会回调onNewIntent()方法。
+singleTask也会回调onNewIntent()，当启动一个已经存在的singleTask的Activity
+
+6.singleInstance模式会在新的栈中建立当前activity，当再次启动当前activity就不会新建当前Activity,只会回调onNewIntent()。
+a.若此时启动其他activity就会在其他栈，或者刚刚来的任务栈里面新建activity。
+若在a的情况下按返回键的时候 不会 返回那个activity，此时的回退栈的管理只会发生在当前回退栈，只有在当前回退栈结束之后才会回退到上个回退栈。
