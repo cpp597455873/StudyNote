@@ -1,0 +1,88 @@
+﻿ 1.
+ a.搜索按钮
+ <item
+      android:id="@+id/action_search"
+      android:actionViewClass="android.widget.SearchView"      
+      android:icon="@drawable/search"
+      android:showAsAction="ifRoom|collapseActionView"
+      android:title="搜索" />//设置一个搜索按钮
+
+  @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+		//获取SearchView的MenuItem
+        MenuItem search = menu.getItem(0);
+		//获取SearchView
+        SearchView searchView = (SearchView) search.getActionView();
+		//设置监听
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(MainActivity.this, "submit" + query, Toast.LENGTH_LONG).show();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Toast.makeText(MainActivity.this, "change" + newText, Toast.LENGTH_LONG).show();
+                return false;
+            }
+		});
+	}
+	
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+2.
+ /**
+     * 系统是默认不显示菜单上的图标的，所以我们通过反射将图标强制显示出来
+     */
+
+    @Override
+    public boolean onMenuOpened(int featureId, Menu menu) {
+        if (featureId == Window.FEATURE_ACTION_BAR && menu != null) {
+            try {
+                Method method = menu.getClass().getDeclaredMethod("setOptionalIconsVisible", Boolean.TYPE);
+                method.setAccessible(true);
+                method.invoke(menu, true);
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return super.onMenuOpened(featureId, menu);
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+3.
+更换 更多 按钮的图片
+ <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionOverflowButtonStyle">@style/more_action_button</item>  //给更多按钮更换样式
+    </style>
+
+    <style name="more_action_button">
+        <item name="android:src">@drawable/add</item>									//将菜单上的更多按钮更换为自定义的图片
+    </style>	
+	
+
+4.强制显示更多按钮，因为某些按钮是默认不显示的的
+    //强制显示更多的菜单按钮
+    private void setActionAddAlways() {
+        ViewConfiguration config = ViewConfiguration.get(this);
+        try {
+            Field field = config.getClass().getDeclaredField("sHasPermanentMenuKey");
+            field.setAccessible(true);
+            field.set(config, true);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+5.去除ActionBar上的图标
+getActionBar().setDisplayShowHomeEnabled(false);
