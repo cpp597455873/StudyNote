@@ -1,0 +1,8 @@
+﻿1.滑动停止才加载可见项
+对ListView进行监听OnScrollListener
+SCROLL_STATE_FLING，这个参数表示你手离开后ListView还在“飞”中，理解？
+SCROLL_STATE_IDLE，这个参数表示ListView停下不动了
+SCROLL_STATE_TOUCH_SCROLL，这个参数表示你手还在ListView上
+
+2.滑动时，取消加载项
+对异步任务进行cancle()
