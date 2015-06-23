@@ -12,3 +12,11 @@ public void  handleMessage(Message msg){
 return true;
 }
 };
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+HandlerThread
+这个类里面封装了一个默认的looper对象无需我们手动prepre,loop;
+getLooper();获得looper对象
+Handler(Looper)与Looper进行绑定。
