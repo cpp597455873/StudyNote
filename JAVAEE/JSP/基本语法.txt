@@ -1,0 +1,8 @@
+﻿<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%!String name ; int age;%>  		//定义全局变量
+<%
+name = request.getParameter("name");//获得发送过来的参数值
+age = Integer.valueOf(request.getParameter("age"));
+%>
+<%=name %>
+<%=(age+1) %>
