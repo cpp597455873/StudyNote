@@ -1,2 +1,1 @@
 ﻿1. 如果要在新线程俩里面刷新重绘view只需要调用view.postInvalidate();方法即可。
-2. 
