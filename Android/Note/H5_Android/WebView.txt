@@ -1,0 +1,7 @@
+﻿CookieSyncManager.createInstance(context);
+CookieManager cookieManager = CookieManager.getInstance();
+cookieManager.setAcceptCookie(true);
+cookieManager.setCookie(url, cookies);//cookies是在HttpClient中获得的cookie
+CookieSyncManager.getInstance().sync();
+
+webview.loadUrl(url); //此时会向服务器端发送cookie
