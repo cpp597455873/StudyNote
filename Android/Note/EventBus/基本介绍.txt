@@ -1,0 +1,27 @@
+﻿EventBus主要特点
+1. 事件订阅函数不是基于注解(Annotation)的，而是基于命名约定的，在Android 4.0之前的版本中，注解解析起来比较慢 ， 事件响应函数默认以“onEvent”开始，可以在EventBus中修改这个值，但是不推荐这么干
+2. 事件响应有更多的线程选择
+EventBus可以向不同的线程中发布事件，在ThreadMode 枚举中定义了4个线程，只需要在事件响应函数名称“onEvent”后面添加对应的线程类型名称，则还事件响应函数就会在对应的线程中执行，比如事件函数“onEventAsync”就会在另外一个异步线程中执行，ThreadMode定义的4个线程类型如下：
+PostThread：事件响应函数和事件发布在同一线程中执行。这个是默认值，这样可以避免线程切换。
+MainThread：事件响应函数会在Android应用的主线程(大部分情况下都是UI线程)中执行。
+BackgroundThread：事件响应函数会在一个后台线程中执行。如果事件发布函数不是在主线程中，则会立即在事件发布线程中执行响应函数。如果事件发布函数在主线程中，EventBus则会在唯一的一个后台线程中按照顺序来执行所有的后台事件响应函数。
+
+上面的3种事件响应函数，应该能够很快的执行完，不然的话会阻塞各自的事件发布。
+
+async：事件响应函数在另外一个异步线程中执行。该线程和发布线程、主线程相互独立。如果事件响应函数需要较长的时间来执行，则应该使用该模式，例如 网络访问等。需要注意的是，由于系统并行的限制，应该避免在同一时间触发大量的异步线程。 EventBus使用一个线程池来提高线程的效率。
+
+3. EventBus支持 Sticky Event
+
+有时候某个事件可能会用到多次，比如在前面介绍Event Bus模型一文的示例中，最新的位置更新信息，可能需要多次用到，真对这种情况，您可以把该事件发布为Sticky Event，然后，当需要查询该信息的时候，可以通过Bus的getStickyEvent(ClasseventType) 函数来查询最新发布的Event对象。
+同一类型的事件只保存最新的Event对象。
+注册和发布事件的函数分别为 registerSticky(…) 和 postSticky(Object event)
+在项目主页上还有和Otto之间性能对比的表格，以及性能测试的源码。
+注意事项：
+不管是生产者还是订阅者都需要向Bus注册自己：
+bus.register(this);
+在每个Activity或者Fragment的onResume和onPause函数中都需要调用bus.register(this)和bus.unregister(this)函数比较麻烦，可以通过一个Bus包装类来自动完成注册的工作，然后在类中只需要继承基类，并调用函数getScopedBus().register(…) 来注册需要的对象即可
+
+
+简单的说：EventBus就是用于解耦各个模块之间的通信问题
+
+git:https://github.com/cpp597455873/EventBus
