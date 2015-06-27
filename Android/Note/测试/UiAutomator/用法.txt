@@ -1,0 +1,33 @@
+﻿1.先建立一个java工程
+2.将android plamtform下的android.jar uiautomator.jar 加载到java工程的环境变量
+3.编写如下测试类
+package demo;
+public class TestCase extends UiAutomatorTestCase {
+	public void testDemo() throws UiObjectNotFoundException {
+		UiDevice.getInstance().pressHome();
+		UiObject object = new UiObject(new UiSelector().text("Phone"));
+		object.clickAndWaitForNewWindow(2000);
+		UiObject uiObject3 = new UiObject(new UiSelector().className("android.widget.ImageButton"));
+		uiObject3.clickAndWaitForNewWindow();
+		UiObject uiedit = new UiObject(new UiSelector().className("android.widget.EditText"));
+		uiedit.setText("188883285243");
+		UiObject object2 = new UiObject(new UiSelector().className("android.widget.ImageButton").description("dial"));
+		object2.click();
+	}
+}
+
+注意要点：方法名是以test开头的
+
+4. android create uitest-project -n demo -t 3 -p C:\Users\Administrator\workspace\TestDemo
+用于生成build.xml脚本
+
+5.修改build脚本，将里面的help改为build
+
+6.用ant运行build.xml 生成C:\Users\Administrator\workspace\TestDemo\bin\demo.jar 文件
+
+7. adb push C:\Users\Administrator\workspace\TestDemo\bin\demo.jar /data/local/tmp/
+推送到手机上
+
+8.adb shell uiautomator runtest demo.jar -c demo.TestCase
+运行脚本  demo.TestCase全类名哦
+
