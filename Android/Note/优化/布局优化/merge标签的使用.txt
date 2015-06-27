@@ -1,0 +1,16 @@
+﻿减少视图层级<merge />
+    <merge/>标签在UI的结构优化中起着非常重要的作用，它可以删减多余的层级，优化UI。<merge/>多用于替换FrameLayout或者当一个布局包含另一个时，<merge/>标签消除视图层次结构中多余的视图组。例如你的主布局文件是垂直布局，引入了一个垂直布局的include，这是如果include布局使用的LinearLayout就没意义了，使用的话反而减慢你的UI表现。这时可以使用<merge/>标签优化。
+[html] view plaincopyprint?在CODE上查看代码片派生到我的代码片
+<merge xmlns:android="http://schemas.android.com/apk/res/android">  
+  
+    <Button  
+        android:layout_width="fill_parent"   
+        android:layout_height="wrap_content"  
+        android:text="@string/add"/>  
+  
+    <Button  
+        android:layout_width="fill_parent"   
+        android:layout_height="wrap_content"  
+        android:text="@string/delete"/>  
+  
+</merge>  
