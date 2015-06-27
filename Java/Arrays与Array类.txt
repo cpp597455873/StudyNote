@@ -1,0 +1,5 @@
+﻿Arrays位于java.util里面
+Array类位于java.reflect
+
+Arrays.asList("a","b","c");
+Arrays.asList(elements);//
