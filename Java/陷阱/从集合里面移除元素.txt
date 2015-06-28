@@ -1,0 +1,28 @@
+﻿////////////////////////////////////////////////////////////////////////////////
+会输出[b,d],不能使用
+ArrayList list = new ArrayList(Arrays.asList("a", "b", "c", "d"));  
+for (int i = 0; i < list.size(); i++) {  
+    list.remove(i);  
+}  
+System.out.println(list);
+
+///////////////////////////////////////////////////////////////////////////////
+会抛出ConcurrentModificationException
+ArrayList list = new ArrayList(Arrays.asList("a", "b", "c", "d"));  
+for (String s : list) {  
+    if (s.equals("a"))  
+        list.remove(s);  
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+正确做法,使用迭代器
+ArrayList list = new ArrayList(Arrays.asList("a", "b", "c", "d"));  
+Iterator iter = list.iterator();  
+while (iter.hasNext()) {  
+    String s = iter.next();  
+    if (s.equals("a")) {  
+        iter.remove();  
+    }  
+}
+注意：.next()必须在.remove()之前被调用。在foreach循环中，编译器将在删除元素操作之后调用.next()，这也是导致ConcurrentModificationException异常的原因，你可以点击此处查看ArrayList.iterator()的源代码。
