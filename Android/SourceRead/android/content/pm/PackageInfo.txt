@@ -1,0 +1,11 @@
+﻿关于包的全部信息，这个与Manifest.xml里面的信息相对应。
+
+一些Fields
+public ActivityInfo[]	activities ;    //在application下的所有activity
+public int	versionCode；               //版本号    
+public Signature[]	signatures;	        //Array of all signatures read from the package file.
+public PermissionInfo[]	permissions;    //权限信息  
+public ApplicationInfo	applicationInfo；//Application信息
+
+从哪里获得这个类的对象：
+PackageInfo info = context.getPackageManager().getPackageInfo(packageName, 0)
