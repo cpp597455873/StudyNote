@@ -1,0 +1,515 @@
+﻿<span> 是没有语义的，只是为了给文本类容设置样式而已
+
+<q>引用标签，被引用的内容里面会自动加上引号，对简短内容的引用
+
+<blockquote> 块引用，具有缩进效果
+
+&nbsp; 空格
+
+<hr>横线标签，自封闭标签，同换行标签一样无需结束标签
+
+<address>联系地址信息</address> 地址标签，会有斜体效果
+
+<code> 代码标签，里面的内容不会被浏览器解析，一般用于加入一行代码
+
+<pre>  代码标签，里面的内容不会被浏览器解析，一般用于加入大段代码
+
+<ul> <li> 列表信息
+
+<ol><li>  列表信息，里面的内容具有先后顺序，会自动在前面加入序号的
+
+table、tbody、tr、th、td表格标签
+tbody标明内容的，没有具体含义
+th表格头，具有加粗居中的效果
+<table summary="本表格记录2012年到2013年库存记录，记录包括U盘和耳机库存量">  summary记录表格摘要，不会在浏览器中显示
+<caption>2012年到2013年的库存记录</caption>表格标题，位于表格的正上方，具有居中效果
+like this:
+<table summary="i am a summary">
+	<caption>2012年到2013年的库存记录</caption>表格标题，位于表格的正上方，具有居中效果
+	<tr><th>Header</th></tr>
+	<tr><td>Data</td></tr>
+</table>
+
+<a href="http://www.baidu.com" target="_blank">baidu</a>  target="_blank"在新的选项卡中打开网站
+
+<img src="图片地址" alt="下载失败时的替换文本" title = "提示文本">   alt描述信息， title鼠标放在上面的提示信息
+
+<textarea cols="50" rows="10" >在这里输入内容...</textarea>  cols每行50字符，rows有多少行
+checkbox 同一组的单选按钮，name 取值一定要一致
+<select multiple="multiple"> 按住ctrl可以多选
+<input type="reset" value="重置">  重置表单 
+
+<label for="male">男</label>  label标签注意for与id要一致
+<input type="radio" name="sex" id="male" />
+<label for="email">输入你的邮箱地址</label>
+<input type="email" id="email" placeholder="Enter email">
+
+/*设置文字字号为12px*/  css注释
+
+<link href="base.css" rel="stylesheet" type="text/css" />引入外部css
+
+css样式的优先级: 内联式 > 嵌入式 > 外部式
+
+标签选择器 tag{}
+class选择器 .xxxclass
+id选择器    #xxxid
+子选择器 .food>li{border:1px solid red;} 大于符号(>),用于选择指定标签元素的  第一代子  元素。
+包含(后代)选择器 .first  span{color:red;}  空格作用于元素的所有后代。
+通用选择器 通用选择器是功能最强大的选择器，它使用一个（*）号指定，它的作用是匹配html中所有标签元素，如下使用下面代码使用html中任意标签元素字体颜色全部设置为红色：
+类和ID选择器的区别:类选择器可以使用多次，id选择器最多只能使用一次
+
+
+伪类选择符 a:hover{color:red;}     将鼠标悬停的时候会变红
+分组选择符 h1,span{color:red;}  =   h1{color:red;} 	 span{color:red;}
+
+css权值
+权值规则：标签的权值为1，类选择符的权值为10，ID选择符的权值最高为100
+注意:注意：还有一个权值比较特殊--继承也有权值但很低，有的文献提出它只有0.1，所以可以理解为继承的权值最低。
+p{color:red;} /*权值为1*/
+p span{color:green;} /*权值为1+1=2*/
+.warning{color:white;} /*权值为10*/
+p span.warning{color:purple;} /*权值为1+1+10=12*/
+#footer .note p{color:yellow;} /*权值为100+10+1=111*/
+
+CSS层叠  指同一个元素可以有多个css样式存在并且这多个css样式具有相同权重值。
+同一css中，后面的样式会覆盖前面的样式。
+样式优先级：内联样式表（标签内部）> 嵌入样式表（当前文件中）> 外部样式表（外部文件中）。
+
+CSS重要性 !important  我们在做网页代码的时，有些特殊的情况需要为某些样式设置具有最高权值，怎么办？这时候我们可以使用!important来解决。
+p{color:red!important;}  
+注意：!important要写在分号的前面
+
+
+
+CSS排版：
+粗体 a{font-weight:bold;}
+CSS字体：body{font-family:"Microsoft Yahei";}
+CSS颜色：body{color:red;}
+CSS斜体：p{font-style:italic;}
+CSS下划线：p a{text-decoration:underline;}
+CSS删除线：.oldPrice{text-decoration:line-through;}
+CSS段落缩进：p{text-indent:2em;}  将段落开始的字符缩进两个空格
+CSS行间距： p{line-height:2em;}   行间距，倍行间距
+CSS单词间距 word-spacing:50px;  英文之间的单词
+CSS字母间距 letter-spacing   字母之间的间距
+CSS对齐：div{text-align:center;}  将文字，图片，上下左右对齐
+
+CSS的元素种类：块状元素、内联元素(又叫行内元素)和内联块状元素。
+常用的块状元素有：
+<div>、<p>、<h1>...<h6>、<ol>、<ul>、<dl>、<table>、<address>、<blockquote> 、<form>
+常用的内联元素有：
+<a>、<span>、<br>、<i>、<em>、<strong>、<label>、<q>、<var>、<cite>、<code>
+常用的内联块状元素有：
+<img>、<input>
+
+升级为块级元素：a{display:block;}
+块级元素的特点：
+1、每个块级元素都从新的一行开始，并且其后的元素也另起一行。（真霸道，一个块级元素独占一行）
+2、元素的高度、宽度、行高以及顶和底边距都可设置。
+3、元素宽度在不设置的情况下，是它本身父容器的100%（和父元素的宽度一致），除非设定一个宽度。
+
+变为行级元素    div{display:inline}
+内联元素的特点：
+1、和其他元素都在一行上；
+2、元素的高度、宽度、行高及顶部和底部边距不可设置；
+3、元素的宽度就是它包含的文字或图片的宽度，不可改变
+
+内联块状元素 display:inline-block
+inline-block元素特点：
+1、和其他元素都在一行上；
+2、元素的高度、宽度、行高以及顶和底边距都可设置。
+
+盒模型
+边框：
+盒子模型的边框就是围绕着内容及补白的线，这条线你可以设置它的粗细、样式和颜色(边框三个属性)。
+div{border:2px  solid  red;}
+等效于：
+div{
+    border-width:2px;
+    border-style:solid; 取值dashed（虚线）| dotted（点线）| solid（实线）。
+    border-color:red;
+}
+也可以单独设置上下左右边距：border-bottom:2px  solid  red;
+
+填充（内边距）padding：
+元素内容与边框之间是可以设置距离的，称之为“填充”。填充也可分为上、右、下、左(顺时针)。
+如果上、右、下、左的填充都为10px;可以这么写
+div{padding:10px;}
+如果上下填充一样为10px，左右一样为20px，可以这么写：
+div{padding:10px 20px;}
+上左下右边距：
+div{padding:20px 10px 15px 30px;}
+
+边界（Margin）：
+元素与其它元素之间的距离可以使用边界（margin）来设置。边界也是可分为上、右、下、左。如下代码：
+div{margin:20px 10px 15px 30px;}
+也可以分开写：
+div{
+   margin-top:20px;
+   margin-right:10px;
+   margin-bottom:15px;
+   margin-left:30px;
+}
+如果上右下左的边界都为10px;可以这么写：
+div{ margin:10px;}
+如果上下边界一样为10px，左右一样为20px，可以这么写：
+div{ margin:10px 20px;}
+
+CSS布局模型
+CSS元素有三种布局模型：
+1、流动模型（Flow）网页默认布局
+2、浮动模型 (Float)
+3、层模型（Layer）
+
+浮动模型：
+
+层模型：
+层模型有三种形式：
+1、绝对定位(position: absolute)
+2、相对定位(position: relative)
+3、固定定位(position: fixed)
+
+层模型--绝对定位
+如果想为元素设置层模型中的绝对定位，
+需要设置position:absolute(表示绝对定位)，
+这条语句的作用将元素从文档流中拖出来，
+然后使用left、right、top、bottom属性相对于其最接近的一个具有定位属性(position:relative,absolute,fixed)的父包含块进行绝对定位。
+如果不存在这样的包含块，则相对于body元素，即相对于浏览器窗口。
+div{
+    position:absolute;  //重点
+    left:100px;			//重点
+    top:50px;			//重点
+}
+
+
+层模型--相对定位
+
+如果想为元素设置层模型中的相对定位，
+需要设置position:relative（表示相对定位），
+它通过left、right、top、bottom属性确定元素在正常文档流中的偏移位置。
+相对定位完成的过程是首先按static(float)方式生成一个元素(并且元素像层一样浮动了起来)，
+然后相对于以前的位置移动，
+移动的方向和幅度由left、right、top、bottom属性确定，
+偏移前的位置保留不动。
+#div1{
+	position:relative;
+    left:100px;
+    top:50px;
+}/*达到的效果是相对于原来的位置向右偏移了100px，偏移顶部50px*/
+
+
+层模型--固定定位
+
+fixed：表示固定定位，
+与absolute定位类型类似，
+但它的相对移动的坐标是视图（屏幕内的网页窗口）本身。
+由于视图本身是固定的，
+它不会随浏览器窗口的滚动条滚动而变化，
+除非你在屏幕中移动浏览器窗口的屏幕位置，
+或改变浏览器窗口的显示大小，
+因此固定定位的元素会始终位于浏览器窗口内视图的某个位置，
+不会受文档流动影响，
+这与background-attachment:fixed;属性功能相同。
+以下代码可以实现相对于浏览器视图向右移动100px，
+向下移动50px。并且拖动滚动条时位置固定不变。
+#div1{
+    position:fixed;
+    left:100px;
+    top:50px;
+}/*一直位于右下角*/
+
+
+组合定位
+/*下面是任务部分*/
+
+#box3{
+    width:200px;
+    height:200px;
+    position:relative;  //这句必须要使用，不然，box4会根据文档来定位	
+}
+#box4{
+    width:99%;
+ 	position:absolute;
+	bottom:0;
+}
+<div id="box3">
+    <img src="http://img.mukewang.com/541a7d8a00018cf102000200.jpg">
+    <div id="box4">当我还是三年级的学生时是一个害羞的小女生。</div>
+</div> 达到的效果是box4位于box3的底部
+
+颜色值缩写
+关于颜色的css样式也是可以缩写的，当你设置的颜色是16进制的色彩值时，如果每两位的值相同，可以缩写一半。
+例如#336699 等效于 #369
+
+字体缩写
+body{
+    font-style:italic;
+    font-variant:small-caps; 
+    font-weight:bold; 
+    font-size:12px; 
+    line-height:1.5em; 
+    font-family:"宋体",sans-serif;
+}
+这么多行的代码其实可以缩写为一句：
+body{
+    font:italic  small-caps  bold  12px/1.5em  "宋体",sans-serif;
+}
+
+颜色
+设置颜色的方法也有很多种：
+1、英文命令颜色
+前面几个小节中经常用到的就是这种设置方法：
+p{color:red;}
+
+2、RGB颜色
+这个与 photoshop 中的 RGB 颜色是一致的，由 R(red)、G(green)、B(blue) 三种颜色的比例来配色。
+p{color:rgb(133,45,200);}
+每一项的值可以是 0~255 之间的整数，也可以是 0%~100% 的百分数。如：
+p{color:rgb(20%,33%,25%);}
+
+3、十六进制颜色
+这种颜色设置方法是现在比较普遍使用的方法，其原理其实也是 RGB 设置，但是其每一项的值由 0-255 变成了十六进制 00-ff。
+p{color:#00ffff;}
+
+
+
+长度值
+长度单位总结一下，目前比较常用到px（像素）、em、% 百分比，要注意其实这三种单位都是相对单位。
+
+1、像素
+像素为什么是相对单位呢？因为像素指的是显示器上的小点（CSS规范中假设“90像素=1英寸”）。实际情况是浏览器会使用显示器的实际像素值有关，在目前大多数的设计者都倾向于使用像素（px）作为单位。
+
+2、em 
+就是本元素给定字体的 font-size 值，如果元素的 font-size 为 14px ，那么 1em = 14px；如果 font-size 为 18px，那么 1em = 18px。如下代码：
+p{font-size:12px;text-indent:2em;}
+上面代码就是可以实现段落首行缩进 24px（也就是两个字体大小的距离）。
+下面注意一个特殊情况：
+但当给 font-size 设置单位为 em 时，此时计算的标准以 p 的父元素的 font-size 为基础。如下代码：
+
+html:
+<p>以这个<span>例子</span>为例。</p>
+css:
+p{font-size:14px}
+span{font-size:0.8em;}
+结果 span 中的字体“例子”字体大小就为 11.2px（14 * 0.8 = 11.2px）。
+
+3、百分比
+p{font-size:12px;line-height:130%}
+设置行高（行间距）为字体的130%（12 * 1.3 = 15.6px）。
+
+
+CSS技巧：
+1.水平居中设置-行内元素
+我们在实际工作中常会遇到需要设置水平居中场景，
+今天我们就来看看怎么设置水平居中的。
+如果被设置元素为文本、图片等行内元素时，
+水平居中是通过给父元素设置 text-align:center 来实现的。
+
+2.水平居中设置-定宽块状元素
+当被设置元素为块状元素时用 text-align：center 就不起作用了，
+这时也分两种情况：定宽块状元素和不定宽块状元素。
+这一小节我们先来讲一讲定宽块状元素。
+满足定宽和块状两个条件的元素是可以通过设置“左右margin”值为“auto”来实现居中的。
+<div>我是定宽块状元素，哈哈，我要水平居中显示。</div>
+div{
+	width:500px;  /*宽度务必保留*/
+	margin:20px auto;
+}
+
+3.水平居中总结-不定宽块状元素方法（一）
+在实际工作中我们会遇到需要为“不定宽度的块状元素”设置居中，比如网页上的分页导航，因为分页的数量是不确定的，所以我们不能通过设置宽度来限制它的弹性。
+不定宽度的块状元素有三种方法居中（这三种方法目前使用的都比较多）：
+(1).加入 table 标签
+(2).设置 display;inline 方法
+(3).设置 position:relative 和 left:50%;
+
+3.1
+第一步：为需要设置的居中的元素外面加入一个 table 标签 ( 包括 <tbody>、<tr>、<td> )。
+第二步：为这个 table 设置“左右 margin 居中”（这个和定宽块状元素的方法一样）。
+
+3.2
+第二种方法：改变块级元素的 dispaly 为 inline 类型，然后使用 text-align:center 来实现居中效果。
+注意：这种方法相比第一种方法的优势是不用增加无语义标签，简化了标签的嵌套深度，但也存在着一些问题：它将块状元素的 display 类型改为 inline，变成了行内元素，所以少了一些功能，比如设定长度值。
+
+3.3
+通过给父元素设置 float，
+然后给父元素设置 position:relative 和 left:50%，
+子元素设置 position:relative 和 left:-50% 来实现水平居中。
+注意：
+这种方法可以保留块状元素仍以 display:block 的形式显示，
+优点不添加无语议表标签，不增加嵌套深度，
+但它的缺点是设置了 position:relative，带来了一定的副作用。
+eg:
+<body>
+<div class="container">
+    <ul>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+    </ul>
+</div>
+</body>
+
+<style>
+.container{
+    float:left;        //重要
+    position:relative; //重要
+    left:50%     	   //重要
+}
+
+.container ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+    
+    position:relative; //重要
+    left:-50%;  	   //重要
+}
+.container li{float:left;display:inline; //重要 margin-right:8px;}
+</style>
+
+垂直居中-父元素高度确定的单行文本
+父元素高度确定的单行文本的竖直居中的方法是通过设置父元素的 height 和 line-height 高度一致来实现的。
+
+垂直居中-父元素高度确定
+垂直居中-父元素高度确定的多行文本（方法一）
+父元素高度确定的多行文本、图片、块状元素的竖直居中的方法有两种：
+
+方法一：使用插入 table (包括tbody、tr、td)标签，同时设置 vertical-align：middle。
+说到竖直居中，css 中有一个用于竖直居中的属性 vertical-align，
+但这个样式只有在父元素为 td 或 th 时，才会生效。所以又要插入 table 标签了。
+<div style="border: 2px solid red;  height:500px; ">
+			<table height="500px">
+				<tr>
+					<td>
+						<div style="border: 2px dotted red; height:100px;">sddd
+						</div>
+					</td>
+				</tr>
+			</table>
+</div>
+
+垂直居中-父元素高度确定的多行文本（方法二）
+在 chrome、firefox 及 IE8 以上的浏览器下可以设置块级元素的 display 为 table-cell，
+激活 vertical-align 属性，但注意 IE6、7 并不支持这个样式。
+<div class="container">
+    <div>
+        <p>看我是否可以居中。</p>
+        <p>看我是否可以居中。</p>
+        <p>看我是否可以居中。</p>
+        <p>看我是否可以居中。</p>
+        <p>看我是否可以居中。</p>
+    </div>
+</div>
+
+css代码：
+<style>
+.container{
+    height:300px;
+    background:#ccc;
+    display:table-cell;/*IE8以上及Chrome、Firefox*/
+    vertical-align:middle;/*IE8以上及Chrome、Firefox*/
+}
+</style>
+
+
+
+隐性改变display类型
+有一个有趣的现象就是当为元素（不论之前是什么类型元素，display:none 除外）设置以下 2 个句之一：
+1.position : absolute
+2.float : left 或 float:right
+元素会自动变为以 display:inline-block 的方式显示，当然就可以设置元素的 width 和 height 了且默认宽度不占满父元素。
+如下面的代码，小伙伴们都知道 a 标签是行内元素，所以设置它的 width 是 没有效果的，但是设置为 position:absolute 以后，就可以了。
+<div class="container">
+    <a href="#" title="">进入课程请单击这里</a>
+</div>
+
+css代码
+<style>
+.container a{
+    position:absolute;
+    width:200px;
+    background:#ccc;
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
