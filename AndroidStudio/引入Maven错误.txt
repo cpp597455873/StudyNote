@@ -1,0 +1,1 @@
+﻿http://www.reddit.com/r/androiddev/comments/2pdegz/gradle_failed_to_find_libraries/
