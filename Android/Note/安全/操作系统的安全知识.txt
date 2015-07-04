@@ -1,0 +1,96 @@
+﻿默认基于linux
+
+进程和进程边界：
+进程分为：
+共享kernal space 以及自己的独有的sapce并且映射到独立的物理内存里面
+
+进程边界的安全围栏：
+crash不可扩延性,但是kernal space的崩溃仍然具有扩延性
+全局数据和服务不可访问
+
+/////////////////////////////////////////////////
+多用户和多用户边界
+多用户的边界：独立的工作目录
+资源分类
+权限管理
+UID	 user identify id
+GID  group identify id
+用户行为是一系列的进程的行为
+特性标识是进程的Uid/Gid
+
+/////////////////////////////////////////////////
+进程与文件的UID/GID
+Root用户：UID=0, 上帝用户，永远满足与任何ID
+文件权限的管理的3类群体：属于特定的UID, 特定的GID, 其他用户
+PID 进程的ID，有系统分配
+进程的也有UID,GID就是用户的UID,GID
+API调用也是检查UID与GID来限定的，比如调用Reboot这个API是检查进程的uid与gid
+还有文件的权限的控制就是对文件以及进程的uid/gid进行对比来进行控制的
+//更改所有者一起所有group
+chown newUID:newGID  XXXfile
+
+/////////////////////////////////////////////////
+Real UID / Effective UID
+Real UID
+进程的UID只是一种泛称，其实有很多的不同ID
+进程的Real UID用来说明who am I，但是没有说明权利。
+
+Effective UID
+Effective UID代表用户的权利，权限
+Root用户：均指的是Effective UID = ROOT
+Effective UID = ROOT具有任何权限
+Effective UID = ROOT可以更改SetXUid,从而将自己的real uid更改为root
+Effective UID = ROOT也可以将自己更改为普通进程
+在Linux里面继承规则，real uid可以继承，但是Effective uid不可继承
+子进程的 real uid = effective uid  = 父进程的real uid
+所以：有特权的进程（有特殊effective uid的进程的）的子进程，仅能继承real uid即如上的公式
+
+/////////////////////////////////////////////////
+文件的setUID表示
+普通用户临时需要特权(如root)的需求（只针对于可执行文件）
+就将文件的 owner group 设置为root，
+但是对权限就设置为 -rws 
+注意：这里的s指setUID标志位（只针对于可执行文件），子进程看到s标志就只继承real uid,
+但是effective uid就不再继承，而是使用文件所有者（owner）的uid，这样就变成了root进程，并且子进程不会是root进程。
+
+通过命令添加，现在标志位就变成了4位
+chmod 4777 xxxfile            4就代表了setUID标志位
+chmod 0777 xxxfile            0就代表了取消setUID标志位
+或者 chmod u+s xxxfile 或者 chmod u-s xxxfile但是android shell 并不支持这种方式去更改。
+
+
+/////////////////////////////////////////////////
+Capability
+UID存在的问题：
+权限粒度过粗
+权利、权限过剩
+
+Capability：细粒度的权限
+Linux以1 bit代表为一个权限，一共64 bit
+
+/////////////////////////////////////////////////
+两种安全策略模式
+DAC
+MAC
+高级特性
+SEAndroid
+
+
+/////////////////////////////////////////////////
+签名权限的作用：
+自签名：
+证书的签名者和拥有者是统一实体。
+自签名的作用：作为信任链的根证书。完整性鉴别。信任模式。限制安装运行。
+权限的作用：细粒度划分特权管理。
+权限的安全性保护:通过签名，不允许篡改签名。
+
+/////////////////////////////////////////////////
+Android的签名作用:
+支持自签名完整性鉴别
+
+
+
+
+
+
+
