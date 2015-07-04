@@ -1,0 +1,12 @@
+﻿变化:
+
+1.对于boolean类型的属性，不设置是默认为false
+设置的话有几种方式：
+<input type="checkbox" checked="checked" />
+<input type="checkbox" checked/>
+<input type="checkbox" checked="" />
+
+新增的：
+artitle 用于表示一段独立的文章，内容等
+<embed src="http://baidu.com" width="500" height="400"></embed> 用于在网页中嵌入一段内容
+
