@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ccc"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.example.cpp.gustureunlock.GuestureLockView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/gLView"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnAddPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="添加密码" />
+
+        <Button
+            android:id="@+id/btnVerifyPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="校验密码" />
+    </LinearLayout>
+
+
+</LinearLayout>

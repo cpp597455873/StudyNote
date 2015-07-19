@@ -1,0 +1,25 @@
+﻿Maven是什么项目管理工具
+Maven的功能
+构建项目
+依赖管理
+配置管理
+发布管理
+文档编制
+报告
+
+/////////////////////////////////////////////////
+基本命令
+创建命令：mvn archetype:generate
+		  mvn archetype:generate -DarchetypeCatalog=internal 
+
+
+//////////////////////////////////////////////////
+Maven核心概念
+
+POM-->Project Object Model
+项目的属性、依赖、构建配置都被抽象到这个项目对象模型里面。
+组成：
+项目基本信息
+构建环境
+POM关系
+构建设置
