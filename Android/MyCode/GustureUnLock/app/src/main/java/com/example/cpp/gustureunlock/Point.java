@@ -18,6 +18,4 @@ public class Point {
         this.y = y;
         this.state = state;
     }
-
-
 }
