@@ -1,0 +1,9 @@
+﻿apply plugin: "java"
+
+
+gradle assemble
+
+task execute(type: JavaExec){
+	main = "com.udacity.gradle.Person"
+	classpath = sourceSets.main.runtimeClasspath
+}

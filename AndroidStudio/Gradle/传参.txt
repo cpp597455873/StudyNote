@@ -1,0 +1,21 @@
+﻿1.在gradle.properties定义属性
+greeting = "Hello from a properties file"
+
+in build.gradle 文件里面定义
+task printGreeting << {
+    println greeting
+}
+
+运行 gradle printGreeting
+
+
+2.启动的时候在命令行传入  注意命令行优先于配置文件
+gradle -Pgreeting="Hello from the command line" printGreeting
+
+3.或者在build文件内部定义一个
+ext {
+    greeting = "Hello from inside the build script"
+}
+
+
+

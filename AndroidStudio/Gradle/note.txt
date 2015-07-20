@@ -1,0 +1,60 @@
+﻿//quite 模式，它只会输出必要的输出，构建过程不会被输出
+gradle -q xxxtask
+
+//dependsOn 意思是依赖，A依赖B，在运行A之前先运行B
+task A{
+dependsOn "B"
+doLast{
+}
+}
+
+//dependsOn 依赖多个任务,运行A，之前必须运行B C task
+task A{
+dependsOn = ["B","C"]
+doLast{
+}
+}
+
+//mustRunAfter    在同时执行dependsOn任务的时候定义的先后顺序 如dependsOn = ["B","C"]
+C.mustRunAfter B  //这个是在任务体之外定义的
+
+//dependsOn 依赖多个任务,运行A，之前必须运行B C task
+task A{
+dependsOn = ["B","C"]
+doLast{
+}
+}
+
+//dependsOn 依赖多个任务,批量匹配
+task A{
+dependsOn tasks.matching{task->task.name.startsWith("setOn")}
+doLast{
+}
+}
+
+//finalizedBy 结束后必须干的事情，即每次A运行完毕之后都必须要运行B
+task A{
+finalizedBy "B"
+doLast{
+}
+}
+
+//shouldRunAfter  几个任务同时执行的时候的先后依赖顺序，单独运行的时候会直接忽略shouldRunAfter
+gradle -q A B     //同时运行A B task
+task A{
+shouldRunAfter "B"
+doLast{
+}
+}
+
+//---------------------
+<<等价于doLast() method
+
+//------------------------------------------------------------------------
+//onlyif
+task loadTestData(dependsOn: createSchema) << {
+println 'load test data'
+}
+loadTestData.onlyIf {
+System.properties['load.data'] == 'true'
+}

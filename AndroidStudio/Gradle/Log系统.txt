@@ -1,0 +1,12 @@
+﻿gradle的六个级别
+error
+quite       -q
+warning
+LifeCycle   default
+info		-i
+debug       -d
+
+
+错误堆栈信息
+gradle --stacktrace   or -s
+gradle --full stacktrace   or -S

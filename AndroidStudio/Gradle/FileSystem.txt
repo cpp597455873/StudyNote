@@ -1,0 +1,106 @@
+﻿//复制文件  将image文件夹下的所有文件复制到build文件夹之下
+task copyImages(type: Copy) {
+    from 'images'
+    into 'build'
+}
+
+//复制文件  include将image文件夹下的所有jpg文件复制到build文件夹之下
+task copyImages(type: Copy) {
+    from 'images'
+	include '*.jpg'
+    into 'build'
+}
+
+
+//复制文件  include将image文件夹下的所有jpg文件复制到build/jpg文件夹之下, 所有gif文件复制到build/gif文件夹之下
+//very important
+task copyImages(type: Copy) {
+    from ('images'){
+		include '*.jpg'
+		into    'jpg'
+	}
+	from ('images'){
+		include '*.gif'
+		into    'gif'
+	}
+    into 'build'
+}
+
+//压缩文件   将A文件夹下面的所有文件内容和X文件夹下的所有txt文件压缩到B文件夹下，但是不含image文件夹，而且文件名叫zipFile.zip
+task copyImages(type: Zip) {
+    from 'A'
+	
+	from ('X'){
+		include '*.txt'
+		exclude 'images/**' //or exclude 'images' 
+		
+
+	}
+	
+	baseName 'zipfile'              //文件名，注意没得后缀
+	destinationDir = file('B') //压缩后的文件夹
+}
+
+//解压文件
+task unzip(type: Copy) {
+	def zipFile = file('src/dists/dist.zip')
+	def outputDir = file("${buildDir}/unpacked/dist")
+	from zipTree(zipFile)
+	into outputDir
+}
+
+//解压文件
+task unpackBundle(type: Copy, dependsOn: bundleWeb) {
+    from zipTree('build/web.zip')
+    into 'build/exploded'
+}
+
+//删除   删除B文件夹
+task deleteFolder(type: Delete){
+	delete  'B'
+}
+
+//任务依赖
+task copyWeb(type: Copy) {
+    from 'src/web'
+    from('src/docs') {
+        include '*.txt'
+        into 'help'
+    }
+    into 'build/web'
+}
+
+task bundleWeb(type: Zip, dependsOn: copyWeb) {    //重点   dependsOn: copyWeb， 执行之前需执行copyWeb
+    baseName = 'web'
+    destinationDir = file('build')
+    
+    from 'build/web'
+    exclude 'images/**'
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
