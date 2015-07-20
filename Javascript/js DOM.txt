@@ -1,0 +1,4 @@
+﻿document.getElementById("btn_scan").addEventListener("click", function() {
+			alert("hello")
+		}, false);
+

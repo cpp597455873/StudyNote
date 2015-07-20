@@ -1,0 +1,40 @@
+﻿Jsonp 跨域访问
+XMLHttpRequest cannot load http://xxx.xxx.com/xxx. No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
+我们在使用ajax进行跨域访问的时候就经常看到类似上面的报错。
+
+跨域访问，简单来说就是 A 网站的 javascript 代码试图访问 B 网站，包括提交内容和获取内容。由于安全原因，跨域访问是被各大浏览器所默认禁止的。在广域网环境中，由于浏览器的安全限制，网络连接的跨域访问时不被允许的，XmlHttpRequest也不例外。
+
+跨域在j2ee开发中，是必不可少的。
+
+本人就是再使用第三方登陆的时候遇到了跨域的问题。
+
+最后上网查了很多方法，最后使用jsonp跨域方分成功
+
+下面以腾讯第三方登陆后跨域获取access token为例：
+
+1. 请求如下地址（请将access_token等参数值替换为你自己的）：
+
+https://graph.qq.com/oauth2.0/me?access_token=YOUR_ACCESS_TOKEN
+
+2. 获取的返回值如下：
+
+1	callback({"client_id":"YOUR_APPID","openid":"YOUR_OPENID"});
+p4：使用Access Token以及OpenID来访问和修改用户数
+<script>  
+    var accessToken = window.location.hash.substring(1);//获取路径中的access token  
+    var now = new Date();  
+    //url: "http://w.smartsoft.cn/share/main.asmx/gettimeadjust?localtime=" + now,  
+    $.ajax({  
+        type: 'GET',  
+        url: 'https://graph.qq.com/oauth2.0/me?' + accessToken,  
+        async: false,  
+        dataType: "jsonp",  
+        jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)  
+        jsonpCallback: "callback",//自定义的jsonp回调函数名，默认未jquery自动生成的随机函数名，也可以写“?”jquery会自动处理  
+        success: function (o) {  
+            alert("success");  
+            console.log(o);  
+        }  
+    });  
+</script>  

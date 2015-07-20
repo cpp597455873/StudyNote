@@ -1,0 +1,51 @@
+﻿JavaScript中json对象和string对象之间相互转化
+
+var json = {aa:true,bb:true}; 
+var json1 = {aa:'b',bb:{cc:true,dd:true}}; 
+
+1：js操作json对象 
+for(var item in json){ 
+alert(item); //结果是 aa,bb, 类型是 string 
+alert(typeof(item)); 
+alert(eval("json."+item)); //结果是true，true类型是boolean 
+eval(("json."+item+"=false;")); //改变json对象的值 
+} 
+
+2：json对象转化为String对象的方法 
+/** 
+* json对象转字符串形式 
+*/ 
+function json2str(o) { 
+var arr = []; 
+var fmt = function(s) { 
+if (typeof s == 'object' && s != null) return json2str(s); 
+return /^(string|number)$/.test(typeof s) ? "'" + s + "'" : s; 
+} 
+for (var i in o) arr.push("'" + i + "':" + fmt(o[i])); 
+return '{' + arr.join(',') + '}'; 
+} 
+
+3:string对象转化为json对象 
+function stringToJson(stringValue) 
+{ 
+eval("var theJsonValue = "+stringValue); 
+return theJsonValue; 
+} 
+
+4:json数组转化为 String对象的方法（要掉要上面那个方法） 
+function JsonArrayToStringCfz(jsonArray) 
+var JsonArrayString = "["; 
+for(var i=0;i<jsonArray.length;i++){ 
+JsonArrayString=JsonArrayString+JsonToStringCfz(jsonArray[i])+","; 
+} 
+JsonArrayString = JsonArrayString.substring(0,JsonArrayString.length-1)+"]"; 
+return JsonArrayString; 
+} 
+
+5:利用json.js json转string 
+<script src="json2.js"></script> 
+<script> 
+var date = {myArr : ["a" , "b" , "c" , "d"] , count : 4}; 
+var str = JSON.stringify(date); 
+alert(str); 
+</script> 
