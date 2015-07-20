@@ -1,0 +1,41 @@
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    // do what 
+}
+Installation
+cordova plugin add cordova-plugin-dialogs
+
+Methods
+navigator.notification.alert
+navigator.notification.confirm
+navigator.notification.prompt
+navigator.notification.beep
+
+eg:
+document.getElementById("btn_alert").addEventListener("click", function() {
+			navigator.notification.alert(
+				'You are the winner!', // message
+				alertDismissed, // callback
+				'Game Over', // title
+				'Done' // buttonName
+			);
+		}, false);
+
+		document.getElementById("btn_comfirm").addEventListener("click", function() {
+			navigator.notification.confirm(
+				'You are the winner!', // message
+				alertDismissed, // callback  ------>function onConfirm(buttonIndex) //note there is index
+				'Game Over', // title
+				["again", "exit"] // buttonName
+			);
+		}, false);
+
+		document.getElementById("btn_prompt").addEventListener("click", function() {
+			navigator.notification.prompt(
+				'Please enter your name', // message
+				onPrompt, // callback to invoke   ------>function onPrompt(results)
+				'Registration', // title
+				['Ok', 'Exit'], // buttonLabels
+				'Jane Doe' // defaultText         ------>the default text will return
+			);
+		}, false);
