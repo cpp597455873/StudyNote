@@ -19,3 +19,8 @@ example:
     v.getLocationOnScreen(location);
     int x = location[0];
     int y = location[1];
+
+
+---------------------------------------------------------
+getRawX(),getRawY()和getX(),getY()的区别，
+getRawX(),getRawY()是相对于屏幕的原点的距离，而getX(),getY()是相对于控件左上方的点的距离

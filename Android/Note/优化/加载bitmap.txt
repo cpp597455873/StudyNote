@@ -1,1 +1,65 @@
 ﻿http://blog.csdn.net/guolin_blog/article/details/9316683
+官方介绍
+http://developer.android.com/training/displaying-bitmaps/index.html
+
+
+获得位图的大小和类型
+BitmapFactory.Options options = new BitmapFactory.Options();
+options.inJustDecodeBounds = true;  获得大小  
+BitmapFactory.decodeResource(getResources(), R.id.myimage, options);
+int imageHeight = options.outHeight;
+int imageWidth = options.outWidth;
+String imageType = options.outMimeType;  获得图片类型
+
+---------------------------------------------------------------
+根据Option获得缩放因子
+public static int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+    // Raw height and width of image
+    final int height = options.outHeight;
+    final int width = options.outWidth;
+    int inSampleSize = 1;
+
+    if (height > reqHeight || width > reqWidth) {
+
+        final int halfHeight = height / 2;
+        final int halfWidth = width / 2;
+
+        // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+        // height and width larger than the requested height and width.
+        while ((halfHeight / inSampleSize) > reqHeight
+                && (halfWidth / inSampleSize) > reqWidth) {
+            inSampleSize *= 2;
+        }
+    }
+
+    return inSampleSize;
+}
+
+
+-------------------------------------------------------------------------------------
+不要在主线程里面处理bitmap，因为处理是耗时任务，使用Thread或者异步任务。
+
+
+
+------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

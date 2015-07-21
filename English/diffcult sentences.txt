@@ -1,0 +1,46 @@
+The config-file tag encapsulates a feature tag that is injected into the platform-specific config.xml file to make the platform aware of the additional code library. 
+The Java plugin is convention based.    Java插件是基于约定。
+This chapter is not exhaustive, and there are many other things you can do with Java projects in Gradle. //exhaustive adj. 详尽的；彻底的；消耗的
+We’ll showcase why the excitement around Gradle is on the rise and how it meets the challenge of these lofty build automation goals. //showcase n. 陈列橱，[家具] 陈列柜；显示优点的东西 lofty adj. 高的；崇高的；高级的；高傲的
+We’re excited to have you along for the ride.  我们很高兴有你凑凑热闹。
+Conventions Used in This Book.     convention n. 大会；[法] 惯例；[计] 约定；[法] 协定；习俗
+The following typographical conventions are used in this book. //typographical adj. 印刷上的；排字上的
+Acknowledgments from Tim Berglund	Acknowledgments 致谢
+It’s not every day that a game-changing technology comes along, and it’s exciting to be a small part of one when it does. //颠覆性的、改变游戏规则的
+In five years, when Gradle has brought peace and order to all of your builds in ways you never could have anticipated, and you look back and realize you learned it all from these books, send Jay an email to say thanks.
+nesting relationships 嵌套关系
+
+---------------------------------------------------------------------------
+Groovy uses the term “closure” to refer to a block of code between two
+curly braces. A closure functions like an object that can be passed as a
+parameter to a method or assigned to a variable, then executed later.
+You’ll see closures all over in Gradle, since they’re a perfect fit for holding blocks of configuration code and build actions.
+----------------------------------------------------------------------------
+
+ performance overhead  性能开销
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+This lesson walks you through decoding large bitmaps without exceeding the per application memory limit by loading a smaller subsampled version in memory.
+本课指导您完成而无需在内存中加载一个较小的子采样版本超过了每个应用程序的内存限制解码大位图。
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

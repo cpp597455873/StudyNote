@@ -1,0 +1,6 @@
+﻿//MaterialDesign库
+compile 'com.github.navasmdc:MaterialDesign:1.+@aar'
+
+//时间选择库 需要oldnine
+compile 'com.github.flavienlaurent.datetimepicker:library:0.0.1@aar'
+	

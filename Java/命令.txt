@@ -1,0 +1,2 @@
+﻿java -cp mavenstudy-1.0-SNAPSHOT.jar com.cqupt.cpp.App
+注意:-cp mavenstudy-1.0-SNAPSHOT.jar 是将jar包设置为classpath，运行里面的App	class

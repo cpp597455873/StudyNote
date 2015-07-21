@@ -1,0 +1,80 @@
+http://www.cnblogs.com/yc-755909659/p/4290114.html
+
+--------------------------------------------------------------------------------
+view1.animate().translationYBy(50).setDuration(700).setListener(listener);
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------
+AnimatorSet bouncer = new AnimatorSet();
+bouncer.play(bounceAnim).before(squashAnim1);
+bouncer.play(squashAnim1).with(squashAnim2);
+bouncer.play(squashAnim1).with(stretchAnim1);
+bouncer.play(squashAnim1).with(stretchAnim2);
+bouncer.play(bounceBackAnim).after(stretchAnim2);
+ValueAnimator fadeAnim = ObjectAnimator.ofFloat(newBall, "alpha", 1f, 0f);
+fadeAnim.setDuration(250);
+AnimatorSet animatorSet = new AnimatorSet();
+animatorSet.play(bouncer).before(fadeAnim);
+animatorSet.start();
+--------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------
+AnimationDrawable
+
+res/drawable
+	<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:oneshot="true">
+	    <item android:drawable="@drawable/rocket_thrust1" android:duration="200" />
+	    <item android:drawable="@drawable/rocket_thrust2" android:duration="200" />
+	    <item android:drawable="@drawable/rocket_thrust3" android:duration="200" />
+	</animation-list>
+
+ImageView rocketImage = (ImageView) findViewById(R.id.rocket_image);
+rocketImage.setBackgroundResource(R.drawable.rocket_thrust);
+rocketAnimation = (AnimationDrawable) rocketImage.getBackground();
+
+public boolean onTouchEvent(MotionEvent event) {
+  if (event.getAction() == MotionEvent.ACTION_DOWN) {
+    rocketAnimation.start();    //对其监听
+    return true;
+  }
+  return super.onTouchEvent(event);
+}
+---------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+AnimationSet animationSet = new AnimationSet(true);
+        //参数1～2：x轴的开始位置
+        //参数3～4：y轴的开始位置
+        //参数5～6：x轴的结束位置
+        //参数7～8：x轴的结束位置
+        TranslateAnimation translateAnimation =
+                new TranslateAnimation(
+                        Animation.RELATIVE_TO_SELF,0f,
+                        Animation.RELATIVE_TO_SELF,0.5f,
+                        Animation.RELATIVE_TO_SELF,0f,
+                        Animation.RELATIVE_TO_SELF,0.5f);
+        translateAnimation.setDuration(1000);
+        animationSet.addAnimation(translateAnimation);
+        view1.startAnimation(animationSet);
+----------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------------------
+<translate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="1500"
+    android:fromXDelta="0"
+    android:fromYDelta="0"
+    android:repeatCount="infinite"    
+    android:repeatMode="restart"
+    android:toXDelta="0"
+    android:toYDelta="50" />
+---------------------------------------------------------------------------------------------------------------------
+
+http://nineoldandroids.com/   官方介绍
+
+
+
+
+
+
