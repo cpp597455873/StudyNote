@@ -1,0 +1,5 @@
+如果有scrollerView里面嵌套Listview不如换成
+Listview+Header的方式。
+
+但有个问题就是如果你们没有添加adapter的话，header是不会显示的
+解决方案： listView.setAdapter(null);

@@ -5,3 +5,8 @@ static ProgressDialog	show(Context context, CharSequence title, CharSequence mes
 static ProgressDialog	show(Context context, CharSequence title, CharSequence message, boolean indeterminate, boolean cancelable)
 static ProgressDialog	show(Context context, CharSequence title, CharSequence message, boolean indeterminate, boolean cancelable, DialogInterface.OnCancelListener cancelListener)
 static ProgressDialog	show(Context context, CharSequence title, CharSequence message, boolean indeterminate)
+
+
+
+在通知栏通知下载情况。
+http://developer.android.com/training/notify-user/display-progress.html

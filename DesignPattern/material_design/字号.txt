@@ -1,0 +1,35 @@
+112sp
+56sp
+45sp
+34sp
+24sp
+20sp
+16sp
+14sp
+12sp
+
+
+
+明度：黑度
+HeadLine    black 87%	
+Title       black 87%
+SubHead	    black 87%
+body   black 87%
+caption     black 54%
+Menu   black 87%
+Button   black 87%
+
+
+"主体”、“次要标题”、“大纲”才允许换行，其余的不允许换行
+
+
+标题与内容之间应该有间隔：大号标题用40dp,小号用32dp的间隔
+
+要获得最佳的阅读效果每行应当包含最多60字符，也就是说一般15个汉字
+
+
+
+
+
+
+

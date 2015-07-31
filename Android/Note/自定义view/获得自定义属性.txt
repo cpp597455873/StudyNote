@@ -1,0 +1,21 @@
+/////////定义属性//////////////
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="HorizontalProgressBar">
+        <attr name="max" />
+        <attr name="progress" />
+    </declare-styleable>
+
+    <attr name="max" format="dimension" />
+    <attr name="progress" format="integer" />
+
+</resources>
+
+
+///////////获得属性/////////////////////////
+TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.MyView);   
+int textColor = array.getColor(R.styleable.MyView_textColor, 0XFF00FF00); //提供默认值，放置未指定   
+float textSize = array.getDimension(R.styleable.MyView_textSize, 36);   
+mPaint.setColor(textColor);   
+mPaint.setTextSize(textSize);   
+array.recycle(); //一定要调用，否则这次的设定会对下次的使用造成影响   

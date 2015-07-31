@@ -1,0 +1,23 @@
+public void onCreate(Bundle savedInstanceState) 
+{
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.main);
+    //得到弹出菜单的view，login_setting_popup是弹出菜单的布局文件
+    View view = getLayoutInflater().inflate(R.layout.login_setting_popup, null);
+    //初始化弹出菜单
+    popWindow = new PopupWindow(view, WindowManager.LayoutParams.FILL_PARENT,WindowManager.LayoutParams.WRAP_CONTENT,false);
+    //设置可以获取焦点，否则弹出菜单中的EditText是无法获取输入的
+    popWindow.setFocusable(true);
+    //这句是为了防止弹出菜单获取焦点之后，点击activity的其他组件没有响应
+    popWindow.setBackgroundDrawable(new BitmapDrawable()); 
+    //防止虚拟软键盘被弹出菜单遮住
+    popWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+    //在底部显示
+    popWindow.showAtLocation(this,Gravity.BOTTOM, 0, 0); 
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+坑！
+PopupWindow里面装的listview里面记得不要使用抢占焦点的控件，OnitemClick是不会响应的
