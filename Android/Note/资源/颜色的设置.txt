@@ -1,0 +1,20 @@
+//方案一：通过资源引用 
+tv.setTextColor(Color.rgb(255, 255, 255));  
+tv.setTextColor(Color.parseColor("#FFFFFF"));  
+             
+//方案二：通过资源引用  
+//tv.setTextColor(getResources().getColor(R.color.my_color));  
+
+//方案三：通过资源文件写在String.xml中  
+//      Resources resource = (Resources) getBaseContext().getResources();  
+//      ColorStateList csl = (ColorStateList) resource.getColorStateList(R.color.my_color);  
+//      if (csl != null) {  
+//          tv.setTextColor(csl);  
+//      }  
+  
+//方案四：通过xml文件，如/res/text_color.xml  
+//      XmlPullParser xrp = getResources().getXml(R.color.text_color);  
+//      ColorStateList csl = ColorStateList.createFromXml(getResources(), xrp);  
+//      tv.setTextColor(csl);  
+
+
