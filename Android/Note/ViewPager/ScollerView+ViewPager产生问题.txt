@@ -1,0 +1,18 @@
+﻿http://www.baidufe.com/item/d8fa39c66bfe1b6ce777.html
+
+关于ViewPager被嵌套在ScrollView中不显示的问题
+ScrollView嵌套ViewPager，要不是业务需求这样，估计没人愿意这么干！因为这种方式，会问题多多，简单百度一下这两个关键词“ScrollView ViewPager”，基本都是有冲突求解答的！是的，我也遇到了。这么一嵌套，ViewPager直接不显示了，尝试了如下几种方式，均无果：
+1、设置ScrollView的android:fillViewPort="true"
+2、设置ViewPager的android:layout_height="fill_parent"
+3、设置ViewPager的android:layout_height="wrap_content"
+4、修改ViewPager的Adapter
+and so on。。。
+
+最后的解决办法是：
+1、设置ScrollView的fillViewPort为true
+2、设置ViewPager的layout_height为一个固定高度，比如：100dip
+
+不过ViewPager显示出来以后，还有另外一个冲突：ViewPager左右不能滑动了！是的，因为这个事件其实已经被外层的ScrollView截获！
+最终的解决办法：重写ScrollView控件！蛋疼-_-!!!
+
+
