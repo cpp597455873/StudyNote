@@ -1,0 +1,12 @@
+先，引入两个核心js 
+
+<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script> 
+<script type="text/javascript" src="js/jQuery.Hz2Py-min.js"></script> 
+然后，按照自身需求分别创建中文名称和全拼所需要的两个input。 
+
+输入中文：<input name="hz" id="hz" onBlur="py.value=($('#hz').toPinyin());" onChange="py.value=($('#hz').toPinyin())" onKeydown="py.value=($('#hz').toPinyin())" type="text" size="50" /> 
+显示拼音：<input name="py" id="py" type="text" size="50" /> 
+最后，需要说明的是： 
+1、onBlur、onChange、onKeydown三种鼠标事件可任选其一或组合使用； 
+2、除“-”（连字号）以外，其他标点符号不会被显示，空格显示为“-”（连字号）。 
+缺点：暂无法识别多音字；

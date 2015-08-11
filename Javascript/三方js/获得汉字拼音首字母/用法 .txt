@@ -1,0 +1,3 @@
+注意  一定要先导入JQ
+
+wf.makePy("ni狗日的")  获得niGRD
