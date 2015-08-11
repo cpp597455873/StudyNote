@@ -1,0 +1,34 @@
+package com.jizheng.nicefound;
+
+import android.test.ActivityInstrumentationTestCase2;
+
+/**
+ * Created by cpp on 2015/8/10.
+ */
+public class Test01m extends ActivityInstrumentationTestCase2<TestActivity> {
+
+
+	//注意，一定要使用这个构造函数
+    public Test01m() {
+        super(TestActivity.class);
+    }
+
+    public void test() {
+        TestActivity activity = getActivity();
+        assertSame(100, activity.getNumber());
+    }
+
+
+    //这个方法是用于测试前的准备工作
+
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+    }
+    
+    //这个方法是用于测试后的收尾工作，如资源回收等
+    @Override
+    protected void tearDown() throws Exception {
+        super.tearDown();
+    }
+}

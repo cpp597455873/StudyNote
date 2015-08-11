@@ -1,0 +1,26 @@
+区别
+To create a functional test for your Activity, 
+your test class should extend ActivityInstrumentationTestCase2.
+ Unlike ActivityUnitTestCase,
+tests in ActivityInstrumentationTestCase2 can communicate with the Android system and send keyboard input and click events to the UI.
+
+
+
+Send Keyboard Input Using Instrumentation发送键盘指令
+If your Activity has an EditText field, you might want to test that users can enter values into the EditText object.
+Generally, to send a string input value to an EditText object in ActivityInstrumentationTestCase2, you should:
+Use the runOnMainSync() method to run the requestFocus() call synchronously in a loop. This way, the UI thread is blocked until focus is received.
+Call waitForIdleSync() method to wait for the main thread to become idle (that is, have no more events to process).
+Send a text string to the EditText by calling sendStringSync() and pass your input string as the parameter.
+For example:
+
+// Send string input value
+getInstrumentation().runOnMainSync(new Runnable() {
+    @Override
+    public void run() {
+        senderMessageEditText.requestFocus();
+    }
+});
+getInstrumentation().waitForIdleSync();
+getInstrumentation().sendStringSync("Hello Android!");
+getInstrumentation().waitForIdleSync();

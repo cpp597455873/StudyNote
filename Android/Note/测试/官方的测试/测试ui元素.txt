@@ -1,0 +1,4 @@
+final View decorView = mClickFunActivity.getWindow().getDecorView();
+ViewAsserts.assertOnScreen(decorView, mClickMeButton);
+
+TouchUtils.clickView(this, mClickMeButton);
