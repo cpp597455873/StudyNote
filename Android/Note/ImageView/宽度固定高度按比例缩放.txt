@@ -1,0 +1,35 @@
+解决方案有几个
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+1.用ImageLoader解决这个问题
+http://blog.csdn.net/u012036813/article/details/40540573
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+2.动态修改view的宽度
+解决方法：
+还是要利用 scaleType 的 center_crop 效果，让图片能始终按比例填充容器，不留空白区域。
+剩下最主要的功能就是动态设置 ImageView 容器的高度了，这样让图片能尽可能的完整展现出来，
+而且还可以实现 maxHeight 的效果，如果图片高度比例过大不至于把列表拉的太长。
+int maxHeight = ZUI.dp2px(mContext, 300);
+int height = (int) ((float) view.getWidth()/drawable.getMinimumWidth() * drawable.getMinimumHeight());
+if (height > maxHeight) height = maxHeight;
+view.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, height));
+其中 view 即 ImageView 图片视图容器对象，drawable 就是要显示的图片资源。
+drawable.getMinimumWidth() 和 drawable.getMinimumHeight() 是获取图片在屏幕上的可视高度宽度，
+不一定是图片的原始高宽度，跟屏幕的像素密度有关，大概就是这样子的吧。注意要用浮点数值类型，不然可能取整变成 1 的倍数了。
+将 dp 值转为像素值，因为 java 代码中操作的高宽都是像素值，而样式中都是用 dip 来兼容屏幕的
+public static int dp2px(Context context, int dp)
+{
+    float scale = context.getResources().getDisplayMetrics().density;
+    return (int) (dp * scale + 0.5f);
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+3.动态修改bitmap的缩放比例  可能会oom
+Matrix matrix = new Matrix();
+matrix.postScale(scaleWidth, scaleHeight);
+Bitmap resizeBmp = Bitmap.createBitmap(bmp, 0, 0, bmpWidth, bmpHeight, matrix, true);
