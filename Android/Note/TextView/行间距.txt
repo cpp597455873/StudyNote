@@ -1,0 +1,9 @@
+Android系统中TextView默认行间距比较窄，不美观。
+    我们可以设置每行的行间距，可以通过属性android:lineSpacingExtra或android:lineSpacingMultiplier来做。
+在你要设置的TextView中加入如下代码：
+
+1、android:lineSpacingExtra 
+设置行间距，如”8dp”。
+
+2、android:lineSpacingMultiplier 
+设置行间距的倍数，如”1.5″。
