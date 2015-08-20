@@ -1,0 +1,25 @@
+﻿先将aar文件放入libs文件
+再将app的gradle文件添加如下的形式
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile(name:'cards', ext:'aar')
+}
+
+
+//添加本地库依赖
+dependencies {
+	compile project(':datetimepicker-library')
+}
+
+//添加jar依赖
+compile files('libs/SwipeMenuLib.jar')
+
+//远程maven依赖
+compile 'com.github.flavienlaurent.datetimepicker:library:0.0.2'
+
