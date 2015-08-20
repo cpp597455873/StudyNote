@@ -1,0 +1,2 @@
+这个类可以解决scollerview与listview共存的问题
+也可以用来在scollerview放双或者多个listview
