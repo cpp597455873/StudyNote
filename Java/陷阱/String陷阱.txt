@@ -1,0 +1,4 @@
+String s = "Hello John";
+s.toUpperCase();
+s.substring(0, 5);
+System.out.println(s);会输出 Hello John  因为String是不可变的，toUpperCase和substring返回的是新字符串，但是没有修改s的值。
