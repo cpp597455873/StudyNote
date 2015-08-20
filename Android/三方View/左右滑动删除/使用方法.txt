@@ -1,0 +1,58 @@
+
+//这是最外层的listview
+com.baoyz.swipemenulistview.SwipeMenuListView;  
+ 
+ 
+ /**
+     * 添加listview的侧拉删除 
+     */
+    private void setUpSwipeListMenu() {
+	
+	   //创建按钮
+        SwipeMenuCreator creator = new SwipeMenuCreator() {
+
+            @Override
+            public void create(SwipeMenu menu) {
+                // create "open" item
+                SwipeMenuItem delereItem = new SwipeMenuItem(getApplicationContext());
+                // set item background
+                delereItem.setBackground(new ColorDrawable(getResources().getColor(R.color.tab_red)));
+                // set item width
+                delereItem.setWidth(dp2px(90));
+                // set item title
+                delereItem.setTitle("删除");
+                // set item title fontsize
+                delereItem.setTitleSize(18);
+                // set item title font color
+                delereItem.setTitleColor(Color.WHITE);
+                // add to menu
+                menu.addMenuItem(delereItem);
+
+            }
+        };
+        // set creator
+        guanzhuListView.setMenuCreator(creator);
+
+        // step 2. listener item click event
+        guanzhuListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public void onMenuItemClick(int position, SwipeMenu menu, int index) {
+                Toast.makeText(getApplicationContext(), "删除！", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        // set SwipeListener
+        guanzhuListView.setOnSwipeListener(new SwipeMenuListView.OnSwipeListener() {
+
+            @Override
+            public void onSwipeStart(int position) {
+                // swipe start
+            }
+
+            @Override
+            public void onSwipeEnd(int position) {
+                // swipe end
+            }
+        });
+    }
