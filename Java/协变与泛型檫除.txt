@@ -1,0 +1,23 @@
+协变性
+数组的协变性(covariant)是指：
+如果类Base是类Sub的基类，那么Base[]就是Sub[]的基类。
+而泛型是不可变的(invariant)，List不会是List的基类，更不会是它的子类。
+
+//所以这段代码会编译通过，但是运行会报 Exception in thread "main" java.lang.ArrayStoreException: java.lang.Integer
+public static void main(String[] args) { 
+    Object[] array = new String[10]; 
+    array[0] = 10; 
+}
+
+//但是像下面的代码就会直接编译失败
+public static void main(String[] args) { 
+    List< Object> list = new ArrayList< String>(); 
+    list.add(10); 
+}
+
+//这个也是同样的道理。
+//分析为啥：第一行明确是放入的object类型，如果运行第二行的话，就违背泛型的原则了：编译的时候不会出现类型错误，那么运行时也肯定不会出现的。
+//也就是我们可以向li里面放入任何类型，如果编译通过那么就会产生从ln里面取出来的元素不是Number类型的元素，从而导致运行时发生异常
+List<Object> li = new ArrayList<Object>();
+List<Number> ln = li; // illegal
+ln.add(new Float(3.1415));
