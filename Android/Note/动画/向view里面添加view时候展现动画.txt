@@ -1,0 +1,17 @@
+Create the Layout
+In your activity's layout XML file, set the android:animateLayoutChanges attribute to true for the layout that you want to enable animations for. For instance:
+
+<LinearLayout android:id="@+id/container"
+    android:animateLayoutChanges="true"
+    ...
+/>
+Add, Update, or Remove Items from the Layout
+Now, all you need to do is add, remove, or update items in the layout and the items are animated automatically:
+
+private ViewGroup mContainerView;
+...
+private void addItem() {
+    View newView;
+    ...
+    mContainerView.addView(newView, 0);
+}
