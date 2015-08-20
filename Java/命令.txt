@@ -1,2 +1,10 @@
 ﻿java -cp mavenstudy-1.0-SNAPSHOT.jar com.cqupt.cpp.App
 注意:-cp mavenstudy-1.0-SNAPSHOT.jar 是将jar包设置为classpath，运行里面的App	class
+
+
+more xxxxfilename   在命令行里面输出该文件的内容
+
+管道命令
+java com.company.TerminalTest  > d:/a.txt      //这里就是将标准输出流里面的内容重新定位到a.txt文件里面去
+
+java com.company.TerminalTest  < d:/txt        //这里就是a.txt文件里面的内容当做参数传入到main 函数里面去
