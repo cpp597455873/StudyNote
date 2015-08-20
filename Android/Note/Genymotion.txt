@@ -1,0 +1,39 @@
+启动Genymotion，报错Unable to load virtualbox engine
+
+
+【一、错误信息】
+1、安装完後，
+1）VirtualBox弹出“COM对象创建失败，应用程序将被中断”；
+2）Genymotion显示“genymotion virtualization engine not found”，弹出提示“Unable to load virtualbox engine”
+
+
+【二、解决方式】
+VirtualBox和Genymotion都右键，选择“兼容性”，选择“以兼容模式运行这个程序”，选择“WindowVista”，然后运行就可以了；
+
+之前只是将VirtualBox兼容Vista运行，而Genymotion没有兼容，结果Genymotion不能运行，后来去stackflow上查，说Genymotion也要兼容Vista运行才行；
+
+
+【三、版本信息】
+1、系统版本：WIN7 64位；
+2、Genymotion版本 ： v2.4.0；
+3、VirtualBox版本 ： 自带，v4.3.12；
+
+
+【四、说明】
+我在win8 64位，安装Genymotion，没有问题，可以运行；
+把安装包拿到Win7 64位的电脑上，就无法安装了；
+
+1、尝试拿到另外一台Win7 64位的电脑上，也不能装（这两个电脑都是一个Ghost系统盘安装的）；
+猜测可能是系统问题；
+解决问题后，有一次我在第三台Win7 64位（不是我那个ghost盘装的）的可以安装，说明确实是系统问题；
+
+2、网上有一种解决方式：
+.....
+“请至C:\Users\USER\AppData\Local\Genymobile，寻找一名为Genymotion的记事本log档案
+打开后会看到密密麻麻的一大串，Ctrl+F搜寻" found in settings "往后一点，会看到一个路径，接着请按照上面的路径重新安装即可。”
+.....
+但是我在那个文件里卖弄，根本没找到这个东西；
+
+3、还有说按原路径安装的，我又装了一遍，也没用；
+
+4、最后发现是Genymotion也要用兼容Vista模式运行；
