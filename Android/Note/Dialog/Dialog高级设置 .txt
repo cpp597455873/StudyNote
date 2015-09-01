@@ -1,0 +1,8 @@
+//自定义dialog head
+loginDialog.setCustomTitle(title);
+
+//设置button  
+dialog.setButton()
+
+//dialog位置
+loginDialog.getWindow().setGravity(Gravity.CENTER);
