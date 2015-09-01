@@ -1,0 +1,17 @@
+﻿ public static int calc() throws IOException {
+
+        int ret = 0;
+
+        try {
+            ++ret;
+            throw new IOException("try");
+        } catch (IOException ioe) {
+            --ret;
+            return ret;   //如果有finally这里return无效
+        } finally {
+            ++ret;
+            return ret;
+
+        }
+
+    }
