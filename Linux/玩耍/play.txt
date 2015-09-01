@@ -1,0 +1,7 @@
+//this is fire
+sudo apt-get install libaa-bin 
+aafire
+
+//代码雨
+sudo apt-get install cmatrix
+cmatrix

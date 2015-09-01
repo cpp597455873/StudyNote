@@ -1,0 +1,157 @@
+配置文件
+用户信息文件  /etc/passwd   
+man 5 passwd查看帮助文档
+root:x:0:0:root:/root:/bin/bash
+cpp:x:1000:1000:cpp,,,:/home/cpp:/bin/bash
+username:pass:uid:gid
+用户名：密码标识：用户uid：组id：说明：家目录：命令解释器
+                     |
+					 |  
+                root(0)  1-499 伪用户  >=500普通用户
+
+/etc/group   存放有用户的组信息
+/etc/gshadow  组信息
+
+useradd [选项] xxusername
+-u   手工指定uid
+-d	 家目录
+-c   用户说明信息
+-g   组id  初始组id，不能变更
+-G   组名，可以用逗号添加为多个组
+-s	 命令指示器	
+
+usermod [选项] xxusername
+-u   手工指定uid
+-c   用户说明信息
+-g   组id  初始组id，不能变更
+-G   组名，可以用逗号添加为多个组
+-L   临时锁定用户    在密码前加！
+-U   解锁用户
+
+chage  修改用户密码状态
+
+chage -d 0  xxusername  用户登录必须更改密码
+
+gpasswd -a xxusername  xxxgroup  将用户添加进某个组里面
+
+/etc/default/useradd  添加用户的默认配置信息
+
+/etc/login.defs      添加用户的默认登录信息
+/etc/login.defs      添加用户的默认登录信息
+
+/etc/shadow  影子文件，这里面存放了用户信息
+
+普通用户家目录的权限 700
+root的权限           550
+
+/var/spool/mail/用户名   
+
+/etc/skel 用户模板目录，就是添加用户的时候添加到家目录的模板文件
+
+passwd -l 锁定用户   在密码前加！！
+passwd -u 解锁用户 
+echo "123" | passwd -stdin lamp  //接受输出作为密码
+
+
+su 
+su - root  记住一定要有 - 代表的同时也切换环境变量
+su - root -c "add useradd user3"  不切换root，执行root用户的操作
+ 
+userdel  删除用户
+userdel -r  删除用户  代表将家目录也删除
+
+
+
+
+ACL权限
+需要分期支持
+
+df -h  查看分区情况
+
+dumpe2fs  -h /xxx分区
+
+开启acl： mount -o remount,acl /  给根分区重新挂载并加载acl  临时生效
+永久开启acl： 文件在/etc/fstab文件里面 在defaults后面加上 ,acl  并重启系统或者 重新挂载分区 mount -o remount / 
+
+查看acl权限
+getfacl  xxfile/xxdirectory
+
+设置acl  setfacl  递归acl 所有（只对现有的所有文件）设置acl权限   只对文件夹生效
+setfacl -m   g(u):xxusername(xxxgroupname):rwx  -R  xxfile/xxdirectory
+
+设置默认acl  setfacl -m d 递归acl 所有未来的文件 设置acl权限，但是对现有不生效  只对文件夹生效
+setfacl -m   d:g(u):xxusername(xxxgroupname):rwx  xxfile/xxdirectory
+
+递归设置acl  setfacl
+setfacl -m   g(u):xxusername(xxxgroupname):rwx   xxfile/xxdirectory
+
+设置mask，即最大有效权限  
+setfacl -m   m:rx   xxfile/xxdirectory    //即使给某个acl用户或者组设置rwx权限，最终生效的也只有rx权限  
+
+删除某个用户或组acl权限
+setfacl -x    g(u):xxusername(xxxgroupname)   xxfile/xxdirectory
+删除所有用户或组acl权限
+setfacl -b    g(u):xxusername(xxxgroupname)   xxfile/xxdirectory
+
+
+
+SetUID  只针对文件  危险权限  eg：passwd命令
+设置
+条件
+1.文件具有x权限
+2.设置文件的uid必须具有文件的x权限
+chmod  4755    4就代表具有s权限，s权限代表执行的时候化身为文件所属者的身份，具有文件所属者的权限，而且只在程序支持过程中有效。
+chmod  u+s
+取消suid 
+chmod  755 
+chmod  u-s
+
+
+SetGID  针对可执行文件和文件夹   eg：locate命令和mlocate.db的关系
+chmod  2755
+chmod  g+s
+2 就代表具有s权限，s权限代表执行的执行组时候化身为文件所属组的身份，具有文件所属组的权限，而且只在程序支持过程中有效。  注意，如果是针对文件夹的话，如果命令的执行者具有w权限，那么新建的文件夹的所属者就是父文件夹的所属组
+取消suid 
+chmod  755 
+chmod  g-s
+
+
+Stricky Bit黏着位  只针对文件夹生效，普通用户对该文件夹具有 rwx权限，如果将该文件夹设置黏着位的话那么其他用户只能删除自己建立的文件夹，而不能删除其他人建立文件
+chmod  1755
+chmod  o+t
+取消
+chmod  755
+chmod  o-t
+
+
+chattr  文件系统属性
+格式 chattr +-=[选项]  文件或目录
+eg chattr +i  文件或目录   chattr +i  文件或目录
+i  针对文件属性将文件设为只读 不能删除  修改内容  更名，root用户也不例外
+i  针对文件夹可以修改文件夹里面的内容，但是不能删除文件和新建文件
+
+i  针对文件属性将文件设为只能追加，不能删除，更名，root用户也不例外
+i  针对文件夹可以修改文件夹里面的内容和新建文件，但是不能删除文件
+lsattr
+查看隐藏属性
+
+
+sudo
+修改sudo   给普通用户赋予root才能执行的命令
+visudo
+username    管理的源IP或者ALL=(切换为何种用户或者ALL 可选默认root)  命令绝对路径 可以写详细命令或者ALL
+%groupname   管理的源IP或者ALL=(切换为何种用户或者ALL 可选默认root)  命令绝对路径 可以写详细命令或者ALL
+sudo -l 查看自己可用sudo的命令
+运行的时候
+sudo 命令即可
+
+
+
+
+
+
+
+
+
+
+
