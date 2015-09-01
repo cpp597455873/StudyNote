@@ -1,0 +1,88 @@
+http://blog.csdn.net/carrey1989/article/details/8060155
+
+
+String serviceString = Context.DOWNLOAD_SERVICE;  
+DownloadManager downloadManager;  
+downloadManager = (DownloadManager)getSystemService(serviceString);  
+Uri uri = Uri.parse( "http://g.hiphotos.baidu.com/image/pic/item/203fb80e7bec54e778380123bd389b504fc26a32.jpg" );  
+DownloadManager.Request request =  new  Request(uri);  
+request.setTitle("下载图片中");
+request.setDescription("下载中");
+//request.setDestinationUri(Uri.fromFile(f)); 
+下载到外部存储卡下载目录
+//request.setDestinationInExternalFilesDir(this,Environment.DIRECTORY_DOWNLOADS, “Bugdroid.png”);  
+//会返回一个唯一的id
+final long  referenced = downloadManager.enqueue(request); 
+
+setNotificationVisibility方法可以用来控制什么时候显示Notification，甚至是隐藏该request的Notification。有以下几个参数：
+Request.VISIBILITY_VISIBLE：在下载进行的过程中，通知栏中会一直显示该下载的Notification，当下载完成时，该Notification会被移除，这是默认的参数值。
+Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED：在下载过程中通知栏会一直显示该下载的Notification，在下载完成后该Notification会继续显示，直到用户点击该
+Notification或者消除该Notification。
+Request.VISIBILITY_VISIBLE_NOTIFY_ONLY_COMPLETION：只有在下载完成后该Notification才会被显示。
+Request.VISIBILITY_HIDDEN：不显示该下载请求的Notification。如果要使用这个参数，需要在应用的清单文件中加上DOWNLOAD_WITHOUT_NOTIFICATION权限
+
+
+
+
+//设置监听下载完成广播
+IntentFilter filter = new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
+BroadcastReceiver receiver = new BroadcastReceiver() {
+		@Override
+	      public void onReceive(Context context, Intent intent) {
+	        long reference = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
+	        if (referenced == reference) {
+	          Toast.makeText(getApplicationContext(), "图片下载完成", Toast.LENGTH_LONG).show();
+	        }
+	      }
+	    };
+registerReceiver(receiver, filter);
+
+//监听点击下载项广播
+查询下载文件的保存地址，如果在下载时制定了路径和文件名，我们也可以直接操作文件。
+我们可以为ACTION_NOTIFICATION_CLICKED action注册一个广播接受者，当用户从通知栏点击了一个下载项目或者从Downloads app点击可一个下载的项目的
+时候，系统就会发出一个点击下载项的广播。
+代码片段如下：
+IntentFilter filter = new IntentFilter(DownloadManager.ACTION_NOTIFICATION_CLICKED);  
+BroadcastReceiver receiver = new BroadcastReceiver() {  
+  @Override  
+  public void onReceive(Context context, Intent intent) {  
+    String extraID = DownloadManager.EXTRA_NOTIFICATION_CLICK_DOWNLOAD_IDS;  
+    long[] references = intent.getLongArrayExtra(extraID);  
+    for (long reference : references)  
+      if (reference == myDownloadReference) {  
+        // Do something with downloading file.  
+      }  
+  }  
+};  
+registerReceiver(receiver, filter);  
+
+
+
+//设置仅wifi下载
+request.setAllowedNetworkTypes(Request.NETWORK_WIFI);
+
+//取消下载
+downloadManager.remove(REFERENCE_ID1, REFERENCE_ID2, REFERENCE_ID3);  
+
+//查询下载情况
+Cursor cursor = downloadManager.query(query);
+while (cursor.moveToNext()) {
+		int fileNameIdx = cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME);
+		int fileUriIdx = cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI);
+		String fileName = cursor.getString(fileNameIdx);
+		String fileUri = cursor.getString(fileUriIdx);
+		Toast.makeText(getApplicationContext(), "图片下载完成  文件名： "+fileName+"  下载地址："+fileUri, Toast.LENGTH_LONG).show();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
