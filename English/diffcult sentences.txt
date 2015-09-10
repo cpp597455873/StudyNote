@@ -1,29 +1,31 @@
 The config-file tag encapsulates a feature tag that is injected into the platform-specific config.xml file to make the platform aware of the additional code library. 
-The Java plugin is convention based.    Java²å¼şÊÇ»ùÓÚÔ¼¶¨¡£
-This chapter is not exhaustive, and there are many other things you can do with Java projects in Gradle. //exhaustive adj. Ïê¾¡µÄ£»³¹µ×µÄ£»ÏûºÄµÄ
-We¡¯ll showcase why the excitement around Gradle is on the rise and how it meets the challenge of these lofty build automation goals. //showcase n. ³ÂÁĞ³÷£¬[¼Ò¾ß] ³ÂÁĞ¹ñ£»ÏÔÊ¾ÓÅµãµÄ¶«Î÷ lofty adj. ¸ßµÄ£»³ç¸ßµÄ£»¸ß¼¶µÄ£»¸ß°ÁµÄ
-We¡¯re excited to have you along for the ride.  ÎÒÃÇºÜ¸ßĞËÓĞÄã´Õ´ÕÈÈÄÖ¡£
-Conventions Used in This Book.     convention n. ´ó»á£»[·¨] ¹ßÀı£»[¼Æ] Ô¼¶¨£»[·¨] Ğ­¶¨£»Ï°Ë×
-The following typographical conventions are used in this book. //typographical adj. Ó¡Ë¢ÉÏµÄ£»ÅÅ×ÖÉÏµÄ
-Acknowledgments from Tim Berglund	Acknowledgments ÖÂĞ»
-It¡¯s not every day that a game-changing technology comes along, and it¡¯s exciting to be a small part of one when it does. //µß¸²ĞÔµÄ¡¢¸Ä±äÓÎÏ·¹æÔòµÄ
+The Java plugin is convention based.    Javaæ’ä»¶æ˜¯åŸºäºçº¦å®šã€‚
+This chapter is not exhaustive, and there are many other things you can do with Java projects in Gradle. //exhaustive adj. è¯¦å°½çš„ï¼›å½»åº•çš„ï¼›æ¶ˆè€—çš„
+Weâ€™ll showcase why the excitement around Gradle is on the rise and how it meets the challenge of these lofty build automation goals. //showcase n. é™ˆåˆ—æ©±ï¼Œ[å®¶å…·] é™ˆåˆ—æŸœï¼›æ˜¾ç¤ºä¼˜ç‚¹çš„ä¸œè¥¿ lofty adj. é«˜çš„ï¼›å´‡é«˜çš„ï¼›é«˜çº§çš„ï¼›é«˜å‚²çš„
+Weâ€™re excited to have you along for the ride.  æˆ‘ä»¬å¾ˆé«˜å…´æœ‰ä½ å‡‘å‡‘çƒ­é—¹ã€‚
+Conventions Used in This Book.     convention n. å¤§ä¼šï¼›[æ³•] æƒ¯ä¾‹ï¼›[è®¡] çº¦å®šï¼›[æ³•] åå®šï¼›ä¹ ä¿—
+The following typographical conventions are used in this book. //typographical adj. å°åˆ·ä¸Šçš„ï¼›æ’å­—ä¸Šçš„
+Acknowledgments from Tim Berglund	Acknowledgments è‡´è°¢
+Itâ€™s not every day that a game-changing technology comes along, and itâ€™s exciting to be a small part of one when it does. //é¢ è¦†æ€§çš„ã€æ”¹å˜æ¸¸æˆè§„åˆ™çš„
 In five years, when Gradle has brought peace and order to all of your builds in ways you never could have anticipated, and you look back and realize you learned it all from these books, send Jay an email to say thanks.
-nesting relationships Ç¶Ì×¹ØÏµ
+nesting relationships åµŒå¥—å…³ç³»
 
 ---------------------------------------------------------------------------
-Groovy uses the term ¡°closure¡± to refer to a block of code between two
+Groovy uses the term â€œclosureâ€ to refer to a block of code between two
 curly braces. A closure functions like an object that can be passed as a
 parameter to a method or assigned to a variable, then executed later.
-You¡¯ll see closures all over in Gradle, since they¡¯re a perfect fit for holding blocks of configuration code and build actions.
+Youâ€™ll see closures all over in Gradle, since theyâ€™re a perfect fit for holding blocks of configuration code and build actions.
 ----------------------------------------------------------------------------
 
- performance overhead  ĞÔÄÜ¿ªÏú
+ performance overhead  æ€§èƒ½å¼€é”€
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 This lesson walks you through decoding large bitmaps without exceeding the per application memory limit by loading a smaller subsampled version in memory.
-±¾¿ÎÖ¸µ¼ÄúÍê³É¶øÎŞĞèÔÚÄÚ´æÖĞ¼ÓÔØÒ»¸ö½ÏĞ¡µÄ×Ó²ÉÑù°æ±¾³¬¹ıÁËÃ¿¸öÓ¦ÓÃ³ÌĞòµÄÄÚ´æÏŞÖÆ½âÂë´óÎ»Í¼¡£
+æœ¬è¯¾æŒ‡å¯¼æ‚¨å®Œæˆè€Œæ— éœ€åœ¨å†…å­˜ä¸­åŠ è½½ä¸€ä¸ªè¾ƒå°çš„å­é‡‡æ ·ç‰ˆæœ¬è¶…è¿‡äº†æ¯ä¸ªåº”ç”¨ç¨‹åºçš„å†…å­˜é™åˆ¶è§£ç å¤§ä½å›¾ã€‚
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+essence  æœ¬è´¨
+essential å¿…é¡»çš„ï¼Œå¿…ä¸å¯å°‘çš„
 
 
 
@@ -41,6 +43,4 @@ This lesson walks you through decoding large bitmaps without exceeding the per a
 
 
 
-
-
-
+
