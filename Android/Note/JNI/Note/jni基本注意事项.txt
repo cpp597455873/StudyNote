@@ -1,0 +1,24 @@
+-----支持所有平台------------------------------------------
+在jni目录下新建一个
+Application.mk
+内容包含如下
+APP_ABI := all
+
+
+-----c++编译支持---------------------------------------------
+用extern c包裹起来
+extern "C" {
+ jint Java_com_example_ndkagain_MainActivity_showMessage(JNIEnv* env,
+			jobject thiz) {
+		jclass cls = env->GetObjectClass(thiz);
+		jmethodID mid = env->GetMethodID(cls, "getName", "()V");
+		env->CallVoidMethod(thiz, mid);
+		return 0;
+ }
+}
+
+------
+
+
+
+
