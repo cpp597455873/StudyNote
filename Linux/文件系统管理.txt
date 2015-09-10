@@ -1,52 +1,59 @@
-������������ĸ�
-��չ���������һ��   ���ܸ�ʽ��
-������+��չ��������ĸ�
-�߼�����������չ�����и����
+主分区：最多四个
+扩展分区：最多一个   不能格式化
+主分区+扩展分区最多四个
+逻辑分区：由拓展分区切割而来
 
 
-�ļ�ϵͳ
+文件系统
 
-ext2 ���֧��16TB�������ļ����2TB
-ex3  ��ext2���ƣ�����Ҫ��������־����
-ext4 ���֧��1EB�������ļ����16TB   1EB = 1024PB = 1024GB
+ext2 最大支持16TB，单个文件最大2TB
+ex3  跟ext2类似，就主要增加了日志功能
+ext4 最大支持1EB，单个文件最大16TB   1EB = 1024PB = 1024GB
 
-df  �ļ�ϵͳ�鿴����   	   ��ͳ�Ʊ�ɾ�����ļ����ͱ�����ռ�õĿռ�  �����du
--h  ���Ի���ʾ
+df  文件系统查看命令   	   会统计被删除的文件，和被程序占用的空间  会大于du
+-h  人性化显示
 
-du  ͳ��Ŀ¼�����ļ���С   �����ļ��Ĵ�С
--s  ֻ��ʾ��Ŀ¼�����
--h  ���Ի���ʾ
+du  统计目录或者文件大小   所有文件的大小
+-s  只显示父目录的情况
+-h  人性化显示
 
-fsck  �ļ�ϵͳ�޸�����
--a   �Զ��޸��ļ�ϵͳ
--y   �Զ��޸��ļ�ϵͳ
+fsck  文件系统修复命令
+-a   自动修复文件系统
+-y   自动修复文件系统
 
-�鿴������Ϣ
-dumpe2fs  ������
+查看分区信息
+dumpe2fs  分区名
 
-���� 
+挂载 
 mount 
-ֻ����mount��ʱ�����ʾ�Ѿ����ص���Ϣ
-mount [-t  �����ļ�ϵͳ]  [-o  ����ѡ�����ɶ��Ÿ���]  �豸�ļ���    ���ص�
+只输入mount的时候就显示已经挂载的信息
+mount [-t  分区文件系统]  [-o  特殊选项，多个由逗号隔开]  设备文件名    挂载点
+eg:		mount -t ext4 -0 remount,rw / 
 
-umount �豸�ļ�������ص㣬���˳�
+umount 设备文件名或挂载点，先退出
 
-LinuxĬ�ϲ�֧��ntfs��������ʹ��ntfs-3g����ntfs֧��
+Linux默认不支持ntfs分区可以使用ntfs-3g添加ntfs支持
 
-fdisk ��������
+fdisk 分区命令
 
-fdisk -l �鿴Ӳ��
+fdisk -l 查看硬盘
 
-fdisk /�豸�ļ���   ���з���
-m��ʾ�����ĵ�
-n�����·���
-l��ʾ֧�ֵķ�������
-p��ʾ���̷�����Ϣ
+fdisk /设备文件名   进行分区
+m显示帮助文档
+n进行新分区
+l显示支持的分区类型
+p显示磁盘分区信息
 
-partprobe  ����������
+partprobe  重启分区表
 
 
-
+fstab文件的修改，自动挂载分区的配置文件
+UUID 或者设备文件名（dumpe2fs） 		  挂载点	      挂载类型      挂载参数同mount eg：rw/noexec      0不备份 1定期备份 2不定期备份    0代表不检测  其他的代表检测优先级  越小越先扫描				
+UUID=7af31b0b-6c74-4296-afac-afb6e209e8ae none            swap          sw             		   			   0				       			0
+UUID=aa3255f0-8ea4-4c48-bf0e-6e54c79a6957 /               ext4          errors=remount-ro 				   0      				   			1
+修改完毕之后使用mount -a 重新根据配置文件挂载所有分区
+因为fstab错误不能修改fstab文件，根据以下命令重新挂载根分区的读写权限
+mount -t ext4 -0 remount,rw / 
 
 
 
