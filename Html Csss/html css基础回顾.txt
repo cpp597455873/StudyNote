@@ -32,7 +32,28 @@ like this:
 
 <a href="http://www.baidu.com" target="_blank">baidu</a>  target="_blank"在新的选项卡中打开网站
 
+-----img标签------------------------------------------------------------------
+align属性控制文本与文字的位置关系
+align="top"  文字与图像顶部对齐
+align="middle"  文字的底部与图像中部对齐
+align="bottom"  文字底部与图像底部对齐
+align="left"  图像在左侧，文字环绕
+align="right"    图像在右侧，文字环绕
+align="absmiddle"   文字与图像的中部绝对对齐
 <img src="图片地址" alt="下载失败时的替换文本" title = "提示文本">   alt描述信息， title鼠标放在上面的提示信息
+
+-----给图片加链接-------------------------------------------
+就是在a边沁里面放入img即可
+<a><img><img><a>
+
+-----热区点击--------------------------------------------
+<img>+<map>+<area>
+在img中设置usemap设置点击热区
+area shape可以设置多种circle(圆),rect(矩形),default(整幅图片),poly(自定义折线)
+<img src="img/s2.jpg" usemap="1"/>
+<map name="1">
+	<area shape="circle" title="这是链接区域" coords="50,50,50" href="http://www.baidu.com"/>
+</map>
 
 <textarea cols="50" rows="10" >在这里输入内容...</textarea>  cols每行50字符，rows有多少行
 checkbox 同一组的单选按钮，name 取值一定要一致
@@ -454,11 +475,43 @@ a:hover{color: #0F0;} /* 鼠标在链接上 */
 a:active {color: #00F;} /* 点击激活链接——在你点击该链接之后，页面正在转向新地址的时候，链接显示此颜色；当你已经到了要链接的页面，然后再返回，原页面上的此链接仍是此颜色 */ 
 注意
 
+-----font标签--------------------------------------------------
+font里面的字号是1-7的默认是3，可以使用 + -来指定相对于默认字体大一号或者小一号的字体
+color属性是指定字体颜色的
+face属性就是指定使用什么样的字体的
+<font size="5" face="幼圆" color="violet">你好</font>
+
+-----文字排版------------
+斜体<i>  或者 <em>    常用em
+粗体<strong>  <b>     常用strong
+下划线<u>
+<sup>  上标，表示指数等
+<sub>   下标，表示底数等
+<strike> 多用于删除效果，就是在字符中间画一条线
+<marquee>跑马灯，即文字滚动效果。里面有direction属性，left right，up，down    loop指定循环次数     behavior="slide"跑马灯一次就停止 bgcolor背景底色
+eg： <marquee direction="up" bgcolor="#FFFFFF" scrolldelay="1"  behavior="slide" loop="3">你好</marquee>
+marquee图片跑马灯	eg:<marquee direction="up" scrollamount="1"><img src="img/s2.jpg" usemap="1"/></marquee>
 
 
 
+特殊字符  
+<  &lt;
+>  &gt;
+"  &quot;
 
+-----a标签------------------------------------------------------
+title属性，就是鼠标悬停在链接上，鼠标下方会弹出的链接说明
+target指定打开链接的方式 _blank   _self _top _parent(上一级窗口打开)
 
+-----ancher锚------
+其实就是用a标签做的，实现快速跳转
+<a href="#100" >100</a>
+<a name="100">第100届</a>
+
+-----电子邮件，FTP,Telnet链接
+<a href="mailto:xxx email">
+<a href="ftp:xxx email">
+<a href="telnet:xxx email">
 
 
 
