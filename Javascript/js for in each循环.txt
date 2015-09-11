@@ -1,0 +1,10 @@
+一些小问题
+js支持 for in 和 for each循环，但是都存在兼容性问题
+
+for (var e in ids){
+		alert(ids[e]);   //这里的e是数组的编号
+}
+
+
+ids.forEach(function(e) {   
+})
