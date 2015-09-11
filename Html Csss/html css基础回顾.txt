@@ -513,9 +513,18 @@ target指定打开链接的方式 _blank   _self _top _parent(上一级窗口打
 <a href="ftp:xxx email">
 <a href="telnet:xxx email">
 
-
-
-
+-----表格--------------------------------------------------------
+<table> <tbody> <caption> <tr> <th> <td>
+<table> 
+width height可以直接写数值，而不用带上单位，默认单位是px
+align  指表格本身对齐方式而非里面的内容，left，right，center
+border 宽度 默认0
+bordercolor 颜色
+bordercolorlight 左上颜色
+bordercolordark  右下颜色
+rules取值有none cols rows，cols是竖向拉通没有边框，rows是横向拉通没有边框 
+cellpadding 每个小格子之间的的内边距
+cellspacing 每个小格子之间的间距
 
 
 
