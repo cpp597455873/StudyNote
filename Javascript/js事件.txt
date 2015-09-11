@@ -1,0 +1,48 @@
+2、onclick事件
+一）js修改onclick动作的四种方式 
+-----第一种----------------------------------------------
+button.onclick = Function("alert('hello');");  
+ 
+-----第二种----------------------------------------------
+button.onclick = function(){alert("hello"); };  
+ 
+-----第三种----------------------------------------------
+button.onclick = myAlert;  
+ function myAlert(){  
+  alert("hello");  
+}  
+ 
+第四种：  
+-----第一种----------------------------------------------
+这种情况更加动态，更为实用，而且还能添加多个函数(添加的事件的顺序即执行顺序)。  
+if(window.addEventListener){ // Mozilla, Netscape, Firefox  
+   //element.addEventListener(type,listener,useCapture);   
+   button.addEventListener('click', alert('11'), false);  
+   button.addEventListener('click', alert('12'), false);//执行顺序11 -> 12    先添加 先执行
+} else { // IE  
+   button.attachEvent('onclick', function(){alert('21');});  
+   button.attachEvent('onclick', function(){alert('22');});执行顺序22 -> 21   新添加，先执行
+}  
+ 
+实例讲解：  
+button.onclick = Function("alert('31');");  
+button.onclick = Function("alert('32');");  
+button.onclick = Function("alert('33');"); //如果这样写,那么将会只有最后一个方法被执行  
+  
+button.attachEvent("onclick", function(){alert('41');});  
+button.attachEvent("onclick", function(){alert('42');});  
+button.attachEvent("onclick", function(){alert('43');}); //如果这样写,三个方法都会被执行  
+  
+//当然，也可以这样写  
+button.onclick = Function("alert('51');");     
+button.attachEvent("onclick", function(){alert('52');});  
+  
+-----移除js事件------------------------------------------------- 
+detachEvent('onclick',func);//ie下使用删除事件func  
+removeEventListener('click',func);//Mozilla下，删除事件func   
+
+
+-----js事件源---------------------------------------------------
+this或$(this)
+获取id this.id或$(this).attr("id");
+	
