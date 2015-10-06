@@ -1,0 +1,29 @@
+
+	<form action="testPojo" method="post">
+		username:<input type="text" name="username" /> <br>
+		 password:<input
+			type="text" name="password" /> <br> age:<input type="text"
+			name="age" /> <br> province:<input type="text"
+			name="address.province" /> <br> 
+			city:<input type="text"
+			name="address.city" /> <br> <input type="submit" value="submit" /> <br>
+	</form>
+	
+	public class User {
+	private String username;
+	private String password;
+	private int age;
+	private Address address;
+	set。。。
+	get。。。
+	}
+	
+	
+    @RequestMapping("/testPojo")
+	public String testRequestHeader(User user) {
+		System.out.println("testPojo:"+user);
+		return "login";
+	}
+	
+	
+	

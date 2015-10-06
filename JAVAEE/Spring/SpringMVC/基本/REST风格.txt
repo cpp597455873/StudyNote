@@ -1,0 +1,60 @@
+	1.
+	在web.xm里面配置过滤器
+	<filter>
+		<filter-name>hiddenHttpMethodFilter</filter-name>
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>   <!--  这个类是将_method=PUT,_method=DELETE转换为PUT和DELETE请求，因为浏览器不支持这两种发送这两种请求-->
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>hiddenHttpMethodFilter</filter-name>
+		<url-pattern>/*</url-pattern>                  <-- 对应的匹配规则，貌似写/匹配不到，要写/*-->
+	</filter-mapping>
+	
+	2.在对应的类里面加入
+	
+	@RequestMapping(value="/picture",method=RequestMethod.POST)
+	public String picturePost(){
+		System.out.println("picture post");
+		return "login";
+	}
+	
+	@RequestMapping(value="/picture/{id}",method=RequestMethod.GET)
+	public String pictureGet(@PathVariable Integer id){
+		System.out.println("picture get "+id);
+		return "login";
+	}
+	
+	@RequestMapping(value="/picture/{id}",method=RequestMethod.PUT)
+	public String picturePut(@PathVariable Integer id){
+		System.out.println("picture put "+id);
+		return "login";
+	}
+	
+	@RequestMapping(value="/picture/{id}",method=RequestMethod.DELETE)
+	public String pictureDelete(@PathVariable Integer id){
+		System.out.println("picture delete "+id);
+		return "login";
+	}
+	
+	
+	3.在浏览器发送这几种请求
+	
+	<form action="picture" method="post">
+			<input name="_method" value="POST" type="hidden" />
+		<input value="RESTFUL post"
+			type="submit" />
+	</form>
+
+	<form action="picture/1" method="post">
+		<input name="_method" value="PUT" type="hidden" />
+		 <input value="RESTFUL put"
+			type="submit" />
+	</form>
+
+	<form action="picture/1" method="post">
+		<input name="_method" value="DELETE" type="hidden" />
+		<input value="RESTFUL delete"
+			type="submit" />
+	</form>
+
+	<a href="picture/1">RESTFUL get</a><br />

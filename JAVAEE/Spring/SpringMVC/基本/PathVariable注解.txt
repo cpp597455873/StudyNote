@@ -1,0 +1,5 @@
+@RequestMapping("/image/{id}")   //id占位符
+	public String pathVariable(@PathVariable Integer id){  //取得id
+		System.out.println(id);
+		return "login";
+	}

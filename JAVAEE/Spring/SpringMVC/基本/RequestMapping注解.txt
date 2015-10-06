@@ -1,0 +1,37 @@
+﻿     映射请求参数、请求方法或请求头 
+
+•  @RequestMapping  除了可以使用请求 URL 映射请求外， 
+   还可以使用请求方法、请求参数及请求头映射请求 
+•  @RequestMapping 的 value、method、params 及 heads  
+   分别表示请求 URL、请求方法、请求参数及请求头的映射条 
+   件，他们之间是与的关系，联合使用多个条件可让请求映射 
+   更加精确化。 
+   
+   method
+   method=RequestMapping.POST   只接受POST请求
+   
+•  params 和 headers支持简单的表达式 ： 
+    –  param1: 表示请求必须包含名为 param1 的请求参数 
+    –  !param1: 表示请求不能包含名为 param1 的请求参数 
+    –  param1 != value1: 表示请求包含名为 param1 的请求参数，但其值 
+       不能为 value1 
+    –  {“param1=value1”, “param2”}: 请求必须包含名为 param1 和param2  
+       的两个请求参数，且 param1 参数的值必须为 value1 
+	   
+	   
+   
+使用 @RequestMapping 映射请求 
+
+•  Ant 风格资源地址支持 3 种匹配符 ： 
+     –  ? ：匹配文件名中的一个字符 
+     –  * ：匹配文件名中的任意字符 
+     –  ** ：** 匹配多层路径 
+
+•   @RequestMapping 还支持 Ant 风格的 URL ： 
+     –  /user/*/createUser: 匹配  
+        /user/aaa/createUser、/user/bbb/createUser 等 URL 
+     –  /user/**/createUser: 匹配  
+        /user/createUser、/user/aaa/bbb/createUser 等 URL 
+     –  /user/createUser??: 匹配  
+        /user/createUseraa、/user/createUserbb 等 URL 
+
