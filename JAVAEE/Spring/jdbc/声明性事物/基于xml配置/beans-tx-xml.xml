@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<context:property-placeholder location="classpath:db.properties" />
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value="${jdbc.user}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="jdbcUrl" value="${jdbc.url}"></property>
+		<property name="driverClass" value="${jdbc.driverclass}"></property>
+		<property name="initialPoolSize" value="${jdbc.initialPoolSize}"></property>
+		<property name="maxPoolSize" value="${jdbc.initialPoolSize}"></property>
+
+	</bean>
+
+
+	<bean class="org.springframework.jdbc.core.JdbcTemplate" id="jdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean class="com.cpp.spring.jdbc.txcml.UserDao" id="userDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+	</bean>
+
+	<bean class="com.cpp.spring.jdbc.txcml.BookDao" id="bookDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+	</bean>
+	
+	<bean class="com.cpp.spring.jdbc.txcml.BookShopService" id="bookShopService">
+		<property name="bookDao" ref="bookDao"></property>
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	
+	<bean class="com.cpp.spring.jdbc.txcml.Cash" id="cash">
+		<property name="bookShopService" ref="bookShopService"></property>
+	</bean>
+
+	<!-- 1.配置 TransactionManager-->
+	<bean
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		id="dataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- 2.配置 事物属性-->
+	<tx:advice transaction-manager="dataSourceTransactionManager"
+		id="tvAdvice">
+		<tx:attributes>
+			<tx:method name="buyBook" isolation="DEFAULT" propagation="REQUIRED" read-only="false" timeout="10"/>
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+	<!-- 3.配置 切点-->
+		<aop:pointcut 
+			expression="execution(* com.cpp.spring.jdbc.txcml.ICash.buyBook(..))"
+			id="pointcut" />
+		<!-- 4.关联切点和事物属性-->
+		<aop:advisor advice-ref="tvAdvice" pointcut-ref="pointcut" />
+	</aop:config>
+
+
+
+</beans>

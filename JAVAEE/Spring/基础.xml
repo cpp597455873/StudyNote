@@ -1,0 +1,310 @@
+1.ApplicationContext的实现类 	FileSystemXmlApplicationContext、ClassPathXmlApplicationContext、WebApplicationContext
+
+2.依赖注入：属性注入 、构造器注入、工厂方法注入
+	属性注入   property
+	<bean id="hello" class="com.cpp.spring.Hello">
+		<property name="name1" value="cpp"></property>
+	</bean>
+
+	构造器注入 constructor-arg
+	<bean id="hello2" class="com.cpp.spring.Hello">
+		<constructor-arg value="john"></constructor-arg>
+		<constructor-arg value="1"></constructor-arg>
+	</bean>
+
+	<bean id="hello3" class="com.cpp.spring.Hello">
+		<constructor-arg value="1" index="2"></constructor-arg> <!-- index表示在构造器里面的位置-->
+		<constructor-arg value="john" index="1"></constructor-arg>
+	</bean>
+
+
+	<bean id="hello4" class="com.cpp.spring.Hello">           
+		<constructor-arg value="1" type="int"></constructor-arg>  <!-- type用于区别类型-->
+		<constructor-arg value="john" type="java.lang.String"></constructor-arg>
+	</bean>
+	
+	
+	<![CDATA[xxxx]]>  用于包裹特殊符号
+	eg：
+	<bean id="hello" class="com.cpp.spring.Hello">
+		<property name="name1">
+			<value><![CDATA[**<<>>]]></value>
+		</property>
+	</bean>
+	
+	bean引用
+	<bean id="hello5" class="com.cpp.spring.Hello">
+		<property name="child" ref="hello4"></property>
+	</bean>
+	
+	
+	内部bean 不能被外部引用
+	<bean id="hello6" class="com.cpp.spring.Hello">
+		<property name="child">
+				<bean  class="com.cpp.spring.Hello">  <!-- 内部bean-->
+					<property name="name1" value="cpp"></property>
+				</bean>
+		</property>
+	</bean>
+	
+	null值 <null/>
+	<bean id="hello7" class="com.cpp.spring.Hello">
+		<property name="child">
+				<null/>
+		</property>
+	</bean>
+	
+	级联属性
+	<bean id="hello8" class="com.cpp.spring.Hello">
+		<property name="child" ref="hello4"></property>
+		<property name="child.age" value="43"></property>  <!-- 级联属性赋值-->
+	</bean>
+	
+	
+	为list set map集合类型赋值
+	<bean id="car" class="com.cpp.spring.Car">
+		<property name="hellos">
+			<list>	<!-- list集合赋值-->
+				<ref bean="hello"/>
+				<ref bean="hello1"/>
+				<ref bean="hello2"/>
+			</list>
+		</property>
+		
+		<property name="hellox">
+			<map> <!-- map集合赋值-->
+				<entry key="1" value-ref="hello"></entry>
+				<entry key="2" value-ref="hello1"></entry>
+				<entry key="3" value-ref="hello2"></entry>
+			</map>
+		</property>
+	</bean>
+	
+	配置Properties属性
+	<bean id="car1" class="com.cpp.spring.Car">
+		<property name="dataSource">    	<!-- private Properties dataSource;是map集合的一个实现-->
+			<props>  						<!-- 配置Properties属性-->
+				<prop key="username">john</prop>
+				<prop key="pass">123</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	配置独立的集合bean（map list set properties constant）以供多个bean引用，需要导入util命名空间
+	<util:map id="helloMap">
+		<entry key="1" value-ref="hello"></entry>
+		<entry key="2" value-ref="hello1"></entry>
+		<entry key="3" value-ref="hello2"></entry>
+	</util:map>
+	<bean id="car1" class="com.cpp.spring.Car">
+		<property name="hellox" ref="helloMap"></property>  <!-- 引用独立的集合bean-->
+	</bean>
+	
+	通过p命名空间为bean赋值，要先引入p命名空间，更简洁的配置bean
+	<bean id="hello7" class="com.cpp.spring.Hello" p:age="22" p:child-ref="car1">
+	</bean>
+	
+	自动装配  autowire="byName"  autowire="byType"
+	<bean id="car" class="com.cpp.spring.autowire.Car" p:brand="jiefang"
+		p:price="50"></bean>
+	<bean id="person" autowire="byName" class="com.cpp.spring.autowire.Person"></bean>   注意autowire="byName" 是person里面有一个叫car的属性，现在匹配上了id=car
+	<bean id="person1" autowire="byType" class="com.cpp.spring.autowire.Person"></bean>  注意这里 autowire="byType"当前配置文件里面仅有一个 class="com.cpp.spring.autowire.Car"的配置文件，而且car属性就匹配上这个bean
+	
+	继承属性
+	<bean id="car" class="com.cpp.spring.autowire.Car" p:brand="jiefang"
+		p:price="50"></bean>
+	<bean id="car1" class="com.cpp.spring.autowire.Car" parent="car"></bean>  parent="car"继承car的属性，属性可以再次定义
+	<bean id="car2" class="com.cpp.spring.autowire.Car" p:brand="jiefang"
+		abstract="true"></bean>  	abstract="true" 不能被实例化,一般用来做模板，甚至连class属性都不必写
+		
+		
+	依赖定义 	如果在car4初始化的时候没有car1 car 那么spring就会抛出异常
+	<bean id="car4" class="com.cpp.spring.autowire.Car" depends-on="car1,car"></bean>   <!-- depends-on="car1 car"可以用空格或者逗号来决定多个依赖-->
+	
+	bean的作用域  
+	scope="singleton"   默认值，单例值，容器生命周期只有一个该对象，在容器初始化的时候创建
+	scope="prototype"   每次获取该bean都重新创建一个bean
+	scope="request"    
+	scope="session" 
+	 <bean id="car" class="com.cpp.spring.autowire.Car" p:brand="jiefang"
+		p:price="50" scope="prototype" ></bean>
+		
+	使用外部属性文件  需要导入context命名空间
+	<context:property-placeholder location="classpath:db.properties" />    <!-- 这里的location="classpath:db.properties" db.properties就是类路径下的文件-->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value="${user}"></property>                  <!-- 使用el表达式引用外部属性文件里面的内容-->
+		<property name="password" value="${password}"></property>
+		<property name="jdbcUrl" value="${jdbcurl}"></property>
+		<property name="driverClass" value="${driverclass}"></property>
+	</bean>
+	
+	db.properties 文件内容
+	user=root
+	password=root
+	driverclass=com.mysql.jdbc.Driver
+	jdbcurl=jdbc:mysql:///test
+	
+	
+	IOC容器的bean的生命周期
+	1.通过构造器或者工厂方法创建bean实例
+	2.为bean的属性值设置值和对其他bean的引用
+	3.调用Bean的初始化方法   init-method
+	4.bean可以被使用了
+	5.当容器关闭时，调用Bean的销毁方法  destroy-method
+	eg:
+	<bean id="car" class="com.cpp.spring.autowire.Car" p:brand="jiefang" init-method="init" destroy-method="destory"
+		p:price="50"></bean>
+	ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("application2.xml");
+	context.close();
+	
+
+	bean后置处理器
+	public class MyBeanPostProcessor implements org.springframework.beans.factory.config.BeanPostProcessor {
+		@Override
+		public Object postProcessAfterInitialization(Object arg0, String beanName) throws BeansException {
+			System.out.println("postProcessAfterInitialization:"+beanName);
+			return arg0;  //返回给用户bean,甚至可以返回一个新的bean对象
+		}
+		@Override
+		public Object postProcessBeforeInitialization(Object arg0, String beanName) throws BeansException {
+			System.out.println("postProcessBeforeInitialization:"+beanName);
+			return arg0;  //返回给用户bean
+		}
+	}
+	<bean class="com.cpp.spring.MyBeanPostProcessor"></bean>  <!-- 在调用init方法之前调用 BeanPostProcessor处理-->
+	
+	
+	
+	使用工厂方法来创建bean
+	1.使用静态工厂方法
+	<bean id="car" class="com.cpp.spring.factory.StaticCarFactory"
+		factory-method="getCar">
+		<constructor-arg value="audi" />   <!-- 工厂方法的传入参数-->
+	</bean>
+
+	2.使用实例工厂方法
+	<bean id="carFactory" class="com.cpp.spring.factory.CarFactory"></bean>  <!-- 配置工厂bean-->
+	<bean id="car2" factory-bean="carFactory" factory-method="getCar">
+		<constructor-arg value="ford" />
+	</bean>
+	
+	通过FactoryBean接口来创建bean实例
+	public class CarFactoryBean implements FactoryBean<Car> { <!--  实现FactoryBean-->
+
+	private String name;
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public Car getObject() throws Exception {
+		return new Car(name);
+	}
+
+	@Override
+	public Class<?> getObjectType() {
+		return Car.class;
+	}
+
+	@Override
+	public boolean isSingleton() {
+		return false;
+	}
+
+}
+	<bean id="car3" class="com.cpp.spring.factory.CarFactoryBean">
+		<property name="name" value="auto"></property> <!-- 配置的是FactoryBean的属性-->
+	</bean>
+
+	
+	
+	
+	自动扫描并加载bean  注意:需要导入context命名空间，还有aop包
+	<context:component-scan base-package="com.cpp.spring.scanner"></context:component-scan>
+	然后在com.cpp.spring.scanner包下面的所有加上 @Service @Component @Repository @Controller的注解的类都会被自动加载
+	如果在没有自定的话：eg UserService的获得的id是 userService,也可以自定为@Service("myUserService")重新指定id名称
+	
+	只扫描部分    resource-pattern="service/*.class"    com.cpp.spring.scanner.service/*.class
+	<context:component-scan base-package="com.cpp.spring.scanner" resource-pattern="service/*.class"></context:component-scan>
+	
+	不使用默认的过滤器    不扫描com.cpp.spring.scanner.Repository这个文件
+	<context:component-scan base-package="com.cpp.spring.scanner"  use-default-filters="false">
+		<context:exclude-filter type="annotation"          
+			expression="com.cpp.spring.scanner.Repository" />      <!-- 针对注解  type="annotation"-->
+	</context:component-scan>  <context:include-filter type="assignable" expression="com.cpp.spring.scanner.Repository"/>
+	
+	不使用默认的过滤器    只扫描com.cpp.spring.scanner.Repository这个文件	
+	<context:component-scan base-package="com.cpp.spring.scanner" use-default-filters="false">
+		<context:include-filter type="annotation"
+			expression="com.cpp.spring.scanner.Repository" />
+	</context:component-scan>
+	
+	不使用默认的过滤器    只扫描com.cpp.spring.scanner.Repository这个文件	
+	<context:component-scan base-package="com.cpp.spring.scanner" use-default-filters="false">
+		<context:include-filter type="assignable" expression="com.cpp.spring.scanner.Repository"/>  <!-- 针对类名 type="assignable" 如果Repository是接口，那么Repository的实现类也不会被扫描到-->
+	</context:component-scan>
+	
+	
+	@Autowired 
+		修饰方法或者属性，	@Autowired(required=true)是默认值，如果在ioc容器里面没有修饰的那个bean的时候就会报错，反之就是为空也不会报错
+	@Qualifier
+	    用来指定bean属性指向那个具体的bean，因为如果属性在容器里面有多个bean匹配的话，那么容器会报错
+	
+	public class Controller {
+	@Autowired(required = true)
+	@Qualifier("service")
+	private IService service;
+
+	public void doController() {
+		service.doService();
+	}
+}
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+

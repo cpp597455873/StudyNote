@@ -1,0 +1,9 @@
+<property name="user" value="#{'john'}"></property>   直接赋值String字面量
+<property name="car" value="#{car}"></property>        引用其他bean
+<property name="address" value="#{john.address}"></property>   引用其他bean的属性   
+<property name="address" value="#{john.getAddress().toString()}"></property>   调用其他bean的方法或者方法链   
+<property name="zhouchang" value="#{T(java.lang.Math).PI * 80}"></property>   引用静态方法或者常量    
+<property name="brand" value="#{car.price > 10000000 ？ '豪车' : '一般的车'}"></property>     使用逻辑表达式  
+<property name="age" value="#{1+2}"></property>   算数运算符
+<property name="name" value="#{'chen'+'pp'}"></property>   + String连接符
+

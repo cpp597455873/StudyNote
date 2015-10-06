@@ -1,0 +1,15 @@
+<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<property name="user" value="root"></property>
+	<property name="password" value="root"></property>
+	<property name="jdbcUrl" value="jdbc:mysql:///test"></property>
+	<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+</bean>
+
+ApplicationContext ctx=new ClassPathXmlApplicationContext("jdbc-bean.xml");
+DataSource dataSource = (DataSource) ctx.getBean("dataSource");
+try {
+	Connection connection = dataSource.getConnection();
+	System.out.println(connection);
+} catch (SQLException e) {
+	e.printStackTrace();
+}

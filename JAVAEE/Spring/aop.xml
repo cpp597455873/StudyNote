@@ -1,0 +1,72 @@
+实现步骤：
+A:基于注解的方式：
+1.
+<context:component-scan base-package="com.cpp.spring.aop"></context:component-scan>  <!-- 声明基于注解的自动扫描加载bean，切面也被自动扫描加载进去-->
+<aop:aspectj-autoproxy></aop:aspectj-autoproxy>			<!-- 声明自动代理-->
+2.
+声明切面
+@Aspect   //声明切面
+@Order(1)  //声明切面优先级，优先级值越小,优先级越高，这是可选的
+@Component
+public class Logging {
+
+	@Before("execution(public int com.cpp.spring.aop.Caculator.*(..))")  //声明通知和切点
+	public void log(){
+		System.out.println("logging");
+	}
+	
+	@After("execution(public int com.cpp.spring.aop.Caculator.* (int,int))")
+	public void log(JoinPoint joinpoint){                         //也可以使用aspect里面的JoinPoint来获取连接细节
+		System.out.println("logging "+joinpoint.getSignature().getName()+" method execute over");
+	}
+	
+	@AfterThrowing(value = "execution(public int com.cpp.spring.aop.Caculator.* (int,int))",throwing="e")
+	public void loggingThrowing(JoinPoint joinpoint, Exception e){  //也可以使用其他Exception来捕获更细粒度的异常
+		System.out.println("logging "+joinpoint.getSignature().getName()+" method execute exception"+e);
+	}
+	
+	@Around(value = "execution(public int com.cpp.spring.aop.Caculator.* (int,int))")
+	public Object loggingProccessing(ProceedingJoinPoint proceedingJoinPoint){  //处理节点
+		Object result = null;
+		try {
+			result = proceedingJoinPoint.proceed(); 		//执行原方法，并带有返回值
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		System.out.println("logging "+proceedingJoinPoint.getSignature().getName()+" method execute return"+result);
+		return result;									//真正的返回数据，可以返回新的数据
+	}
+}
+AspectJ 支持 5 种类型的通知注解: 
+@Before: 前置通知, 在方法执行之前执行
+@After: 后置通知, 在方法执行之后执行,及时方法异常也会执行，但不能访问到返回结果
+@AfterRunning: 返回通知, 在方法返回结果之后执行
+@AfterThrowing: 异常通知, 在方法抛出异常之后
+@Around: 环绕通知, 围绕着方法执行
+
+
+重用切点 @Pointcut
+@Pointcut("execution(public int com.cpp.spring.aop.Caculator.* (..))")
+public void setPointCut(){}
+	
+@After("setPointCut()")  //设置切点，如果在不同包还需要声明方法的全类名
+public void log(JoinPoint joinpoint){
+	System.out.println("logging "+joinpoint.getSignature().getName()+" method execute over");
+}
+
+在xml里面配置AOP
+	<bean id="logging" class="com.cpp.spring.aop.Logging"></bean>  <!-- 配置切面bean-->
+	
+	<aop:config>
+	
+		<aop:pointcut id="pointcut"
+			expression="execution(public int com.cpp.spring.aop.Caculator.* (int,int))" />  <!-- 配置切点 -->
+
+		<aop:aspect id="loggingAspect" ref="logging" order="1">										<!-- 具体的切面  order切面优先级-->
+			<aop:before method="log" pointcut-ref="pointcut" />
+			<aop:after-returning method="loggingReturn" returning="result" pointcut-ref="pointcut" /> <!-- returning="result" result一定要与方法里面写的result对应，不然会报错的 -->
+			<aop:after-throwing method="loggingThrowing" throwing="e" pointcut-ref="pointcut" />
+		</aop:aspect>
+	</aop:config>
+
+
