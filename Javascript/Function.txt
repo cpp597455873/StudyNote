@@ -1,0 +1,3 @@
+﻿var fun = new Function("a","b","alert(a+b)");  //定义了一个function
+fun(1,2);            //调用function
+alert(fun.length);  //查看function参数的长度
