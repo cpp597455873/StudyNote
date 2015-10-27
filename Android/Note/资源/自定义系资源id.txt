@@ -1,0 +1,6 @@
+还有另外一种方法查看系统中定义的id，进入<android sdk安装目录>\platforms\android-1.5\data\res\values目录，找到ids.xml文件，打开后，内容如下： 
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ <item type="id" name="price_edit">false</item>
+ <item type="id" name="amount_edit">false</item>
+</resources>
