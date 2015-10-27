@@ -1,10 +1,24 @@
-Linux����ʹ�� ������ һ��
-�������ʽ 2��
-�㷨  һ����
-����ϵͳ ����
-C++  15��
-C    3��
-bash ʵ��¥
-Linux�ں�Դ��    ������
-Android�ں�Դ��  ������
-Gradle 10��
+﻿Linux基本使用 命令行 一周  
+正则表达式 2天   消灭
+算法  一个月
+操作系统 两周
+C++  15天
+C    3天
+bash 实验楼      学了，暂时没有用，寂静初步了解shell，以后学习nginx的时候在仔细的学习Linux和bash
+Linux内核源码    三个月    算了，这个要求太高了基本完不成
+Android内核源码  三个月    以后再看，现在的能力完全不足以解决它
+Gradle 10天      好像没有特别强烈的需求需要学习它
+
+
+
+
+新目标
+学习PHP
+学习Restful
+将PHP部署到Linux主机上
+
+
+近期学习：
+前端
+oracle数据库
+axure原型制作
