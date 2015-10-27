@@ -1,0 +1,3 @@
+webView.getSettings().setDefaultTextEncodingName("UTF-8") ;
+
+webView.loadData(data, "text/html;charset=UTF-8", null);    //中间mineType很重要
