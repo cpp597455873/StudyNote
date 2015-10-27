@@ -1,1 +1,22 @@
 http://www.cnblogs.com/windlivefamily/articles/2133956.html
+
+
+
+  Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+
+
+        TextView tv = (TextView) getLayoutInflater().inflate(R.layout.textview_err_msg, null);
+        tv.setText("网络错误");
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.addContentView(tv, layoutParams);
+
+        Window window = dialog.getWindow();
+        // 设置显示动画
+        WindowManager.LayoutParams wl = window.getAttributes();
+        // 以下这两句是为了保证按钮可以水平满屏
+        wl.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        wl.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+
+        dialog.show();
