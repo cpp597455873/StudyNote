@@ -1,0 +1,18 @@
+http://www.ruanyifeng.com/blog/2012/07/three_ways_to_define_a_javascript_class.html
+http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html
+
+-----第一种------------------------------------------------------------------------
+function Cat(name) {　　　　
+	this.name = name;　　
+}　　			
+var cat1 = new Cat("maomao");　　
+alert(cat1.name);
+//使用原型添加方法
+Cat.prototype.mksound = function(){
+	alert("miao");
+}
+
+　 
+
+
+
