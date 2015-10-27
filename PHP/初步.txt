@@ -1,0 +1,125 @@
+学习php的软件
+wamp
+
+
+查看php配置信息
+在php的家目录下建立一个phpinfo.php
+内容为<?php phpinfo();
+访问这个网页就可以查看到php的配置信息。
+
+-----可变变量----------------------------------------------
+$a = "hello"; 
+$$a = "nihao"; -->等同于$hello = "nihao";  
+$$$a = "buhao"; --> $nihao = "buhao";
+echo  $$$a;
+echo  $nihao;  都输出buhao
+
+-----引用变量---------------------------------------------
+$a = "a";
+$b = &$a; -->现在b的值就是a的值，现在a b就指向同一个空间地址。
+unset($a); -->只是删除了a的变量，但是$b的值依然存在。
+$b = &$c;  -->现在b指向c的地址，但是a依然指向原地址。
+isset($a); -->判断一个变量是否存在。
+
+-----变量类型---------------------------------------------
+4种标量 int,boolean,float,String
+2种复合类型：Object，Array
+2种特殊类型：资源，NULL
+
+-----定界符  <<< -----------------------------------------
+中间可以使用变量和转义字符，功能与双引号一样
+	$c =<<<hello  -->这里直接回车，连空格也没有
+	asdfasdfasdfasdfnihaofasdf
+hello;            -->这里顶格写，加分号，这里直接回车，连空格也没有
+	echo $c;
+
+如果在开始的定界符里面加上' '单引号的话功能就和'号一样了，中间的变量符号，转义字符都不会被解析
+$c =<<<'hello' 
+	asdfasdfasdfasdfnihaofasdf
+hello;          
+	echo $c;
+
+----- {} --------------------------------------------------
+aaaa$b ccccc;  -->现在就出现问题了会输出aaaab ccccc这里出现了空格，但是现在我们不需要空格现在该怎么办
+aaaa{$b}ccccc;  或者 aaaa${b}ccccc;
+
+----- 单引号转义 ------------------------------------------
+单引号里面可以转义 ' 自己，也可以转义转义字符本身。就只能转义这两种。
+
+----- bool类型 --------------------------------------------
+例外
+$a = "";  -->false;
+$a = "0";  -->false;
+NULL  -->false;
+资源：有连接就是真
+
+----- 类型获得与转换 --------------------------------------
+$a = 1;
+var_dump($a);  -->获得类型和值
+echo gettype($a); -->只获得类型
+settype($a,"double/string") -->强制类型转换，这个是改变的原值
+$b = (string)$a;  -->给新变量转成新值，原值不变
+intval($a);    -->把变量转成int值，原值不变
+floatval($a);  -->把变量转成float值，原值不变
+strval($a);    -->把变量转成str值，原值不变
+empty($a);     -->判断内容是否为空。
+
+----- 常量 -----------------------------------------------
+define("常量名","常量值","true/false"可选 是否区分大小写,默认false->区分大小写) 注意没有$符号
+define("PATH","bin");
+echo PATH;  ->读取常量。注意没有$符号；
+constant("PATH"); -->读取常量。注意没有$符号；
+defined("PATH");  -->查看常量是否存在
+
+----- foreach --------------------------------------------
+foreach($ay as $name){
+    	echo "$name";
+		echo "<br/>";
+}
+
+----- 字符串拼接 -----------------------------------------
+"1+2=" . sum(1,2);  -->中间用点来连接
+
+----- 数组 -----------------------------------------------
+$cars=array("Volvo","BMW","SAAB");
+$cars=["Volvo","BMW","SAAB"];
+访问$cars[0]
+
+关联数组
+$age=array("Peter"=>"35","Ben"=>"37","Joe"=>"43");
+$age["Peter"];
+遍历关联数组
+foreach($age as $x=>$x_value) {
+  echo "Key=" . $x . ", Value=" . $x_value;
+  echo "<br>";
+}
+
+关于数组的详细介绍 http://www.w3school.com.cn/php/php_ref_array.asp
+添加元素
+$ay = ["join","dgr","good"];
+$ay[] = "baby";  -->这个方法更为简单，效率更高;
+array_push($ay, "c", "d"); -->也可以这样添加，效率比上一个低
+foreach($ay as $name){
+	echo "$name " . "<br/>";
+}
+
+打印数组以及下标
+print_r($ay);
+
+删除数组末尾的一个元素。    
+array_pop($ay);
+
+在数组的开始添加一个或多个元素。
+rray_unshift() 将传入的单元插入到 array 数组的开头。注意单元是作为整体被插入的，因此传入单元将保持同样的顺序。所有的数值键名将修改为从零开始重新计数，所有的文字键名保持不变。
+array_unshift($arr1,"a","b");	
+
+4.删除数组第一个元素。   
+array_shift() 将 array 的第一个单元移出并作为结果返回，将 array 的长度减一并将所有其它单元向前移动一位。所有的数字键名将改为从零开始计数，文字键名将不变。如果 array 为空（或者不是数组），则返回 NULL。
+array_shift($ay);
+
+----- 表单 --------------------------------------------------------
+echo "welcome ". $_POST["name"] . "! your password is" . $_POST["pass"] ;
+echo "welcome ". $_GET["name"] . "! your password is" . $_GET["pass"] ;
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">   -->在本页面验证表单 
+
+
