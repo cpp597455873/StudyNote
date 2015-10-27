@@ -1,0 +1,7 @@
+<%@ page isELIgnored="false"%>
+这样就可以在jsp里面，开启el表达式
+${requestScope.time}
+
+
+关于el表达式的介绍
+http://blog.csdn.net/zdwzzu2006/article/details/4672383
