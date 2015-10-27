@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>hello world</title>
+		<script type="text/javascript">
+			function calc(w, h, s) {
+				document.getElementById("dpi").innerHTML=Math.sqrt(w * w + h * h) / s;
+				return false;
+			}
+		</script>
+	</head>
+
+	<body>
+		<form action="return " method="post" onsubmit="return calc(w.value,h.value,s.value)">
+
+			width:<input type="number" placeholder="请输入屏幕宽度" id="w" />
+			height:<input type="number" placeholder="请输入屏幕高度" id="h" />
+			size:<input type="text" placeholder="请输入屏幕大小" id="s" />
+			<input type="submit"  value="计算" />
+			<br>
+			屏幕dpi:&nbsp;&nbsp;<span id="dpi"></span><br />
+			<a href="http://www.umindex.com/">友盟关于国内的设备信息的统计</a>
+		</form>
+	</body>
+
+</html>
