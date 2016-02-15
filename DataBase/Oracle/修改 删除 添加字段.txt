@@ -1,0 +1,7 @@
+﻿alter table pub_t_fund drop (aa);
+alter table pub_t_fund add (aa  varchar2(4000));
+alter table tablename modify (aa.varchar2(4000));
+
+添加字段的语法：alter table tablename add (column datatype [default value][null/not null],….);
+修改字段的语法：alter table tablename modify (column datatype [default value][null/not null],….);
+删除字段的语法：alter table tablename drop (column);
