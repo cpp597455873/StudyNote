@@ -1,4 +1,4 @@
-//��Ҫʵ�� function(p1, p2)ȷ�����˳��
+//需要实现 function(p1, p2)确定相对顺序
 contacts.sort(function(p1, p2) {		
 		var name1 = p1.displayName;
 		var name2 = p2.displayName;
@@ -7,3 +7,22 @@ contacts.sort(function(p1, p2) {
 		if (name2 == null) return 1;
 		return name1.localeCompare(name2);
 	});
+	
+	
+	
+	var arrDemo = new Array();
+ arrDemo[0] = 10;
+ arrDemo[1] = 50;
+ arrDemo[2] = 51;
+ arrDemo[3] = 100;
+ arrDemo.sort(); //调用sort方法后，数组本身会被改变，即影响原数组
+ alert(arrDemo);//10,100,50,51 默认情况下sort方法是按ascii字母顺序排序的，而非我们认为是按数字大小排序
+ arrDemo.sort(function(a,b){return a>b?1:-1});//从小到大排序
+ alert(arrDemo);//10,50,51,100
+ arrDemo.sort(function(a,b){return a<b?1:-1});//从大到小排序
+ alert(arrDemo);//100,51,50,10
+
+结论：
+1.数组调用sort方法后，会影响本身(而非生成新数组)
+2.sort()方法默认是按字符来排序的，所以在对数字型数组排序时，不可想当然的以为会按数字大小排序！
+3.要改变默认的sort行为(即按字符排序)，可以自行指定排序规则函数(如本例所示)
