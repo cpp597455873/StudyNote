@@ -1,0 +1,5 @@
+﻿key和iv向量都必须是16位的utf-8的字符，所需要加密的东西也必须是utf-8的编码
+AES/CBC/PKCS7Padding   aes128
+
+js使用CryptoJS 的aes加密包
+java引用了bouncycastle 的jce provider,记得到时候引用jar包  http://www.bouncycastle.org/latest_releases.html

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>aes demo</title>
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="aes.js"></script>
+
+    <script>
+        var message = "Secret Message";
+        var key = CryptoJS.enc.Utf8.parse('87654321abcdef90');
+        var iv = CryptoJS.enc.Utf8.parse('0123456789abcdef');
+        var encrypted = CryptoJS.AES.encrypt(
+                message,
+                key, {
+                    mode: CryptoJS.mode.CBC,
+                    padding: CryptoJS.pad.Pkcs7,
+                    iv: iv
+                }
+        );
+        console.log('            encrypted1: ' + encrypted.toString());
+        console.log('            encrypted ciphertext: ' + encrypted.ciphertext);
+        console.log('            encrypte64: ' + CryptoJS.enc.Base64.stringify(encrypted.ciphertext));
+        console.log('            encrypto iv64: ' + CryptoJS.enc.Base64.stringify(encrypted.iv));
+        console.log('            encrypte iv: ' + encrypted.iv);
+        console.log('            iv: ' + iv);
+        var manual_data = 'vwAb5vLrcLFJIjo7CzgVcg==';
+        var decrypted = CryptoJS.AES.decrypt(
+                manual_data,
+                key, {
+                    mode: CryptoJS.mode.CBC,
+                    padding: CryptoJS.pad.Pkcs7,
+                    iv: iv
+                }
+        );
+        console.log('   decrypted, by hand: ' + decrypted.toString(CryptoJS.enc.Utf8));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
