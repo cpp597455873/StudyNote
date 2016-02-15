@@ -1,0 +1,22 @@
+﻿    <!--配置文件文件上传-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" >
+    	<property name="defaultEncoding" value="UTF-8"></property>
+    	<property name="maxUploadSize" value="1024000"></property>
+    </bean>
+	
+	
+	//这里就可以获得文件大小，inputstream了
+	@RequestMapping("/headPic")
+	@ResponseBody
+	public String uploadPic(@RequestParam("file") MultipartFile file) {
+		try {
+			System.out.println(file.getInputStream());
+			System.out.println(file.getOriginalFilename());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "图片上传成功";
+		
+	}
+	
+	注意:需要common-file   common-io jar
