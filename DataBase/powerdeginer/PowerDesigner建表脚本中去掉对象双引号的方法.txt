@@ -1,0 +1,5 @@
+PowerDesigner建表脚本中去掉对象双引号的方法 (2006-10-30 16:37:01)转载▼
+分类： 数据库笔记
+打开cdm的情况下，进入Tools－Model Options－Naming Convention，把Name和Code的标签的Charcter case选项设置成Uppercase或者Lowercase，只要不是Mixed Case就行！
+或者选择Database->Edit current database->Script->Sql->Format，有一项CaseSensitivityUsingQuote，它的comment为“Determines if the case sensitivity for identifiers is managed using double quotes”，表示是否适用双引号来规定标识符的大小写，可以看到右边的values默认值为“YES”,改为“No”即可！
+或者在打开pdm的情况下，进入Tools－Model Options－Naming Convention，把Name和Code的标签的Charcter case选项设置成Uppercase就可以！
