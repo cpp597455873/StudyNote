@@ -1,0 +1,19 @@
+﻿在安卓开发中，在使用listView时，我们会经常用到footerView或者headerView
+
+给ListView添加的footer和header好多时候，会根据情况隐藏和显示。
+
+因为footer和header使用删除和添加的方法总感觉不好。
+
+而直接设置footer和header中的view为GONE时，虽然内容不显示了，但是这块区域还是会被占用。
+
+经过各种方法测试，最后得出一个可以完美解决该问题的方法，如下代码：
+
+this.footerLayout.setVisibility(View.GONE);
+this.footerLayout.setPadding(0, -footerLayout.getHeight(), 0, 0);
+
+意思就是把内容往上移动View的高度。
+
+当然，在需要显示的时候，还要设置回来（做一个if  else处理即可）
+
+this.footerLayout.setVisibility(View.VISIBLE);
+this.footerLayout.setPadding(0, 0, 0, 0);
