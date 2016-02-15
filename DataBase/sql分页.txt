@@ -1,0 +1,4 @@
+select f.*, 5 as line_count 
+  from (select rownum, d.* from (select * from person order by id desc) d) f
+ where rownum >= 0
+   and rownum <= 5
