@@ -4,12 +4,31 @@
     compile 'com.android.support:cardview-v7:23.0.1'
     compile 'de.greenrobot:eventbus:2.4.0'
     compile files('libs/SwipeMenuLib.jar')
-    compile 'com.github.flavienlaurent.datetimepicker:library:0.0.2'
-    compile files('libs/imageloader.jar')
-    //接下来的两个依赖包是内存泄露检测工具
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3.1'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'
-    compile files('libs/volley.jar')
-    compile 'de.greenrobot:eventbus:2.4.0'
     compile files('libs/fastjson-1.1.6.jar')
     compile files('libs/gson-2.2.4.jar')
+	
+	
+//android 验证框架   https://github.com/yoojia/FireEye
+compile 'com.github.yoojia:fire-eye:2.2@aar'
+	
+//datetimepicker	
+compile 'com.github.flavienlaurent.datetimepicker:library:0.0.2'
+
+//eventbus	
+compile 'de.greenrobot:eventbus:2.4.0'
+
+//---------Android绘图框架	
+repositories {
+    maven { url "https://jitpack.io" }
+}
+dependencies {
+    compile 'com.github.PhilJay:MPAndroidChart:v2.1.1'
+}
+
+//---------volley
+ compile 'com.mcxiaoke.volley:library:1.0.19'
+ 
+//接下来的两个依赖包是内存泄露检测工具
+debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3.1'
+releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'
+
