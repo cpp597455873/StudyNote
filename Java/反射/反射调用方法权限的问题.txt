@@ -1,0 +1,7 @@
+﻿通过以下代码，可以总结：根据不同的访问权限，
+public的static的方法：没有任何权限问题，getMethod()就可以满足，根本不用getDeclaredMethod出马，更不用setAccessiable(true)
+public的非静态的方法：没有任何权限问题，getMethod()就可以满足，根本不用getDeclaredMethod出马，更不用setAccessiable(true)，
+   但是，在invoke时，第一个参数必须是具体的某一个对象，static的可要可不要
+protected的非静态方法：必须使用getDeclaredMethod，不能使用getMethod，不用设置setAccessiable(true)
+friendly的非静态方法：必须使用getDeclaredMethod，不能使用getMethod，不用设置setAccessiable(true)
+private的非静态方法：必须使用getDeclaredMethod，不能使用getMethod，必须设置setAccessiable(true)
