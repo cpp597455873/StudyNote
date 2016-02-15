@@ -1,0 +1,45 @@
+﻿Android中通过typeface设置字体
+Android系统默认支持三种字体，分别为：“sans”, “serif”, “monospace"，除此之外还可以使用其他字体文件（*.ttf）
+
+方法一：XML中使用android默认字体
+
+<!--  使用默认的sans字体-->
+        <TextView    Android:id="@+id/sans"
+                   Android:text="Hello,World"
+                   Android:typeface="sans"
+                   Android:textSize="20sp" />
+
+<!--  使用默认的serifs字体-->
+        <TextView   Android:id="@+id/serif"
+                   Android:text="Hello,World"
+                   Android:typeface="serif"
+                   Android:textSize="20sp" />
+
+<!--  使用默认的monospace字体-->
+        <TextView   Android:id="@+id/monospace"
+                   Android:text="Hello,World"
+                   Android:typeface="monospace"
+                   Android:textSize="20sp" />
+
+方法二：在Android中可以引入其他字体，首先要将字体文件保存在assets/fonts/目录下
+
+1.　　<!--  这里没有设定字体，将在Java代码中设定-->
+
+<TextView   Android:id="@+id/custom"
+                   Android:text="Hello,World"
+                    Android:textSize="20sp" />
+
+2.　　java程序中引入其他字体关键代码
+
+　　//得到TextView控件对象
+        TextView textView =(TextView)findViewById(R.id.custom);
+
+　　//将字体文件保存在assets/fonts/目录下，创建Typeface对象
+
+　　Typeface typeFace =Typeface.createFromAsset(getAssets(),"fonts/HandmadeTypewriter.ttf");
+
+　　//使用字体
+
+　　textView.setTypeface(typeFace);
+
+　　
