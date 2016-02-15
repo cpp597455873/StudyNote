@@ -1,0 +1,41 @@
+﻿create user cpp identified by "cpp";  
+grant create session to cpp;  
+grant create table to  cpp;  
+grant create tablespace to  cpp;  
+grant create view to  cpp;  
+grant create session to cpp;
+grant unlimited tablespace to cpp;
+grant create table to cpp;
+grant drop table to cpp;
+grant insert table to cpp;
+grant update table to cpp;
+grant create sequence to cpp;
+
+
+
+
+/*分为四步 */
+/*第1步：创建临时表空间  */
+create temporary tablespace user_temp_bishe  
+tempfile 'd:\oracle\oracle10g_data\user_temp_bishe.dbf' 
+size 50m  
+autoextend on  
+next 50m maxsize 20480m  
+extent management local;  
+ 
+/*第2步：创建数据表空间  */
+create tablespace user_data_bishe  
+logging  
+datafile 'd:\oracle\oracle10g_data\user_data_bishe.dbf' 
+size 50m  
+autoextend on  
+next 50m maxsize 20480m  
+extent management local;  
+ 
+/*第3步：创建用户并指定表空间  cpp
+create user cpp identified by cpp  
+default tablespace user_data_bishe  
+temporary tablespace user_temp_bishe;  
+ 
+/*第4步：给用户授予权限  */
+grant connect,resource,dba to username;
