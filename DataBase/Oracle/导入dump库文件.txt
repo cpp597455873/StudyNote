@@ -1,0 +1,1 @@
+imp KD_SALE_DX/1 file=D:\Work\bank_block\kd_bank_dx.dmp full=y ignore=y ;
