@@ -1,0 +1,33 @@
+完全卸载oracle 注册表及文件
+全卸载Oracle方法：
+软件环境： 
+1、Windows XP + Oracle 10g 
+2、Oracle安装路径为：d:\Oracle
+1、如果数据库配置了自动存储管理(ASM),应该先删除聚集同步服务CSS（cluster Synchronization Services).删除CSS服务的方法是在DOS命令行中执行如下命令： localconfig delete
+2、在“服务”窗口中停止Oracle的所有服务。
+3、在“开始”菜单中依次选择“程序”/“Oracle-OraDb10g_home1"/"Oracle Installation Products”/"Universal Installer"，打开Oracle Universal Installer(OUI)窗口
+4、单击“卸载产品”按钮，打开“产品清单”窗口，选中要删除的Oracle产品，单击“删除”按钮，打开“确认删除”对话框。
+5、在“确认删除”对话框中单击“是”按钮，开始删除选择的Oracle产品。
+6、删除自动存储管理（ASM),在DOS命令行中执行如下命令：oracle -delete -asmsid +asm
+7、运行regedit命令，打开注册表窗口。删除注册表中与Oracle相关的内容，具体如下：
+1、删除HKEY_LOCAL_MACHINE/SOFTWARE/ORACLE目录。
+2、删除HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Services中所有以oracle或OraWeb为开头的键。
+3、删除HKEY_LOCAL_MACHINE/SYSETM/CurrentControlSet/Services/Eventlog/application中所有以oracle开头的键。
+
+4、删除HKEY_CLASSES_ROOT目录下所有以Ora、Oracle、Orcl或EnumOra为前缀的键。
+
+5、删除
+HKEY_CURRENT_USER/SOFTWARE/Microsoft/windows/CurrentVersion/Explorer/MenuOrder/Start Menu/Programs中所有以oracle 开头的键。
+
+6、删除HKDY_LOCAL_MACHINE/SOFTWARE/ODBC/ODBCINST.INI中除Microsoft ODBC for Oracle注册表键以外的所有含有Oracle的键。
+
+7、其中有些注册表项可能已经在卸载Oracle产品时被删除。
+
+8、删除环境变量中的PATHT CLASSPATH中包含Oracle的值。
+
+9、删除“开始”/“程序”中所有Oracle的组和图标。
+
+10、删除所有与Oracle相关的目录，包括：
+    1）c:\Program file\Oracle目录。
+    2）ORACLE_BASE目录。
+    3）c:\Documents and Settings\系统用户名、LocalSettings\Temp目录下的临时文件。
