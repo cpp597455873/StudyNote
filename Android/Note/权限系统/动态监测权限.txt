@@ -1,0 +1,12 @@
+﻿	//动态监测权限有权限才执行响应的操作
+	Uri uri = Uri.parse("tel:" + "400085085");
+    Intent intent = new Intent(Intent.ACTION_CALL, uri);
+    PackageManager pm = getPackageManager();
+    boolean permission = (PackageManager.PERMISSION_GRANTED ==
+    pm.checkPermission("android.permission.CALL_PHONE", "com.jinzheng.crtrust"));
+	if (permission) {
+		startActivity(intent);
+		// showToast("有这个权限");
+    } else {
+         //  showToast("没有这个权限");
+    }
