@@ -1,0 +1,29 @@
+https://github.com/arjinmc/RecyclerViewDecoration
+
+
+Horizonal Mode
+
+1.pure line
+
+    rvData.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+    rvData.addItemDecoration(new RecyclerViewItemDecoration(
+      RecyclerViewItemDecoration.MODE_HORIZONTAL, Color.DKGRAY,5,0,0));
+      //or
+      //RecyclerViewItemDecoration.MODE_HORIZONTAL, "#ff0000",5,0,0));
+2.pure line with gap
+
+    rvData.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+    rvData.addItemDecoration(new RecyclerViewItemDecoration(
+      RecyclerViewItemDecoration.MODE_HORIZONTAL, Color.DKGRAY,5,20,10));
+3.use image resource(including .9.png)
+
+    rvData.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+    rvData.addItemDecoration(new RecyclerViewItemDecoration(
+      RecyclerViewItemDecoration.MODE_HORIZONTAL,this, R.drawable.diver));
+Vertical Mode
+
+the same as the Horizonal Mode
+
+    rvData.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
+    rvData.addItemDecoration(new RecyclerViewItemDecoration(
+      RecyclerViewItemDecoration.MODE_VERTICAL,this, R.drawable.diver_vertical));
