@@ -1,1 +1,4 @@
 conn kd_app/1@192.168.8.187/orcl
+
+
+sqlplus kd_app/1@192.168.8.187/orcl
