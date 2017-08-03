@@ -1,0 +1,6 @@
+ 安卓官方模拟器, Parse Error – There is a Problem Parsing the Package
+
+今天测试下载测试apk到sdcard进行安装,安装的时候解析出错:报了一个Parse Error – There is a Problem Parsing the Package的错误
+反复调试,死去活来,更换编译版本,目标版本,模拟器版本都无效,不论是下载的apk还是DDMS传入的apk全都无法打开安装.直接把apk拖入模拟器又是没有问题的,
+后来发现该apk在sdcard目录中的权限是:-rw-rw----是没有执行权限的,想更改权限也没有发现合适的路径,后来在下载时取消了自定义的保存目录,直接下载到sdcard根目录问题才得到解决,百思不得其解,代码创建的目录的权限也是正常的,不知道为什么apk放到里面权限就不正常了,
+以后需要注意
