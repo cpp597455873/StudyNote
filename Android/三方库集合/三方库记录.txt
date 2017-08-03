@@ -1,0 +1,2 @@
+pdf三方，缺点太大有15M
+https://github.com/barteksc/AndroidPdfViewer   
